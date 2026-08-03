@@ -1,0 +1,996 @@
+// Freelancezero — Prisma schema
+// -----------------------------------------------------------------------------
+// This is the single source of truth for the data model. It is intentionally
+// verbose and heavily commented because the schema *is* the domain model of the
+// platform. Keep migrations small and reviewable.
+//
+// Conventions:
+//   - Ids are cuid() strings (URL-safe, non-enumerable — avoids leaking counts).
+//   - All money is stored in integer minor units (cents) + an ISO currency code.
+//     NEVER use floats for money.
+//   - `createdAt` / `updatedAt` on every table for auditability.
+//   - Soft-delete via `deletedAt` where user content must be recoverable / GDPR.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// AUTH & IDENTITY  (compatible with Auth.js / NextAuth PrismaAdapter)
+// ============================================================================
+
+enum UserRole {
+  CLIENT
+  FREELANCER
+  AGENCY_OWNER
+  AGENCY_MEMBER
+  ADMIN
+}
+
+enum IdentityStatus {
+  UNVERIFIED
+  PENDING   // session created, user still completing the checks
+  PROCESSING // provider reviewing
+  VERIFIED
+  FAILED    // provider could not verify; the user may retry
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  BANNED
+  DELETED // soft, for GDPR erasure grace period
+  // A scraped recruiter/company shell created by external-job ingestion. Has no
+  // password and cannot sign in normally; it is "claimed" (-> ACTIVE) when the
+  // recruiter follows a magic link and sets a password. See RecruiterContact.
+  UNCLAIMED
+}
+
+model User {
+  id            String     @id @default(cuid())
+  email         String     @unique
+  emailVerified DateTime?
+  // Null for social-only accounts. Hashed with bcrypt when present.
+  passwordHash  String?
+  name          String?
+  image         String?
+  role          UserRole   @default(CLIENT)
+  status        UserStatus @default(ACTIVE)
+
+  // Two-factor (TOTP). Secret is encrypted at rest at the application layer.
+  twoFactorEnabled Boolean @default(false)
+  twoFactorSecret  String?
+
+  // Locale / preferences
+  locale   String @default("en")
+  timezone String @default("UTC")
+
+  // Public name privacy. Off by default: profiles render "Jordan D." rather
+  // than a full legal name, so a public marketplace profile is not a
+  // people-search result. Users opt in to showing their full name.
+  showFullName Boolean @default(false)
+
+  // --- Identity verification (KYC) ---
+  // Handled by a third-party provider (document + selfie/liveness capture, via
+  // QR hand-off to the phone camera). We deliberately store only the outcome and
+  // an opaque provider reference — never document images or ID numbers.
+  identityStatus     IdentityStatus @default(UNVERIFIED)
+  identityProvider   String?
+  identityRef        String?
+  identityVerifiedAt DateTime?
+
+  // Public discoverability. On by default: an indexed profile is free inbound
+  // lead flow for the freelancer. Turning it off keeps the profile usable inside
+  // the platform (clients can still open it) but de-indexes it from search.
+  indexProfile Boolean @default(true)
+
+  // Email notification preferences. Transactional security mail (email
+  // confirmation, payout changes) is always sent and is deliberately not
+  // switchable off here.
+  notifyProposals   Boolean @default(true)
+  notifyMessages    Boolean @default(true)
+  notifyProductNews Boolean @default(false)
+
+  // How this user moves money — a freelancer's payout method or a client's
+  // billing method. Null = not set up yet (drives the "add a payment method"
+  // warning). `payoutDetail` holds a display-only identifier (masked account,
+  // PayPal email, etc.); it is never a credential.
+  payoutProvider   PaymentProvider?
+  payoutDetail     String?
+  // Account holder name — required for bank payouts (MANUAL/WISE), since a
+  // transfer can't be addressed to an IBAN alone.
+  payoutHolderName String?
+
+  // Set once an admin manually approves the account. Null = pending review;
+  // posting jobs and applying to them is gated on this (anti-spam).
+  approvedAt DateTime?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  // Auth.js relations
+  accounts Account[]
+  sessions Session[]
+
+  // Domain relations
+  freelancerProfile FreelancerProfile?
+  clientProfile     ClientProfile?
+  agencyMemberships AgencyMember[]
+
+  jobsPosted      Job[]           @relation("JobClient")
+  proposals       Proposal[]
+  sentMessages    Message[]       @relation("MessageSender")
+  conversations   Participant[]
+  reviewsAuthored Review[]        @relation("ReviewAuthor")
+  reviewsReceived Review[]        @relation("ReviewTarget")
+  notifications   Notification[]
+  savedSearches   SavedSearch[]
+  auditLogs       AuditLog[]
+  timeEntries     TimeEntry[]
+  contractsAsClient     Contract[] @relation("ContractClient")
+  contractsAsFreelancer Contract[] @relation("ContractFreelancer")
+
+  // Cold-start / external-job ingestion (only populated for UNCLAIMED shells).
+  recruiterContact      RecruiterContact?
+  recruiterAccessTokens RecruiterAccessToken[]
+
+  @@index([role, status])
+  @@map("users")
+}
+
+// --- Auth.js required models -------------------------------------------------
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+// Used for email verification, magic links, and password reset.
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ============================================================================
+// PROFILES
+// ============================================================================
+
+enum Availability {
+  OPEN_TO_WORK
+  OPEN_TO_OFFERS
+  NOT_AVAILABLE
+}
+
+model FreelancerProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  headline     String? // e.g. "Senior Full-Stack Engineer"
+  bio          String? @db.Text
+  hourlyRate   Int? // minor units
+  currency     String  @default("USD")
+  availability Availability @default(OPEN_TO_OFFERS)
+  hoursPerWeek Int?
+  // Required during onboarding — clients filter on it and timezone overlap is
+  // the first thing they ask about.
+  location     String?
+  timezone     String?
+  yearsExperience Int?
+
+  // Professional links. Each is validated against its expected host at the API
+  // layer, so a GitHub field cannot hold a random URL.
+  websiteUrl   String?
+  githubUrl    String?
+  linkedinUrl  String?
+  dribbbleUrl  String?
+  behanceUrl   String?
+  stackoverflowUrl String?
+  xUrl         String?
+
+  // Denormalized aggregates for fast sorting/filtering; recomputed on writes.
+  ratingAvg          Float @default(0)
+  ratingCount        Int   @default(0)
+  completenessScore  Int   @default(0) // 0-100, drives "complete your profile" nudges
+
+  skills         FreelancerSkill[]
+  portfolioItems PortfolioItem[]
+  languages      LanguageProficiency[]
+  education      Education[]
+  certifications Certification[]
+  workHistory    WorkHistory[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([availability, ratingAvg])
+  @@map("freelancer_profiles")
+}
+
+model ClientProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  companyName String?
+  companyUrl  String?
+  about       String? @db.Text
+  location    String?
+
+  // Verification badges
+  paymentVerified Boolean @default(false)
+  companyVerified Boolean @default(false)
+  emailVerified   Boolean @default(false)
+
+  ratingAvg   Float @default(0)
+  ratingCount Int   @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("client_profiles")
+}
+
+// Public company directory — powers the client sign-up combobox. Names are
+// unique; companies a client types that aren't listed are added automatically
+// at registration.
+model Company {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+
+  @@map("companies")
+}
+
+// --- Skills taxonomy ---------------------------------------------------------
+
+model Skill {
+  id       String  @id @default(cuid())
+  name     String  @unique
+  slug     String  @unique
+  category String? // for taxonomy grouping, e.g. "Web Development"
+
+  freelancers FreelancerSkill[]
+  jobs        JobSkill[]
+
+  @@index([category])
+  @@map("skills")
+}
+
+model FreelancerSkill {
+  id                  String @id @default(cuid())
+  freelancerProfileId String
+  skillId             String
+  // Endorsement count — social proof from clients/peers.
+  endorsements        Int    @default(0)
+
+  freelancerProfile FreelancerProfile @relation(fields: [freelancerProfileId], references: [id], onDelete: Cascade)
+  skill             Skill             @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([freelancerProfileId, skillId])
+  @@map("freelancer_skills")
+}
+
+model PortfolioItem {
+  id                  String  @id @default(cuid())
+  freelancerProfileId String
+  title               String
+  description         String? @db.Text
+  imageUrl            String?
+  externalUrl         String? // live link, GitHub repo, case study, etc.
+  order               Int     @default(0)
+
+  freelancerProfile FreelancerProfile @relation(fields: [freelancerProfileId], references: [id], onDelete: Cascade)
+  createdAt         DateTime          @default(now())
+
+  @@index([freelancerProfileId, order])
+  @@map("portfolio_items")
+}
+
+model LanguageProficiency {
+  id                  String @id @default(cuid())
+  freelancerProfileId String
+  language            String // ISO code or display name
+  level               String // e.g. "Native", "Fluent", "Conversational"
+
+  freelancerProfile FreelancerProfile @relation(fields: [freelancerProfileId], references: [id], onDelete: Cascade)
+
+  @@unique([freelancerProfileId, language])
+  @@map("language_proficiencies")
+}
+
+model Education {
+  id                  String  @id @default(cuid())
+  freelancerProfileId String
+  school              String
+  degree              String?
+  field               String?
+  startYear           Int?
+  endYear             Int?
+
+  freelancerProfile FreelancerProfile @relation(fields: [freelancerProfileId], references: [id], onDelete: Cascade)
+
+  @@map("education")
+}
+
+model Certification {
+  id                  String    @id @default(cuid())
+  freelancerProfileId String
+  name                String
+  issuer              String?
+  issuedAt            DateTime?
+  credentialUrl       String?
+
+  freelancerProfile FreelancerProfile @relation(fields: [freelancerProfileId], references: [id], onDelete: Cascade)
+
+  @@map("certifications")
+}
+
+model WorkHistory {
+  id                  String    @id @default(cuid())
+  freelancerProfileId String
+  company             String
+  title               String
+  description         String?   @db.Text
+  startDate           DateTime?
+  endDate             DateTime?
+
+  freelancerProfile FreelancerProfile @relation(fields: [freelancerProfileId], references: [id], onDelete: Cascade)
+
+  @@map("work_history")
+}
+
+// ============================================================================
+// AGENCIES
+// ============================================================================
+
+enum AgencyRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+model Agency {
+  id      String  @id @default(cuid())
+  name    String
+  slug    String  @unique
+  about   String? @db.Text
+  logoUrl String?
+
+  members AgencyMember[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("agencies")
+}
+
+model AgencyMember {
+  id       String     @id @default(cuid())
+  agencyId String
+  userId   String
+  role     AgencyRole @default(MEMBER)
+
+  agency Agency @relation(fields: [agencyId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([agencyId, userId])
+  @@map("agency_members")
+}
+
+// ============================================================================
+// JOBS & DISCOVERY
+// ============================================================================
+
+enum BudgetType {
+  HOURLY
+  FIXED
+}
+
+enum JobStatus {
+  DRAFT
+  OPEN
+  IN_PROGRESS
+  CLOSED
+  CANCELLED
+}
+
+enum ExperienceLevel {
+  ENTRY
+  INTERMEDIATE
+  EXPERT
+}
+
+model Job {
+  id          String   @id @default(cuid())
+  clientId    String
+  client      User     @relation("JobClient", fields: [clientId], references: [id], onDelete: Cascade)
+
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+
+  budgetType    BudgetType
+  // For FIXED: budgetMin == budgetMax. For HOURLY: rate range. Minor units.
+  budgetMin     Int?
+  budgetMax     Int?
+  currency      String          @default("USD")
+  experience    ExperienceLevel @default(INTERMEDIATE)
+  estimatedDays Int?
+
+  status      JobStatus @default(OPEN)
+  visibility  String    @default("public") // public | invite_only
+
+  skills    JobSkill[]
+  proposals Proposal[]
+  contract  Contract?
+  // Set only for jobs ingested from an external board (cold-start seed).
+  source    JobSource?
+
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  @@index([status, publishedAt])
+  @@index([clientId])
+  @@map("jobs")
+}
+
+model JobSkill {
+  id      String @id @default(cuid())
+  jobId   String
+  skillId String
+
+  job   Job   @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  skill Skill @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([jobId, skillId])
+  @@map("job_skills")
+}
+
+model SavedSearch {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  // Serialized filter state (skills, rate range, keywords…).
+  query     Json
+  // Alert cadence for email/in-app notifications.
+  alertsEnabled Boolean @default(true)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("saved_searches")
+}
+
+// ============================================================================
+// PROPOSALS & BIDDING
+// ============================================================================
+
+enum ProposalStatus {
+  SUBMITTED
+  SHORTLISTED
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+}
+
+model Proposal {
+  id            String         @id @default(cuid())
+  jobId         String
+  freelancerId  String
+  job           Job            @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  freelancer    User           @relation(fields: [freelancerId], references: [id], onDelete: Cascade)
+
+  coverLetter   String         @db.Text
+  bidAmount     Int // minor units — total (fixed) or hourly rate
+  bidType       BudgetType
+  estimatedDays Int?
+  status        ProposalStatus @default(SUBMITTED)
+
+  // Anti-spam: a lightweight quality score (0-100) computed from profile
+  // completeness, relevance, and account trust. Drives default sort/visibility.
+  qualityScore  Int @default(0)
+
+  milestones ProposalMilestone[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // A freelancer may submit at most one active proposal per job.
+  @@unique([jobId, freelancerId])
+  @@index([jobId, status])
+  @@map("proposals")
+}
+
+model ProposalMilestone {
+  id          String @id @default(cuid())
+  proposalId  String
+  title       String
+  amount      Int // minor units
+  dueInDays   Int?
+  order       Int    @default(0)
+
+  proposal Proposal @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+
+  @@map("proposal_milestones")
+}
+
+// ============================================================================
+// CONTRACTS, MILESTONES, TIME TRACKING, DELIVERABLES
+// ============================================================================
+
+enum ContractStatus {
+  ACTIVE
+  PAUSED
+  COMPLETED
+  CANCELLED
+  DISPUTED
+}
+
+model Contract {
+  id           String         @id @default(cuid())
+  jobId        String         @unique
+  clientId     String
+  freelancerId String
+
+  job        Job  @relation(fields: [jobId], references: [id])
+  client     User @relation("ContractClient", fields: [clientId], references: [id])
+  freelancer User @relation("ContractFreelancer", fields: [freelancerId], references: [id])
+
+  title      String
+  budgetType BudgetType
+  currency   String         @default("USD")
+  status     ContractStatus @default(ACTIVE)
+
+  milestones   Milestone[]
+  timeEntries  TimeEntry[]
+  deliverables Deliverable[]
+  dispute      Dispute?
+  review       Review[]
+
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([clientId])
+  @@index([freelancerId])
+  @@map("contracts")
+}
+
+enum MilestoneStatus {
+  PENDING       // not yet funded
+  FUNDED        // escrow funded (real or simulated)
+  SUBMITTED     // freelancer submitted work
+  APPROVED      // client approved
+  RELEASED      // funds released to freelancer
+  DISPUTED
+}
+
+model Milestone {
+  id         String          @id @default(cuid())
+  contractId String
+  contract   Contract        @relation(fields: [contractId], references: [id], onDelete: Cascade)
+
+  title      String
+  amount     Int // minor units
+  status     MilestoneStatus @default(PENDING)
+  order      Int             @default(0)
+  dueAt      DateTime?
+
+  // Link to the payment record when funded/released.
+  payment    Payment?
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([contractId, status])
+  @@map("milestones")
+}
+
+model TimeEntry {
+  id         String   @id @default(cuid())
+  contractId String
+  userId     String
+  contract   Contract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  description String?
+  startedAt   DateTime
+  endedAt     DateTime?
+  // Duration in seconds, computed on stop. Denormalized for reporting.
+  seconds     Int      @default(0)
+  // Privacy-first: screenshots are opt-in and off by default.
+  screenshotUrl String?
+
+  createdAt DateTime @default(now())
+
+  @@index([contractId, userId])
+  @@map("time_entries")
+}
+
+enum DeliverableStatus {
+  SUBMITTED
+  APPROVED
+  CHANGES_REQUESTED
+}
+
+model Deliverable {
+  id         String            @id @default(cuid())
+  contractId String
+  contract   Contract          @relation(fields: [contractId], references: [id], onDelete: Cascade)
+
+  title      String
+  notes      String?           @db.Text
+  fileUrl    String?
+  status     DeliverableStatus @default(SUBMITTED)
+  // Free-text change request from the client when status = CHANGES_REQUESTED.
+  reviewNote String?           @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([contractId, status])
+  @@map("deliverables")
+}
+
+// ============================================================================
+// PAYMENTS  (zero-fee — the platform is a coordinator, not a custodian)
+// ============================================================================
+
+enum PaymentProvider {
+  MANUAL // off-platform (bank transfer, invoice) — recorded for the ledger only
+  STRIPE_CONNECT
+  PAYPAL
+  WISE
+  CRYPTO_USDC
+}
+
+enum PaymentStatus {
+  PENDING
+  ESCROW_FUNDED
+  RELEASED
+  REFUNDED
+  FAILED
+}
+
+// A payment maps 1:1 to a milestone. Because there are zero platform fees, the
+// `provider` adapter routes funds directly from client to freelancer. For the
+// MANUAL provider the platform only records that a payment happened (ledger).
+model Payment {
+  id          String          @id @default(cuid())
+  milestoneId String          @unique
+  milestone   Milestone       @relation(fields: [milestoneId], references: [id], onDelete: Cascade)
+
+  provider    PaymentProvider
+  status      PaymentStatus   @default(PENDING)
+  amount      Int // minor units
+  currency    String          @default("USD")
+  // Opaque reference from the payment provider (charge id, tx hash, etc.).
+  providerRef String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("payments")
+}
+
+// ============================================================================
+// MESSAGING & PROJECT ROOMS
+// ============================================================================
+
+model Conversation {
+  id        String        @id @default(cuid())
+  // Optional link to a job/contract for a "project room".
+  jobId     String?
+  title     String?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  participants Participant[]
+  messages     Message[]
+
+  @@map("conversations")
+}
+
+model Participant {
+  id             String       @id @default(cuid())
+  conversationId String
+  userId         String
+  // For unread badges.
+  lastReadAt     DateTime?
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([conversationId, userId])
+  @@map("participants")
+}
+
+enum MessageKind {
+  TEXT
+  FILE
+  CODE
+  SYSTEM
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  senderId       String
+  kind           MessageKind  @default(TEXT)
+  body           String       @db.Text
+  // For FILE messages.
+  fileUrl        String?
+  // Extra metadata (code language, mentions, etc.).
+  metadata       Json?
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender       User         @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime  @default(now())
+  editedAt  DateTime?
+
+  @@index([conversationId, createdAt])
+  @@map("messages")
+}
+
+// ============================================================================
+// REVIEWS & REPUTATION
+// ============================================================================
+
+model Review {
+  id         String   @id @default(cuid())
+  contractId String
+  contract   Contract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+
+  authorId String
+  targetId String
+  author   User   @relation("ReviewAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  target   User   @relation("ReviewTarget", fields: [targetId], references: [id], onDelete: Cascade)
+
+  rating   Int // 1-5
+  comment  String? @db.Text
+  // Reviews are hidden until both parties submit (or a deadline passes) to
+  // prevent retaliation bias — enforced at the service layer.
+  visible  Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  // One review per author per contract.
+  @@unique([contractId, authorId])
+  @@index([targetId, visible])
+  @@map("reviews")
+}
+
+// ============================================================================
+// DISPUTES
+// ============================================================================
+
+enum DisputeStatus {
+  OPEN
+  UNDER_REVIEW
+  RESOLVED
+  ESCALATED
+}
+
+model Dispute {
+  id         String        @id @default(cuid())
+  contractId String        @unique
+  contract   Contract      @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  openedById String
+  reason     String        @db.Text
+  status     DisputeStatus @default(OPEN)
+  resolution String?       @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("disputes")
+}
+
+// ============================================================================
+// NOTIFICATIONS
+// ============================================================================
+
+enum NotificationType {
+  PROPOSAL_RECEIVED
+  PROPOSAL_STATUS
+  MESSAGE
+  MILESTONE_FUNDED
+  MILESTONE_RELEASED
+  REVIEW_RECEIVED
+  JOB_MATCH
+  SYSTEM
+}
+
+model Notification {
+  id      String           @id @default(cuid())
+  userId  String
+  user    User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type    NotificationType
+  title   String
+  body    String?
+  // Deep link into the app.
+  href    String?
+  readAt  DateTime?
+  // Set by the email worker once this notification has been fanned out over
+  // email, so it is never sent twice. Null = not yet emailed.
+  emailedAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId, readAt])
+  @@map("notifications")
+}
+
+// ============================================================================
+// COLD-START — EXTERNAL JOB INGESTION
+// ----------------------------------------------------------------------------
+// Seeds the marketplace with jobs scraped from public boards. Each scraped job
+// belongs to an UNCLAIMED client `User` (the company shell). When a freelancer
+// proposes, the notification worker emails the recruiter a magic link into a
+// tokenized, account-less portal (see RecruiterAccessToken). Everything after
+// that — proposals, messaging, notifications — reuses the normal models.
+// ============================================================================
+
+enum JobSourceType {
+  REMOTEOK
+  WEWORKREMOTELY
+  GREENHOUSE
+  LEVER
+}
+
+// Provenance for a scraped Job. One-to-one with Job.
+model JobSource {
+  id     String @id @default(cuid())
+  jobId  String @unique
+  job    Job    @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  source     JobSourceType
+  externalId String // the board's own id for this posting
+  url        String // canonical posting URL
+  applyUrl   String? // external apply link, when the board provides one
+  // Email found *in* the posting itself (mailto:, body). Highest trust.
+  publishedEmail String?
+
+  // Hash of the normalized posting content; lets re-scrapes skip unchanged rows.
+  contentHash String
+  scrapedAt   DateTime @default(now())
+  lastSeenAt  DateTime @default(now())
+
+  @@unique([source, externalId])
+  @@index([contentHash])
+  @@map("job_sources")
+}
+
+// How a recruiter email was obtained. Drives the confidence floor + which
+// email template (warm "invitation" vs. soft cold) is used.
+enum RecruiterEmailOrigin {
+  PUBLISHED // scraped directly from the posting/company site
+  ATS_REPLY // known ATS inbound address
+  PATTERN // guessed from a learned/known company pattern
+  ROLE_GUESS // generic role box: hr@, jobs@, careers@ ...
+  ENRICHMENT // from a third-party enrichment provider
+}
+
+enum RecruiterEmailStatus {
+  UNVERIFIED
+  MX_OK // domain has MX records
+  DELIVERABLE // SMTP RCPT accepted, domain is NOT catch-all
+  CATCH_ALL // domain accepts everything — low signal
+  RISKY // greylisted / role-based / inconclusive
+  UNDELIVERABLE // hard reject
+  SUPPRESSED // bounced / complained / unsubscribed — never contact again
+}
+
+// Email + deliverability state for an UNCLAIMED recruiter shell. One per shell
+// User (a company), shared across all that company's scraped jobs.
+model RecruiterContact {
+  id     String @id @default(cuid())
+  userId String @unique // the UNCLAIMED client User (the company shell)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  companyDomain String?
+  email         String // best contactable address
+  origin        RecruiterEmailOrigin
+  patternUsed   String? // e.g. "{first}.{last}", "hr@"
+
+  status      RecruiterEmailStatus @default(UNVERIFIED)
+  confidence  Float                @default(0) // 0.0–1.0
+  isCatchAll  Boolean              @default(false)
+  // Computed gate: only true addresses may be emailed. Set by the discovery job.
+  contactable Boolean              @default(false)
+
+  bounceCount    Int       @default(0)
+  lastBounceAt   DateTime?
+  suppressedAt   DateTime? // hard bounce / complaint
+  unsubscribedAt DateTime? // one-click List-Unsubscribe
+  verifiedAt     DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, contactable])
+  @@map("recruiter_contacts")
+}
+
+// A single-use-ish magic link that grants an account-less recruiter scoped
+// access to one job's proposals (the `?key=` in the notification email).
+model RecruiterAccessToken {
+  id     String @id @default(cuid())
+  token  String @unique // URL-safe random; the value in the emailed link
+  userId String // the UNCLAIMED recruiter User
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Scope: which job's proposals this token unlocks. Null = company-wide.
+  jobId     String?
+  expiresAt DateTime?
+  // Portal access is repeat-use until expiry; `usedAt` records first use only.
+  usedAt    DateTime?
+
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([userId])
+  @@map("recruiter_access_tokens")
+}
+
+// ============================================================================
+// AUDIT LOG  (security / compliance)
+// ============================================================================
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String // e.g. "user.login", "job.publish", "payment.release"
+  entity    String? // affected entity type
+  entityId  String?
+  ip        String?
+  userAgent String?
+  metadata  Json?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([action])
+  @@map("audit_logs")
+}
