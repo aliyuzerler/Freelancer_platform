@@ -1,15 +1,23 @@
 <div align="center">
 
-# ⚡ Freelancezero
+# ⚡ Freelancezero — the open-source, zero-fee Upwork alternative
 
-**The freelance marketplace that takes _nothing_ from your work.**
+**A self-hostable freelance marketplace that takes _nothing_ from your work.**
 
-A 100% free, fully open-source, self-hostable alternative to Upwork.
-Zero platform fees — forever. Freelancers keep 100% of what they earn.
+Freelancezero is a free, open-source freelance marketplace where freelancers keep
+**100% of what they earn**. No commissions, no connects, no paying to apply —
+self-host it in one command, or use the hosted version.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue)](https://www.typescriptlang.org)
+[**🌐 Live site**](https://www.freelancezero.com) ·
+[**Quick start**](#quick-start-local-dev) ·
+[**Self-hosting**](#run-the-whole-stack-in-docker) ·
+[**Roadmap**](./ROADMAP.md) ·
+[**Contributing**](./CONTRIBUTING.md)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg "MIT licensed")](./LICENSE)
+[![Next.js 15](https://img.shields.io/badge/Next.js-15-black "Built with Next.js 15")](https://nextjs.org)
+[![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-blue "TypeScript in strict mode")](https://www.typescriptlang.org)
+[![Self-hostable](https://img.shields.io/badge/self--hostable-Docker-2496ED "Self-host with Docker Compose")](#run-the-whole-stack-in-docker)
 
 </div>
 
@@ -97,9 +105,16 @@ freelancezero/
 │  └─ seed.ts              # demo data
 ├─ src/
 │  ├─ app/                 # Next.js App Router
-│  │  ├─ api/              # route handlers (jobs, proposals, register, auth)
-│  │  ├─ layout.tsx        # root layout + providers
-│  │  ├─ page.tsx          # marketing homepage
+│  │  ├─ api/              # route handlers (jobs, proposals, account, admin, cron)
+│  │  ├─ admin/            # approvals + user/posting curation
+│  │  ├─ dashboard/        # role-aware hub
+│  │  ├─ jobs/             # feed, detail, post-a-job, applicants
+│  │  ├─ freelancers/[id]/ # public, indexable freelancer profiles
+│  │  ├─ messages/         # inbox + conversation threads
+│  │  ├─ onboarding/       # required, resumable setup wizard
+│  │  ├─ settings/         # profile, payments, notifications, security
+│  │  ├─ blog/             # MDX-free content engine (SEO)
+│  │  ├─ r/[token]/        # recruiter one-click sign-in
 │  │  └─ globals.css       # theme tokens (light/dark)
 │  ├─ components/
 │  │  ├─ ui/               # shadcn/ui primitives (button, card, …)
@@ -109,8 +124,14 @@ freelancezero/
 │     ├─ auth.ts           # Auth.js configuration
 │     ├─ env.ts            # validated env (fail-fast)
 │     ├─ api.ts            # consistent API response helpers
+│     ├─ onboarding.ts     # step state derived from the DB (resumable)
+│     ├─ notify.ts         # create a notification + deliver it inline
+│     ├─ scrapers/         # job-board ingestion adapters
+│     ├─ email-discovery/  # contact discovery, verification, gating
+│     ├─ mail/             # transport, templates, delivery worker
+│     ├─ blog/             # post data + rendering
 │     ├─ validations/      # shared Zod schemas (client + server)
-│     └─ adapters/         # payments / storage (+ realtime, search) interfaces
+│     └─ adapters/         # payments / storage / realtime / identity interfaces
 ├─ Dockerfile             # multi-stage standalone build
 ├─ docker-compose.yml     # db + mailhog + app
 └─ .env.example
@@ -127,13 +148,41 @@ All responses are `{ data }` on success or `{ error }` on failure.
 | `GET` | `/api/jobs` | — | Paginated, filterable job feed (keyset pagination) |
 | `POST` | `/api/jobs` | Client | Publish a job |
 | `POST` | `/api/proposals` | Freelancer | Submit a proposal (one per job) |
+| `POST` | `/api/proposals/reply` | Client | Reply to an applicant, opening a thread |
+| `GET` | `/api/messages/unread` | User | Unread message count for the navbar badge |
+| `POST` | `/api/messages/[id]` | Participant | Post a message to a conversation |
+| `GET`/`POST` | `/api/notifications` | User | Recent activity; mark read |
+| `POST` | `/api/account/profile` | Freelancer | Public profile (validated per-host links) |
+| `POST` | `/api/account/company` | Client | Company identity shown to freelancers |
+| `POST` | `/api/account/preferences` | User | Display name, privacy, email preferences |
+| `POST` | `/api/account/password` | User | Set or change password |
+| `POST` | `/api/account/avatar` | User | Upload a profile photo |
+| `POST` | `/api/account/payout` | User | Connect or remove a payout method |
+| `POST` | `/api/account/identity` | User | Start identity verification (KYC) |
+| `POST` | `/api/webhooks/identity` | Provider | Verification result callback |
+| `PATCH` | `/api/admin/users` | Admin | Curate accounts and recruiter contacts |
+| `PATCH` | `/api/admin/jobs` | Admin | Curate and publish ingested postings |
+| `POST` | `/api/admin/approvals` | Admin | Approve a pending account |
+| `GET`/`POST` | `/api/cron/ingest` | Cron secret | Scrape → verify contacts → send notifications |
 
-## Screenshots
+## Cold-start job ingestion
 
-> _(Describe / add once UI screens land.)_
-> - **Homepage** — emerald-accented hero, "0% platform fees" badge, three value-prop cards, light/dark toggle.
-> - **Job feed** — filterable list with skill chips and proposal counts.
-> - **Dashboard** — earnings, proposals sent, and job-match analytics.
+The hard part of any marketplace is an empty one. Freelancezero ships a
+scheduled pipeline that seeds real demand:
+
+1. **Scrape** public boards through a per-source adapter (`src/lib/scrapers/`).
+2. **Resolve the employer** — board and ATS hostnames are blocklisted so a
+   posting's apply URL is never mistaken for the company's own domain.
+3. **Find a contact** — use the address published in the posting; otherwise
+   generate role-box candidates and verify MX before anything is contactable.
+4. **Publish or draft** — postings with a reachable contact go live; the rest
+   wait in the admin curation queue rather than becoming dead ends.
+5. **Notify** — when a freelancer applies, the company gets an email with a
+   one-click sign-in link into their applicant list.
+
+Outreach is deliberately conservative: published addresses are preferred over
+guesses, every send honours one-click unsubscribe and suppression, and the
+policy is configurable via `RECRUITER_OUTREACH_POLICY`.
 
 ## Security & privacy
 
