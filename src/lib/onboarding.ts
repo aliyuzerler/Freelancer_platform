@@ -84,4 +84,16 @@ export async function getOnboarding(userId: string, role: string) {
   };
 }
 
-export type Onboarding = Awaited<ReturnType<typeof getOnboarding>>;
+/**
+ * Where a signed-in user should land instead of a public page (login/register,
+ * middleware home redirect). Onboarding gates the app: incomplete users go
+ * back to the wizard; finished users get their role home — the job feed for
+ * freelancers, the dashboard for everyone else. Admins bypass the wizard.
+ */
+export async function getSignedInDestination(userId: string, role: string): Promise<string> {
+  if (role !== 'ADMIN') {
+    const state = await getOnboarding(userId, role);
+    if (!state.complete) return '/onboarding';
+  }
+  return FREELANCER_ROLES.includes(role) ? '/jobs' : '/dashboard';
+}

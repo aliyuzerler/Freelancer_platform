@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { Briefcase } from 'lucide-react';
 import { db } from '@/lib/db';
+import { getOnboarding } from '@/lib/onboarding';
 import { auth } from '@/lib/auth';
 import { formatMoney } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
@@ -29,6 +30,10 @@ export default async function JobsPage() {
   const session = await auth();
   if (!session?.user) redirect('/login?next=/jobs');
   if (!FREELANCER_ROLES.includes(session.user.role)) redirect('/dashboard');
+  // The feed is a post-onboarding surface: applying requires admin approval
+  // (see the proposals API), so users still in the wizard get sent back.
+  const onboarding = await getOnboarding(session.user.id, session.user.role);
+  if (!onboarding.complete) redirect('/onboarding');
 
   const jobs = await db.job.findMany({
     where: { status: 'OPEN', deletedAt: null, visibility: 'public' },
