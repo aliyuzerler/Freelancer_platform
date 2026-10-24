@@ -1,202 +1,342 @@
 <div align="center">
 
-# ⚡ Freelancezero — the open-source, zero-fee Upwork alternative
+# ⚡ FreelanceZero
 
-**A self-hostable freelance marketplace that takes _nothing_ from your work.**
+**Sıfır komisyonlu, açık kaynak, kendi sunucunuzda barındırılabilir freelance pazar yeri**
 
-Freelancezero is a free, open-source freelance marketplace where freelancers keep
-**100% of what they earn**. No commissions, no connects, no paying to apply —
-self-host it in one command, or use the hosted version.
+**%100 Türkçe arayüz — kazandığınızın tamamı sizde kalır**
 
-[**🌐 Live site**](https://www.freelancezero.com) ·
-[**Quick start**](#quick-start-local-dev) ·
-[**Self-hosting**](#run-the-whole-stack-in-docker) ·
-[**Roadmap**](./ROADMAP.md) ·
-[**Contributing**](./CONTRIBUTING.md)
+[![Lisans: MIT](https://img.shields.io/badge/Lisans-MIT-green.svg)](./LICENSE)
+[![Next.js 15](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org)
+[![React 19](https://img.shields.io/badge/React-19-61DAFB)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6)](https://www.typescriptlang.org)
+[![Prisma 6](https://img.shields.io/badge/Prisma%206-PostgreSQL-2D3748)](https://www.prisma.io)
+[![Arayüz: %100 Türkçe](https://img.shields.io/badge/Aray%C3%BCz-%25100%20T%C3%BCrk%C3%A7e-E30A17)](#çok-dillilik-i18n)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg "MIT licensed")](./LICENSE)
-[![Next.js 15](https://img.shields.io/badge/Next.js-15-black "Built with Next.js 15")](https://nextjs.org)
-[![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-blue "TypeScript in strict mode")](https://www.typescriptlang.org)
-[![Self-hostable](https://img.shields.io/badge/self--hostable-Docker-2496ED "Self-host with Docker Compose")](#run-the-whole-stack-in-docker)
+![FreelanceZero ana sayfa](docs/screenshots/01-ana-sayfa.png)
+
+**Kazandığınızın %100'ü sizde kalsın.** Geleneksel freelance pazar yerleri her
+faturadan %10–20 komisyon keser; FreelanceZero **hiçbir şey kesmez**. Platform
+paranın vasisi değil, yalnızca eşleştiricisidir: ödeme, işverenden freelancer'a
+seçtiğiniz sağlayıcı üzerinden doğrudan akar.
+
+[Özellikler](#özellikler) · [Ekran Görüntüleri](#ekran-görüntüleri) · [Kurulum](#hızlı-başlangıç) · [Demo Hesaplar](#demo-hesaplar) · [Lisans](#lisans)
 
 </div>
 
----
+## İçindekiler
 
-> **Status: v0.1 — MVP foundation.** The data model, auth, core API, and a
-> polished marketing homepage are in place. See the [Roadmap](./ROADMAP.md) for
-> what's next.
+1. [Neden FreelanceZero?](#neden-freelancezero)
+2. [Özellikler](#özellikler)
+3. [Ekran Görüntüleri](#ekran-görüntüleri)
+4. [Teknolojiler](#teknolojiler)
+5. [Hızlı Başlangıç](#hızlı-başlangıç)
+6. [Demo Hesaplar](#demo-hesaplar)
+7. [Çok Dillilik (i18n)](#çok-dillilik-i18n)
+8. [Güvenlik](#güvenlik)
+9. [Proje Yapısı](#proje-yapısı)
+10. [Testler ve Kalite](#testler-ve-kalite)
+11. [Yol Haritası ve Katkı](#yol-haritası-ve-katkı)
+12. [Lisans](#lisans)
 
-## Why Freelancezero?
+## Neden FreelanceZero?
 
-Traditional marketplaces take **10–20%** of every dollar. Freelancezero takes **0%**
-by design — the platform is a _coordinator_, never a _custodian_ of money. Payments
-flow directly from client to freelancer through a pluggable processor you choose
-(or off-platform entirely).
+Upwork, Fiverr gibi geleneksel pazar yerleri freelancer'ın kazandığı her tutardan
+%10–20'ye varan kesinti alır; üstüne başvuru yapabilmek için ücretli "connect"
+kredileri satın almanızı bekler. Bu model, en çok da en yeni ve en küçük
+freelancer'ı vurur: kazançtan önce masraf çıkarır. FreelanceZero bu dengiyi
+tersine çevirir — platformun geliri komisyondan değil, isteğe bağlı barındırma ve
+kurumsal özelliklerden gelir; bireysel freelancer asla komisyon ödemez.
 
-| | Freelancezero | Typical marketplace |
+Teknik olarak bu karar veri modeline kadar işlenmiştir: platform hiçbir aşamada
+paranın *vasisi* değildir, ödeme akışları tak-çıkar (pluggable) sağlayıcı
+arayüzleri üzerinden doğrudan taraflar arasında yürür. Tüm para alanları kayan
+noktalı sayı yerine tamsayı (kuruş) birimlerinde saklanır; böylece yuvarlama
+hataları ve para birimi belirsizliği tasarım gereği imkânsızlaşır. Proje MIT
+lisanslıdır — kendi sunucunuzda tek komutla ayağa kaldırabilir, dilediğiniz gibi
+özgüleştirebilirsiniz.
+
+| | FreelanceZero | Geleneksel pazar yeri |
 |---|---|---|
-| Platform fee | **0%** | 10–20% |
-| Open source | ✅ MIT | ❌ |
-| Self-hostable | ✅ Docker one-command | ❌ |
-| Owns your data | **You do** | The platform |
-| Transparent ranking | ✅ | ❌ |
+| Platform komisyonu | **%0** | %10–20 |
+| Başvuru kredisi ("connects") | Yok | Ücretli |
+| Açık kaynak | ✅ MIT | Genellikle kapalı |
+| Kendi sunucunda barındırma | ✅ Docker ile tek komut | ❌ |
+| Arayüz dili | Türkçe (varsayılan) + İngilizce | Genellikle yalnızca İngilizce |
 
-## Tech stack
+## Özellikler
 
-- **Next.js 15** (App Router) + **TypeScript (strict)** + **Tailwind** + **shadcn/ui**
-- **PostgreSQL** + **Prisma 6**
-- **Auth.js (NextAuth v5)** — credentials, Google, GitHub, magic links, 2FA-ready
-- **TanStack Query** for client data fetching
-- Pluggable **adapters** for payments, storage, realtime, and search — swap providers via env vars, no forking
+### Freelancer'lar için
 
-## Quick start (local dev)
+- **Profil ve portföy yönetimi** — beceriler, saatlik ücret, müsaitlik, dil
+  bilgisi, web sitesi / LinkedIn / GitHub bağlantıları ve portföy projeleriyle
+  zengin bir genel profil sayfası.
+- **İş arama ve teklif gönderme** — ilanlar arasında arama, detay sayfasında
+  bütçe ve süreç bilgisi, tek tıkla teklif ve gönderilen tekliflerin takibi.
+- **İlan bazlı mesajlaşma** — işverenle teklif üzerinden doğrudan, okunmamış
+  sayaçlı bir sohbet akışı.
+- **Profil tamamlanma göstergesi** — profili eksik alanlar için yönlendirmeli
+  tamamlanma yüzdesi.
+- **Bildirimler** — teklif, mesaj ve yönetim olayları için üst bardaki zil
+  menüsünde toplanan bildirim akışı.
+
+### İşverenler için
+
+- **İş ilanı oluşturma ve yayınlama** — başlık, açıklama, bütçe, süre ve şirket
+  eşleştirmeli adım adım ilan formu.
+- **Gelen teklifleri değerlendirme** — ilan başına teklif listesi, teklif
+  sahibinin profilini inceleyip doğrudan yanıt verme ve mesajlaşmaya geçme.
+- **Şirket profili yönetimi** — şirket adı, açıklama ve web adresi; ilanlar
+  şirket kimliğiyle yayınlanır.
+- **Ödeme yöntemi uyarısı** — ödeme alabilmek için ödeme yöntemi ekleme
+  hatırlatıcıları.
+
+### Yöneticiler için
+
+- **Kullanıcı yönetimi** — tüm hesapların listesi, rol ve durum yönetimi.
+- **İlan kürasyonu** — onay kuyruğu, yayındaki ilanlar ve yayından kaldırma;
+  iletişim adresi bulunamayan kazınmış ilanların taslak olarak ele alınması.
+- **Yönetim paneli** — onaylar, kullanıcılar ve ilanlar sekmeli tek arayüz.
+
+### Platform geneli
+
+- **Üç ana rol** — Freelancer, İşveren (Client) ve Yönetici (Admin); ayrıca
+  ajans sahibi/üyesi rolleri veri modelinde hazır.
+- **Kazıma hattı (job ingestion)** — harici ilan kaynaklarından (ör. RemoteOK)
+  ilan çeker, taslak olarak kaydeder; yayınlanmadan önce kürasyon ve gerçek
+  iletişim bilgisi zorunludur.
+- **Kimlik doğrulama (identity) akışı** — doğrulama durum makinesi
+  (UNVERIFIED → PENDING → PROCESSING → VERIFIED/FAILED).
+- **E-posta doğrulama ve şifre akışları** — token tabanlı, tek kullanımlık,
+  süresi sınırlı doğrulama bağlantıları.
+- **Blog ve SEO altyapısı** — yerel ayar duyarlı meta etiketler, hreflang
+  alternatifleri, site haritası ve robots kuralları.
+- **Sağlık kontrolleri ve güvenli varsayılanlar** — üretim ortamında tohum
+  komutları kilitli, ayrıntılı günlükler yalnızca geliştirmede.
+
+## Ekran Görüntüleri
+
+### Genel sayfalar
+
+| ![İş ilanları](docs/screenshots/02-is-listesi.png) | ![İş ilanı detayı](docs/screenshots/03-is-detayi.png) |
+|:---:|:---:|
+| **İş ilanları** | **İş ilanı detayı** |
+| ![Freelancer profili](docs/screenshots/04-freelancerlar.png) | ![Giriş](docs/screenshots/05-giris.png) |
+| **Freelancer profili (genel görünüm)** | **Giriş** |
+| ![Kayıt](docs/screenshots/06-kayit.png) | |
+| **Kayıt** | |
+
+### Freelancer deneyimi
+
+| ![Freelancer paneli](docs/screenshots/07-freelancer-paneli.png) | ![Mesajlar](docs/screenshots/09-freelancer-mesajlar.png) | ![Profil](docs/screenshots/10-freelancer-profil.png) |
+|:---:|:---:|:---:|
+| **Freelancer paneli** | **Mesajlar** | **Profil sayfası** |
+
+### İşveren deneyimi
+
+| ![İşveren paneli](docs/screenshots/11-isveren-paneli.png) | ![İş ilanı oluşturma](docs/screenshots/12-is-ilani-olustur.png) |
+|:---:|:---:|
+| **İşveren paneli** | **İş ilanı oluşturma** |
+| ![Gelen teklifler](docs/screenshots/13-gelen-teklifler.png) | ![Mesajlar](docs/screenshots/14-isveren-mesajlar.png) |
+| **Gelen teklifler** | **Mesajlar** |
+| ![Mesaj detayı](docs/screenshots/18-mesaj-detayi.png) | |
+| **Mesaj detayı (ilan bazlı sohbet)** | |
+
+### Yönetici paneli
+
+| ![Yönetici paneli](docs/screenshots/15-yonetici-paneli.png) | ![Kullanıcı yönetimi](docs/screenshots/16-kullanici-yonetimi.png) | ![İlan yönetimi](docs/screenshots/17-is-yonetimi.png) |
+|:---:|:---:|:---:|
+| **Yönetici paneli** | **Kullanıcı yönetimi** | **İlan yönetimi** |
+
+## Teknolojiler
+
+| Katman | Teknoloji |
+|---|---|
+| Çatı (framework) | Next.js 15 (App Router) + React 19 |
+| Dil | TypeScript (strict mod) |
+| Arayüz | Tailwind CSS + Radix UI + lucide-react ikonları |
+| Kimlik doğrulama | Auth.js / NextAuth v5 + Prisma Adapter |
+| Veritabanı | PostgreSQL + Prisma ORM 6 |
+| Form ve doğrulama | React Hook Form + Zod |
+| Veri çekme | TanStack Query |
+| Çok dillilik | next-intl v4 |
+| E-posta | Nodemailer (yerel geliştirmede MailHog) |
+| Test | Jest (birim) + Playwright (uçtan uca) |
+| CI | GitHub Actions |
+| Dağıtım | Docker / docker compose + Vercel yapılandırması |
+
+## Hızlı Başlangıç
+
+### Gereksinimler
+
+- Node.js **20 veya üzeri**
+- PostgreSQL **14 veya üzeri** (yerel kurulum ya da Docker)
+- npm 10+
+
+### Kurulum adımları
 
 ```bash
-# 1. Install dependencies
+# 1) Depoyu klonlayın
+git clone https://github.com/aliyuzerler/Freelancer_platform.git
+cd Freelancer_platform
+
+# 2) Bağımlılıkları kurun
 npm install
 
-# 2. Start Postgres + a local mail inbox
-docker compose up -d db mailhog
-
-# 3. Configure environment
+# 3) Ortam değişkenlerini hazırlayın
 cp .env.example .env
-# generate a secret:  openssl rand -base64 32  -> paste into AUTH_SECRET
+# .env dosyasını düzenleyin (aşağıdaki tabloya bakın)
 
-# 4. Create the schema and seed demo data
-npm run db:migrate
-npm run db:seed
+# 4) Veritabanı şemasını oluşturun
+npx prisma migrate deploy
 
-# 5. Run it
-npm run dev        # http://localhost:3000
+# 5) (Opsiyonel) Türkçe demo verisini yükleyin
+npx tsx prisma/seed-tr.ts
+
+# 6) Geliştirme sunucusunu başlatın
+npm run dev
 ```
 
-Demo logins (after seeding):
+Tarayıcınızda **http://localhost:3000** adresini açın — arayüz varsayılan olarak
+Türkçe gelir.
 
-- Client — `client@example.com` / `Password123`
-- Freelancer — `freelancer@example.com` / `Password123`
+### Ortam değişkenleri
 
-## Run the whole stack in Docker
+| Değişken | Zorunlu | Açıklama |
+|---|:---:|---|
+| `DATABASE_URL` | ✅ | PostgreSQL bağlantı adresi |
+| `AUTH_SECRET` | ✅ | Oturum çerezlerini imzalayan gizli anahtar (`openssl rand -base64 32` ile üretin) |
+| `NEXT_PUBLIC_APP_URL` | Önerilir | Kanonik ve hreflang bağlantıları için uygulamanın kök adresi |
+
+Diğer tüm değişkenler için `.env.example` dosyasına bakın.
+
+### Docker ile çalıştırma
+
+Uygulamayı PostgreSQL ve MailHog ile birlikte tek komutta ayağa kaldırabilirsiniz:
 
 ```bash
-cp .env.example .env   # set AUTH_SECRET
-docker compose up -d   # app on :3000, mail UI on :8025
+POSTGRES_PASSWORD=güçlü-bir-şifre AUTH_SECRET="$(openssl rand -base64 32)" docker compose up --build
 ```
 
-The `app` service runs `prisma migrate deploy` on boot, so the schema is created
-automatically. Put a reverse proxy (Caddy/Traefik) in front for TLS in production.
+### Demo verisi
 
-## One-click deploy
+`npx tsx prisma/seed-tr.ts` komutu, ekran görüntülerinde gördüğünüz Türkçe demo
+içeriğini idempotent biçimde (tekrar çalıştırmaya güvenli) ekler:
 
-> Deploy buttons target the hosted-Postgres variants of each platform. Set the
-> environment variables from [`.env.example`](./.env.example) during setup.
+- 8 popüler beceri etiketi ve 16 demo şirket profili,
+- farklı kategorilerde 5 iş ilanı (Next.js kurumsal site, e-ticaret, analitik
+  panosu vb.),
+- 4 örnek teklif, bildirimler ve örnek bir işveren–freelancer mesajlaşması.
 
-- **Railway / Coolify / Fly.io** — use the included `Dockerfile` + `docker-compose.yml`.
-- **Vercel** — deploy the app and attach a managed Postgres (Neon/Supabase); set
-  `DATABASE_URL` and `AUTH_SECRET`. Note the local-FS storage driver needs an S3
-  adapter on serverless.
+## Demo Hesaplar
 
-## Project structure
+Tohum verisini yükledikten sonra üç rolle oturum açabilirsiniz:
+
+| Rol | E-posta | Şifre | Karakter |
+|---|---|---|---|
+| Freelancer | `serbest@ornek.dev` | `Password123` | Ayşe Demir |
+| İşveren | `isveren@ornek.dev` | `Password123` | Bora Yılmaz · Boğaz Teknoloji |
+| Yönetici | `yonetici@ornek.dev` | `Password123` | Sistem yöneticisi |
+
+Ek freelancer hesapları: `emre@ornek.dev` ve `zeynep@ornek.dev` (şifre aynı).
+
+> Bu hesaplar yalnızca geliştirme ve demo amaçlıdır; production ortamında
+> kullanmayın.
+
+## Çok Dillilik (i18n)
+
+Arayüz metinleri **next-intl v4** üzerinde anahtar tabanlı yönetilir; kök adres
+varsayılan olarak Türkçe (`/tr`) içeriğe yönlendirilir, İngilizce sürüm `/en`
+altında yayındır. Üst bardaki dil değiştiricisi seçimi `NEXT_LOCALE` çerezinde
+bir yıl boyunca saklar. Tüm çeviri katalogları (`messages/tr.json` ve
+`messages/en.json`) 1.100'den fazla anahtar içerir ve anahtar paritesi
+doğrulanmıştır. Tarih ve para biçimleri yerel ayara göre (tr-TR / en-US)
+biçimlendirilir; e-posta şablonları da alıcının dilinde gönderilir.
+
+Yeni bir dil eklemek yalnızca üç adımdır:
+
+1. `messages/` altında yeni katalog dosyasını oluşturun (`tr.json` kopyasını
+   çevirerek `xx.json` üretin).
+2. `src/i18n/routing.ts` içindeki yerel ayar listesine `xx` kodunu ekleyin.
+3. Aynı dosyadaki `LOCALE_LABELS` haritasına dilin görünen adını yazın.
+
+Yazı tipleri (Inter / Sora) Türkçe karakterleri kapsayan latin-ext alt kümeleri
+yle yüklenir; yeni dillerde bu alt kümenin yeterli olduğunu doğrulamanız yeterli.
+
+## Güvenlik
+
+Proje, bağımsız bir teknik denetimden geçmiş ve tespit edilen **28 bulgunun
+tamamı** (2 kritik, 7 yüksek, 12 orta, 7 düşük) kapatılmıştır. Başlıca
+sertleştirmeler:
+
+- E-posta doğrulaması tamamlanmadan şifre girişi engellenir; doğrulanmamış
+  OAuth bağlamalarında devralınan şifre özetleri temizlenir.
+- Kimlik token'ları veritabanında SHA-256 özeti olarak saklanır; sızma
+  durumunda ham token geri elde edilemez.
+- Webhook imzaları HMAC ile doğrulanır; imzasız veya geçersiz imzalı istekler
+  **fail-closed** ilkesiyle reddedilir.
+- IP başına kayar pencere hız sınırlama: giriş 10/dk, kayıt 5/dk, şifre
+  sıfırlama 5/5 dk, e-posta başına 30/saat.
+- CSP, HSTS, X-Frame-Options, Referrer-Policy ve Permissions-Policy başlıkları
+  etkin.
+- JWT içindeki rol bilgisi en fazla 5 dakika yaşlanır; askıya alınan veya
+  rolü düşen hesabın oturumu kısa sürede geçersizleşir.
+- Tüm para alanları tamsayı (kuruş) birimlerinde; para birimi listesi ve tutar
+  üst sınırı doğrulanır.
+- Kazınan ilanlar her zaman taslak açılır ve yayınlanmadan önce gerçek iletişim
+  adresi zorunlu kılınır — sahte ilan üzerinden başvuran PII'si korunur.
+
+Güvenlik açığı bildirimi ve politika ayrıntıları için
+[SECURITY.md](./SECURITY.md) dosyasına bakın.
+
+## Proje Yapısı
 
 ```
 freelancezero/
-├─ prisma/
-│  ├─ schema.prisma        # the domain model (single source of truth)
-│  └─ seed.ts              # demo data
-├─ src/
-│  ├─ app/                 # Next.js App Router
-│  │  ├─ api/              # route handlers (jobs, proposals, account, admin, cron)
-│  │  ├─ admin/            # approvals + user/posting curation
-│  │  ├─ dashboard/        # role-aware hub
-│  │  ├─ jobs/             # feed, detail, post-a-job, applicants
-│  │  ├─ freelancers/[id]/ # public, indexable freelancer profiles
-│  │  ├─ messages/         # inbox + conversation threads
-│  │  ├─ onboarding/       # required, resumable setup wizard
-│  │  ├─ settings/         # profile, payments, notifications, security
-│  │  ├─ blog/             # MDX-free content engine (SEO)
-│  │  ├─ r/[token]/        # recruiter one-click sign-in
-│  │  └─ globals.css       # theme tokens (light/dark)
-│  ├─ components/
-│  │  ├─ ui/               # shadcn/ui primitives (button, card, …)
-│  │  └─ site-header.tsx
-│  └─ lib/
-│     ├─ db.ts             # Prisma client singleton
-│     ├─ auth.ts           # Auth.js configuration
-│     ├─ env.ts            # validated env (fail-fast)
-│     ├─ api.ts            # consistent API response helpers
-│     ├─ onboarding.ts     # step state derived from the DB (resumable)
-│     ├─ notify.ts         # create a notification + deliver it inline
-│     ├─ scrapers/         # job-board ingestion adapters
-│     ├─ email-discovery/  # contact discovery, verification, gating
-│     ├─ mail/             # transport, templates, delivery worker
-│     ├─ blog/             # post data + rendering
-│     ├─ validations/      # shared Zod schemas (client + server)
-│     └─ adapters/         # payments / storage / realtime / identity interfaces
-├─ Dockerfile             # multi-stage standalone build
-├─ docker-compose.yml     # db + mailhog + app
-└─ .env.example
+├── prisma/                  # Şema, migrasyonlar, tohumlar (Türkçe demo: seed-tr.ts)
+├── messages/                # Çeviri katalogları: tr.json · en.json (1.100+ anahtar)
+├── docs/
+│   ├── screenshots/         # README ekran görüntüleri
+│   └── *.md                 # Ürün dokümanları (rekabet analizi, wireframe, GTM)
+├── src/
+│   ├── app/
+│   │   ├── [locale]/        # Tüm sayfalar (App Router, yerel ayar esaslı)
+│   │   └── api/             # REST uçları (auth, jobs, proposals, messages, admin…)
+│   ├── components/          # Arayüz bileşenleri (site-header, ui/*, marketing/*)
+│   ├── i18n/                # next-intl yapılandırması (routing, request, navigation)
+│   ├── lib/                 # auth, rate-limit, webhook-signature, mail, scrapers…
+│   └── middleware.ts        # Hız sınırı + oturum + yerel ayar yönlendirmesi
+├── tests/                   # Jest birim testleri
+├── Dockerfile               # Üretim imajı
+├── docker-compose.yml       # Uygulama + PostgreSQL + MailHog
+└── .github/workflows/       # CI hattı
 ```
 
-## API overview
+## Testler ve Kalite
 
-All responses are `{ data }` on success or `{ error }` on failure.
+```bash
+npm run typecheck   # TypeScript tip kontrolü
+npm run lint        # ESLint
+npm test            # Jest birim testleri (güvenlik + doğrulama paketleri)
+```
 
-| Method | Path | Auth | Purpose |
-|---|---|---|---|
-| `POST` | `/api/register` | — | Create a credentials account |
-| `GET`/`POST` | `/api/auth/*` | — | Auth.js (login, callbacks, session) |
-| `GET` | `/api/jobs` | — | Paginated, filterable job feed (keyset pagination) |
-| `POST` | `/api/jobs` | Client | Publish a job |
-| `POST` | `/api/proposals` | Freelancer | Submit a proposal (one per job) |
-| `POST` | `/api/proposals/reply` | Client | Reply to an applicant, opening a thread |
-| `GET` | `/api/messages/unread` | User | Unread message count for the navbar badge |
-| `POST` | `/api/messages/[id]` | Participant | Post a message to a conversation |
-| `GET`/`POST` | `/api/notifications` | User | Recent activity; mark read |
-| `POST` | `/api/account/profile` | Freelancer | Public profile (validated per-host links) |
-| `POST` | `/api/account/company` | Client | Company identity shown to freelancers |
-| `POST` | `/api/account/preferences` | User | Display name, privacy, email preferences |
-| `POST` | `/api/account/password` | User | Set or change password |
-| `POST` | `/api/account/avatar` | User | Upload a profile photo |
-| `POST` | `/api/account/payout` | User | Connect or remove a payout method |
-| `POST` | `/api/account/identity` | User | Start identity verification (KYC) |
-| `POST` | `/api/webhooks/identity` | Provider | Verification result callback |
-| `PATCH` | `/api/admin/users` | Admin | Curate accounts and recruiter contacts |
-| `PATCH` | `/api/admin/jobs` | Admin | Curate and publish ingested postings |
-| `POST` | `/api/admin/approvals` | Admin | Approve a pending account |
-| `GET`/`POST` | `/api/cron/ingest` | Cron secret | Scrape → verify contacts → send notifications |
+Playwright uçtan uca test altyapısı hazırdır; `npm run test:e2e` ile
+çalıştırabilirsiniz. Derleme, `npm run build` ile Prisma istemcisi üretilip
+tüm yerel ayar rotaları için tip güvenli biçimde tamamlanır.
 
-## Cold-start job ingestion
+## Yol Haritası ve Katkı
 
-The hard part of any marketplace is an empty one. Freelancezero ships a
-scheduled pipeline that seeds real demand:
+Kısa ve orta vadeli planlar [ROADMAP.md](./ROADMAP.md) dosyasında, katkı
+kuralları [CONTRIBUTING.md](./CONTRIBUTING.md) içinde yer alır. Ürün konumlaması
+ve rekabet analizi için [docs/COMPETITIVE-ADVANTAGES.md](./docs/COMPETITIVE-ADVANTAGES.md),
+ekran tasarımları için [docs/WIREFRAMES.md](./docs/WIREFRAMES.md) dosyalarına
+bakabilirsiniz.
 
-1. **Scrape** public boards through a per-source adapter (`src/lib/scrapers/`).
-2. **Resolve the employer** — board and ATS hostnames are blocklisted so a
-   posting's apply URL is never mistaken for the company's own domain.
-3. **Find a contact** — use the address published in the posting; otherwise
-   generate role-box candidates and verify MX before anything is contactable.
-4. **Publish or draft** — postings with a reachable contact go live; the rest
-   wait in the admin curation queue rather than becoming dead ends.
-5. **Notify** — when a freelancer applies, the company gets an email with a
-   one-click sign-in link into their applicant list.
+Hata bildirimleri ve özellik önerileri için GitHub Issues sekmesini
+kullanabilirsiniz; çekme istekleri önce küçük ve odaklı olmak üzere memnuniyetle
+karşılanır.
 
-Outreach is deliberately conservative: published addresses are preferred over
-guesses, every send honours one-click unsubscribe and suppression, and the
-policy is configurable via `RECRUITER_OUTREACH_POLICY`.
+## Lisans
 
-## Security & privacy
-
-- Passwords hashed with bcrypt (cost 12); JWT sessions.
-- Zod validation on every mutating endpoint; typed env fails fast on misconfig.
-- Audit log (`AuditLog`) for security-relevant actions.
-- GDPR-ready: soft-delete grace period + planned data export/erasure endpoints.
-- Money stored as **integer minor units** — never floats.
-
-## Contributing
-
-We ❤️ contributions. See [CONTRIBUTING.md](./CONTRIBUTING.md) and the
-[Roadmap](./ROADMAP.md). Good first issues are labeled `good-first-issue`.
-
-## License
-
-[MIT](./LICENSE) © Freelancezero contributors
+Bu proje [MIT lisansı](./LICENSE) ile sunulur — dilediğiniz gibi kullanın,
+özgüleştirin ve paylaşın.
