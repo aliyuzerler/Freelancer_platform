@@ -16,24 +16,24 @@ import { sendMail } from '@/lib/mail/send';
 export function POST(req: Request) {
   return handle(async () => {
     const adapter = getIdentityAdapter();
-    if (!adapter.configured) return fail('Identity verification is not enabled', 503);
+    if (!adapter.configured) return fail('errors.identityDisabled', 503);
 
     const secret = process.env.STRIPE_WEBHOOK_SECRET;
     if (!secret) {
       console.error('[webhook:identity] STRIPE_WEBHOOK_SECRET is not set — refusing payload');
-      return fail('Webhook is not configured', 503);
+      return fail('errors.webhookNotConfigured', 503);
     }
 
     const raw = await req.text();
     if (!verifyStripeSignature(raw, req.headers.get('stripe-signature'), secret)) {
-      return fail('Invalid signature', 400);
+      return fail('errors.invalidSignature', 400);
     }
 
     let payload: unknown;
     try {
       payload = JSON.parse(raw);
     } catch {
-      return fail('Invalid payload', 400);
+      return fail('errors.invalidPayload', 400);
     }
 
     const result = adapter.parseWebhook(payload);

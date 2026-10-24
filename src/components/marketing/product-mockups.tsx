@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import {
   LayoutDashboard,
   Briefcase,
@@ -34,14 +35,15 @@ function BrowserFrame({ url, children }: { url: string; children: React.ReactNod
 }
 
 const SIDEBAR = [
-  { icon: LayoutDashboard, label: 'Dashboard', active: true },
-  { icon: Briefcase, label: 'Contracts' },
-  { icon: MessageSquare, label: 'Messages' },
-  { icon: Wallet, label: 'Payments' },
+  { icon: LayoutDashboard, key: 'nav.dashboard', active: true },
+  { icon: Briefcase, key: 'nav.contracts' },
+  { icon: MessageSquare, key: 'nav.messages' },
+  { icon: Wallet, key: 'nav.payments' },
 ];
 
 /** The hero "money shot": a freelancer earnings dashboard. */
 export function DashboardMockup() {
+  const t = useTranslations('home.mockups');
   return (
     <BrowserFrame url="freelancezero.com/dashboard">
       <div className="flex bg-white text-slate-900">
@@ -53,13 +55,13 @@ export function DashboardMockup() {
           </div>
           {SIDEBAR.map((item) => (
             <div
-              key={item.label}
+              key={t(item.key as never)}
               className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm ${
                 item.active ? 'bg-primary/10 font-medium text-primary' : 'text-slate-500'
               }`}
             >
               <item.icon className="size-4" />
-              {item.label}
+              {t(item.key as never)}
             </div>
           ))}
         </aside>
@@ -68,40 +70,40 @@ export function DashboardMockup() {
         <div className="flex-1 p-5">
           <div className="mb-5 flex items-center justify-between">
             <div>
-              <p className="text-xs text-slate-400">Good morning, Jordan</p>
-              <h3 className="text-lg font-bold">Your earnings</h3>
+              <p className="text-xs text-slate-400">{t('greeting')}</p>
+              <h3 className="text-lg font-bold">{t('earnings')}</h3>
             </div>
             <div className="flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1.5 text-xs text-slate-500">
-              <Search className="size-3.5" /> Search…
+              <Search className="size-3.5" /> {t('search')}
             </div>
           </div>
 
           {/* Stat cards */}
           <div className="grid grid-cols-3 gap-3">
             <div className="rounded-xl border border-black/5 bg-white p-3 shadow-sm">
-              <p className="text-[11px] text-slate-400">Available balance</p>
+              <p className="text-[11px] text-slate-400">{t('availableBalance')}</p>
               <p className="mt-1 text-xl font-bold tracking-tight">$12,480</p>
               <p className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-brand-600">
-                <TrendingUp className="size-3" /> 100% yours
+                <TrendingUp className="size-3" /> {t('hundredYours')}
               </p>
             </div>
             <div className="rounded-xl border border-black/5 bg-white p-3 shadow-sm">
-              <p className="text-[11px] text-slate-400">This month</p>
+              <p className="text-[11px] text-slate-400">{t('thisMonth')}</p>
               <p className="mt-1 text-xl font-bold tracking-tight">$4,200</p>
-              <p className="mt-1 text-[11px] text-slate-400">+18% vs last</p>
+              <p className="mt-1 text-[11px] text-slate-400">{t('vsLast')}</p>
             </div>
             <div className="rounded-xl border border-black/5 bg-white p-3 shadow-sm">
-              <p className="text-[11px] text-slate-400">Fees paid</p>
+              <p className="text-[11px] text-slate-400">{t('feesPaid')}</p>
               <p className="mt-1 text-xl font-bold tracking-tight text-brand-600">$0.00</p>
-              <p className="mt-1 text-[11px] text-slate-400">Always</p>
+              <p className="mt-1 text-[11px] text-slate-400">{t('always')}</p>
             </div>
           </div>
 
           {/* Chart */}
           <div className="mt-4 rounded-xl border border-black/5 bg-white p-4 shadow-sm">
             <div className="mb-2 flex items-center justify-between">
-              <p className="text-sm font-semibold">Income</p>
-              <span className="text-[11px] text-slate-400">Last 6 months</span>
+              <p className="text-sm font-semibold">{t('income')}</p>
+              <span className="text-[11px] text-slate-400">{t('last6Months')}</span>
             </div>
             <AreaChart />
           </div>
@@ -138,27 +140,24 @@ function AreaChart() {
 
 /** Job feed card used in the feature section. */
 export function JobFeedMockup() {
-  const jobs = [
-    { title: 'Senior React engineer', budget: '$85–110/hr', tags: ['React', 'Next.js'], match: 96 },
-    { title: 'Brand & landing page design', budget: '$4,500 fixed', tags: ['Figma', 'UI'], match: 91 },
-    { title: 'Technical SEO audit', budget: '$2,000 fixed', tags: ['SEO'], match: 88 },
-  ];
+  const t = useTranslations('home.mockups');
+  const jobs = ['job1', 'job2', 'job3'] as const;
   return (
     <BrowserFrame url="freelancezero.com/jobs">
       <div className="space-y-2.5 bg-white p-4 text-slate-900">
         {jobs.map((job) => (
-          <div key={job.title} className="rounded-xl border border-black/5 p-3 shadow-sm">
+          <div key={job} className="rounded-xl border border-black/5 p-3 shadow-sm">
             <div className="flex items-start justify-between">
-              <p className="text-sm font-semibold">{job.title}</p>
+              <p className="text-sm font-semibold">{t(`${job}.title`)}</p>
               <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-semibold text-brand-700">
-                {job.match}% match
+                {t(`${job}.match`)}
               </span>
             </div>
-            <p className="mt-0.5 text-xs font-medium text-primary">{job.budget}</p>
+            <p className="mt-0.5 text-xs font-medium text-primary">{t(`${job}.budget`)}</p>
             <div className="mt-2 flex gap-1.5">
-              {job.tags.map((t) => (
-                <span key={t} className="rounded-md bg-slate-100 px-2 py-0.5 text-[10px] text-slate-500">
-                  {t}
+              {(t.raw(`${job}.tags`) as string[]).map((tag) => (
+                <span key={tag} className="rounded-md bg-slate-100 px-2 py-0.5 text-[10px] text-slate-500">
+                  {tag}
                 </span>
               ))}
             </div>
@@ -171,6 +170,7 @@ export function JobFeedMockup() {
 
 /** Freelancer profile card used in the feature section. */
 export function ProfileMockup() {
+  const t = useTranslations('home.mockups.profile');
   return (
     <BrowserFrame url="freelancezero.com/jordan-dev">
       <div className="bg-white p-4 text-slate-900">
@@ -180,13 +180,13 @@ export function ProfileMockup() {
           </div>
           <div>
             <p className="text-sm font-bold">Jordan Dev</p>
-            <p className="text-xs text-slate-400">Senior Full-Stack Engineer</p>
+            <p className="text-xs text-slate-400">{t('headline')}</p>
             <p className="mt-0.5 inline-flex items-center gap-1 text-[11px] font-medium text-amber-500">
-              <Star className="size-3 fill-amber-400 text-amber-400" /> 4.9 · 47 reviews
+              <Star className="size-3 fill-amber-400 text-amber-400" /> {t('rating')}
             </p>
           </div>
           <span className="ml-auto rounded-full bg-brand-50 px-2 py-1 text-[10px] font-semibold text-brand-700">
-            Open to work
+            {t('openToWork')}
           </span>
         </div>
         <div className="mt-3 flex flex-wrap gap-1.5">
@@ -198,9 +198,9 @@ export function ProfileMockup() {
         </div>
         <div className="mt-3 grid grid-cols-3 gap-2 text-center">
           {[
-            ['$85', '/hour'],
-            ['100%', 'job success'],
-            ['24h', 'response'],
+            [t('stat1a'), t('stat1b')],
+            [t('stat2a'), t('stat2b')],
+            [t('stat3a'), t('stat3b')],
           ].map(([a, b]) => (
             <div key={b} className="rounded-lg bg-slate-50 py-2">
               <p className="text-sm font-bold">{a}</p>
@@ -215,18 +215,19 @@ export function ProfileMockup() {
 
 /** Contract / milestone view used in the feature section. */
 export function ProposalMockup() {
+  const t = useTranslations('home.mockups.contract');
   const milestones = [
-    { label: 'Design system & wireframes', amount: '$1,200', done: true },
-    { label: 'Core build & integration', amount: '$2,000', done: true },
-    { label: 'QA, launch & handoff', amount: '$1,300', done: false },
+    { label: t('ms1'), amount: t('ms1a'), done: true },
+    { label: t('ms2'), amount: t('ms2a'), done: true },
+    { label: t('ms3'), amount: t('ms3a'), done: false },
   ];
   return (
     <BrowserFrame url="freelancezero.com/contracts/482">
       <div className="bg-white p-4 text-slate-900">
         <div className="mb-3 flex items-center justify-between">
-          <p className="text-sm font-bold">Marketing site build</p>
+          <p className="text-sm font-bold">{t('projectTitle')}</p>
           <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-semibold text-brand-700">
-            Active
+            {t('active')}
           </span>
         </div>
         <div className="space-y-2">
@@ -243,8 +244,8 @@ export function ProposalMockup() {
           ))}
         </div>
         <div className="mt-3 flex items-center justify-between rounded-lg bg-brand-50 p-2.5">
-          <span className="text-xs font-medium text-brand-700">Released to you</span>
-          <span className="text-sm font-bold text-brand-700">$3,200 · 0% fee</span>
+          <span className="text-xs font-medium text-brand-700">{t('releasedToYou')}</span>
+          <span className="text-sm font-bold text-brand-700">{t('releasedTotal')}</span>
         </div>
       </div>
     </BrowserFrame>

@@ -27,7 +27,7 @@ export function PATCH(req: Request) {
       where: { id: body.userId },
       select: { id: true, role: true },
     });
-    if (!target) return fail('User not found', 404);
+    if (!target) return fail('errors.userNotFound', 404);
 
     // Account-level fields.
     const userData = {

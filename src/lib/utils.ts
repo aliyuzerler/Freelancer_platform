@@ -12,8 +12,9 @@ export function cn(...inputs: ClassValue[]) {
 /**
  * Format an integer amount of minor currency units (cents) for display.
  * Money is ALWAYS stored as integer minor units; formatting happens only here.
+ * Callers under /[locale] pass the active locale so separators match the UI.
  */
-export function formatMoney(minorUnits: number, currency = 'USD', locale = 'en') {
+export function formatMoney(minorUnits: number, currency = 'USD', locale = 'tr-TR') {
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency,

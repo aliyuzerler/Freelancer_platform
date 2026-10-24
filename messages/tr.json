@@ -1,0 +1,1611 @@
+{
+  "site": {
+    "tagline": "Sıfır Komisyonlu Upwork Alternatifi",
+    "description": "Freelancezero, Upwork'e sıfır komisyonlu bir alternatiftir. Freelancerlar kazandıklarının %100'ünü alır — komisyon yok, bağış hakkı (connect) yok. İşverenler daha hızlı işe alır ve doğrudan öder. Sonsuza dek ücretsiz.",
+    "keywords": [
+      "upwork alternatifi",
+      "sıfır komisyon freelance platformu",
+      "komisyonsuz freelance",
+      "freelance iş ilanları",
+      "freelancer iş bulma",
+      "freelance pazar yeri"
+    ]
+  },
+  "nav": {
+    "findWork": "İş bul",
+    "howItWorks": "Nasıl çalışır?",
+    "pricing": "Fiyatlandırma",
+    "postJob": "İlan ver",
+    "dashboard": "Panel",
+    "messages": "Mesajlar",
+    "getPaid": "Ödeme al",
+    "billing": "Ödeme ve faturalama",
+    "settings": "Ayarlar",
+    "approvals": "Hesap onayları",
+    "logOut": "Çıkış yap",
+    "logIn": "Giriş yap",
+    "startEarning": "Ücretsiz kazanmaya başla",
+    "yourAccount": "Hesabınız"
+  },
+  "footer": {
+    "description": "Adil freelance pazar yeri. Kazandığınızın %100'ünü alın — hiçbir zaman komisyon yok.",
+    "freelancers": {
+      "title": "Freelancerlar için",
+      "findWork": "İş bul",
+      "createProfile": "Profil oluştur",
+      "howPaid": "Ödeme nasıl alınır?",
+      "stories": "Freelancer hikâyeleri"
+    },
+    "clients": {
+      "title": "İşverenler için",
+      "postJob": "İlan ver",
+      "enterprise": "Kurumsal",
+      "trust": "Güven ve güvenlik"
+    },
+    "company": {
+      "title": "Şirket",
+      "about": "Hakkımızda",
+      "pricing": "Fiyatlandırma",
+      "blog": "Blog ve kaynaklar",
+      "careers": "Kariyer"
+    },
+    "resources": {
+      "title": "Kaynaklar",
+      "help": "Yardım merkezi",
+      "community": "Topluluk",
+      "openSource": "Açık kaynak",
+      "status": "Sistem durumu"
+    },
+    "copyright": "© {year} Freelancezero. Hissedarlar için değil, freelancerlar için geliştirildi.",
+    "privacy": "Gizlilik",
+    "terms": "Kullanım Koşulları",
+    "security": "Güvenlik"
+  },
+  "payoutBanner": {
+    "noMethod": "Ödeme alabilmeniz için",
+    "addMethod": "bir ödeme yöntemi ekleyin",
+    "getPaidNote": ".",
+    "dismiss": "Kapat"
+  },
+  "notifications": {
+    "ariaLabel": "Bildirimler",
+    "title": "Bildirimler",
+    "empty": "Henüz bir şey yok — hareketler burada görünür."
+  },
+  "onboarding": {
+    "metaTitle": "Kurulumu tamamla",
+    "metaDone": "Her şey hazır",
+    "wizardTitle": "Hesabınızı tamamlayın",
+    "allSet": "Her şey hazır!",
+    "completeBody": "Hesabınız tamamen kuruldu ve onaylandı. Artık kullanma zamanı.",
+    "goToDashboard": "Panele git",
+    "reviewQueueTitle": "İnceleme sırasındasınız",
+    "reviewQueueBody": "Sizin yapacaklarınız tamam. Sırada hesabınızı inceleyen bir yönetici var — onay genellikle bir günden kısa sürer ve gerçekleştiğinde size e-posta göndereceğiz.",
+    "checkStatus": "Durumu kontrol et",
+    "browseMeanwhile": "Bu arada siteyi gezin",
+    "checklistTitle": "Hesabınızı tamamlamaya devam edin",
+    "checklistProgress": "{done} / {total} tamamlandı",
+    "emailHint": "Onay bağlantısı için e-postanızı kontrol edin.",
+    "approvalHint": "Tüm adımlar tamam — hesabınız şu anda yönetici incelemesinde. Onay genellikle bir günden kısa sürer.",
+    "nextUp": "Sıradaki:",
+    "continueSetup": "kuruluma devam et",
+    "resendIt": "Yeniden gönder.",
+    "resendSending": "Gönderiliyor…",
+    "resendSent": "Gönderildi — e-postanızı kontrol edin.",
+    "steps": {
+      "account": "Hesap oluştur",
+      "email": "E-postayı onayla",
+      "photo": "Profil fotoğrafı ekle",
+      "basics": "Temel bilgiler",
+      "payout": "Ödeme yöntemi ekle",
+      "approval": "Onay"
+    },
+    "email": {
+      "title": "E-postanızı onaylayın",
+      "body": "<strong>{email}</strong> adresine bir onay bağlantısı gönderdik. Bağlantıya tıklayın ve buradan devam edin.",
+      "notReceived": "E-posta gelmedi mi?",
+      "continue": "Onayladım — devam et"
+    },
+    "photo": {
+      "title": "Profil fotoğrafı ekleyin",
+      "body": "Bunu işverenler ve freelancerlar görür. PNG veya JPG, en fazla 2 MB.",
+      "previewAlt": "Önizleme",
+      "chooseFirst": "Önce bir fotoğraf seçin",
+      "uploadFailed": "Yükleme başarısız — başka bir görsel deneyin",
+      "uploading": "Yükleniyor…",
+      "uploadAndContinue": "Yükle ve devam et"
+    },
+    "profile": {
+      "title": "Temel bilgileriniz",
+      "body": "Sizi tanıtan bir başlık ve nereden çalıştığınız — işverenler ikisine de filtre uygular.",
+      "headline": "Başlık",
+      "headlinePlaceholder": "Kıdemli Full-Stack Geliştirici",
+      "location": "Konum",
+      "locationPlaceholder": "İstanbul, Türkiye",
+      "rate": "Saatlik ücret (USD, isteğe bağlı)",
+      "couldNotSave": "Kaydedilemedi. Tekrar deneyin.",
+      "saving": "Kaydediliyor…",
+      "saveAndContinue": "Kaydet ve devam et"
+    },
+    "payout": {
+      "title": "Ödeme yöntemi ekleyin",
+      "body": "Yeteneklere nasıl ödeme yapacağınız — doğrudan, sıfır platform ücretiyle.",
+      "continue": "Devam et"
+    }
+  },
+  "dashboard": {
+    "metaTitle": "Panel",
+    "title": "Panel",
+    "welcome": "Tekrar hoş geldiniz, {name}.",
+    "findWork": "İş bul",
+    "postJob": "İlan ver",
+    "roles": {
+      "CLIENT": "İşveren",
+      "FREELANCER": "Freelancer",
+      "AGENCY_OWNER": "Ajans sahibi",
+      "AGENCY_MEMBER": "Ajans üyesi",
+      "ADMIN": "Yönetici"
+    },
+    "stats": {
+      "proposalsSent": "Gönderilen başvuru",
+      "activeContracts": "Aktif sözleşme",
+      "lifetimeEarned": "Toplam kazanç",
+      "reviews": "Yorumlar",
+      "jobsPosted": "Verilen ilan",
+      "totalApplicants": "Toplam başvuru",
+      "lifetimePaid": "Toplam ödeme"
+    },
+    "yourPostings": "İlanlarınız",
+    "newJob": "Yeni",
+    "budgetFixed": "{amount} sabit",
+    "budgetHourly": "{min}–{max}/saat",
+    "jobStatus": {
+      "OPEN": "Açık",
+      "DRAFT": "Taslak",
+      "CLOSED": "Kapalı",
+      "PAUSED": "Duraklatıldı"
+    },
+    "applicants": "{count, plural, one {# başvuran} other {# başvuran}}",
+    "yourProposals": "Başvurularınız",
+    "browse": "Gözat",
+    "yourBid": "Teklifiniz: {amount}{suffix}",
+    "perHour": "/saat",
+    "fixedSuffix": " sabit",
+    "proposalStatus": {
+      "SUBMITTED": "Gönderildi",
+      "SHORTLISTED": "Ön elemede",
+      "ACCEPTED": "Kabul edildi",
+      "REJECTED": "Reddedildi",
+      "WITHDRAWN": "Geri çekildi"
+    },
+    "emptyPostings": "Henüz bir ilan vermediniz.",
+    "emptyPostingsCta": "İlk ilanınızı verin",
+    "emptyProposals": "Henüz bir işe başvurmadınız.",
+    "emptyProposalsCta": "Açık işlere göz atın",
+    "profileStrength": "Profil gücü",
+    "completeness": "Tamamlanma",
+    "completeYourProfile": "Profilinizi tamamlayın",
+    "profileLooksGreat": "Profiliniz harika görünüyor.",
+    "missing": {
+      "headline": "Bir başlık ekleyin",
+      "image": "Profil fotoğrafı ekleyin",
+      "bio": "Bir hakkımda yazısı yazın (80+ karakter)",
+      "location": "Konumunuzu ekleyin",
+      "hourlyRate": "Saatlik ücretinizi belirleyin",
+      "skillCount": "En az 3 beceri ekleyin",
+      "portfolioCount": "Portföyünüze bir çalışma ekleyin",
+      "links": "Profesyonel bir bağlantı ekleyin",
+      "yearsExperience": "Kaç yıllık deneyiminiz olduğunu ekleyin",
+      "timezone": "Saat diliminizi ekleyin"
+    },
+    "recommendedFreelancers": "Önerilen freelancerlar",
+    "noFreelancerProfiles": "Henüz freelancer profili yok.",
+    "adminReview": "Yönetici incelemesi",
+    "noAccountsWaiting": "Onay bekleyen hesap yok.",
+    "accountsWaiting": "{count, plural, one {# hesap} other {# hesap}} onay bekliyor.",
+    "reviewAccounts": "Hesapları incele",
+    "accountSecurity": "Hesap ve güvenlik",
+    "emailVerified": "E-posta onaylı",
+    "twoFactor": "İki adımlı doğrulama",
+    "password": "Şifre",
+    "payoutMethod": "Ödeme alım yöntemi",
+    "paymentMethod": "Ödeme yöntemi",
+    "stateVerified": "Onaylı",
+    "stateNotVerified": "Onaysız",
+    "stateOn": "Açık",
+    "stateOff": "Kapalı",
+    "stateSet": "Tanımlı",
+    "stateNotSet": "Tanımsız",
+    "stateSetUp": "Kuruldu",
+    "stateNotSetUp": "Kurulmadı",
+    "manageAccount": "Hesabı yönet",
+    "getPaid": "Ödeme al",
+    "payments": "Ödemeler",
+    "earnedNote": "{amount} kazandınız — %0 platform ücreti.",
+    "paidNote": "{amount} ödediniz — %0 platform ücreti.",
+    "payoutHint": "İşverenlerin size doğrudan ödeme yapabilmesi için bir ödeme alım yöntemi kurun.",
+    "paymentHint": "Yeteneklere nasıl ödeme yapacağınızı seçin — doğrudan, sıfır ücretle.",
+    "setUpPayouts": "Ödeme alımını ayarla",
+    "paymentSettings": "Ödeme ayarları",
+    "recentActivity": "Son hareketler",
+    "nothingYet": "Henüz bir şey yok — hareketler burada görünür."
+  },
+  "auth": {
+    "login": {
+      "title": "Tekrar hoş geldiniz",
+      "linkExpired": "Bu giriş bağlantısının süresi dolmuş. Aşağıya e-postanızı yazın, size yenisini gönderelim.",
+      "email": "E-posta",
+      "password": "Şifre",
+      "signIn": "Giriş yap",
+      "signingIn": "Giriş yapılıyor…",
+      "or": "veya",
+      "magicSent": "Giriş bağlantısı için e-postanızı kontrol edin.",
+      "magicPlaceholder": "siz@sirketiniz.com",
+      "magicButton": "Bana sihirli bağlantı gönder",
+      "google": "Google ile devam et",
+      "github": "GitHub ile devam et",
+      "noAccount": "Hesabınız yok mu?",
+      "signUpFree": "Ücretsiz kaydolun",
+      "invalidCredentials": "E-posta veya şifre hatalı."
+    },
+    "register": {
+      "title": "Ücretsiz hesabınızı oluşturun",
+      "imHiring": "İş veriyorum",
+      "imWorking": "İş arıyorum",
+      "companyOptional": "Şirket (isteğe bağlı)",
+      "companyPlaceholder": "Şirket adınızı yazmaya başlayın",
+      "addAsNewCompany": "“{name}” adında yeni şirket oluştur",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "email": "E-posta",
+      "password": "Şifre",
+      "passwordHint": "En az 8 karakter; büyük harf, küçük harf ve rakam içermeli.",
+      "confirmPassword": "Şifreyi onayla",
+      "nextStepHint": "Sırada profil fotoğrafı ekleme ve e-posta onayı var — bir dakikanızı alır.",
+      "createAccount": "Hesap oluştur",
+      "creating": "Oluşturuluyor…",
+      "couldNotCreate": "Hesabınız oluşturulamadı.",
+      "checkInboxTitle": "E-postanızı kontrol edin",
+      "checkInboxText": "<strong>{email}</strong> adresine bir onay bağlantısı gönderdik. Hesabınızı etkinleştirmek için e-postanızı onaylayın, ardından giriş yapıp profil kurulumunuzu tamamlayın. Bağlantı 24 saat geçerlidir.",
+      "alreadyConfirmed": "Zaten onayladınız mı?",
+      "logIn": "Giriş yap",
+      "haveAccount": "Hesabınız var mı?"
+    },
+    "verify": {
+      "metaTitle": "E-postanı onayla",
+      "success": {
+        "title": "E-posta onaylandı",
+        "body": "E-postanız doğrulandı. Kalan kurulum adımlarını panelinizden tamamlayabilirsiniz.",
+        "cta": "Panele git"
+      },
+      "expired": {
+        "title": "Bağlantının süresi dolmuş",
+        "body": "Onay bağlantıları 24 saat sonra geçersiz olur. Giriş yapıp panelinizden yenisini talep edebilirsiniz.",
+        "cta": "Giriş yap"
+      },
+      "invalid": {
+        "title": "Geçersiz bağlantı",
+        "body": "Bu onay bağlantısı geçersiz ya da daha önce kullanılmış.",
+        "cta": "Giriş yap"
+      }
+    }
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "body": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
+    "cta": "Ana sayfaya dön"
+  },
+  "home": {
+    "meta": {
+      "title": "Freelancezero — Sıfır Komisyonlu Upwork Alternatifi",
+      "description": "Ücretsiz bir Upwork alternatifi mi arıyorsunuz? Freelancezero ile freelancerlar kazandıklarının %100'ünü alır — komisyon yok, connect yok. İşverenler daha hızlı işe alır ve doğrudan öder. Sonsuza dek ücretsiz."
+    },
+    "hero": {
+      "badge": "Adil freelance pazar yeri",
+      "title": "Kazandığınızın",
+      "titleHighlight": "%100'ü",
+      "titleTail": "sizde kalsın.",
+      "subtitle": "Nihayet sizin için çalışan bir freelance pazar yeri. Kazancınızın <strong>%100</strong>ünü alın, daha hızlı ödeme alın, daha isabetli işler bulun — Upwork her faturadan sessizce %10'a varan kesinti yaparken.",
+      "ctaPrimary": "Ücretsiz kazanmaya başlayın",
+      "ctaSecondary": "En iyi yetenekleri işe alın",
+      "finePrint": "12.450+ freelancer ve işveren katıldı · Kart gerekmez · 2 dakikada kurulur",
+      "trustTitle": "Zaten güvendiğiniz ödeme altyapılarıyla ödeme alın ve yapın"
+    },
+    "stats": {
+      "earned": {
+        "value": "12M$+",
+        "label": "Freelancerların kazandığı"
+      },
+      "fees": {
+        "value": "0 $",
+        "label": "Platform ücreti olarak alınan"
+      },
+      "rating": {
+        "value": "4,9/5",
+        "label": "Ortalama proje puanı"
+      },
+      "members": {
+        "value": "12.450",
+        "label": "Aktif üye"
+      }
+    },
+    "feeComparison": {
+      "title": "10.000 $'lık bir projede paranız nereye gidiyor?",
+      "subtitle": "Geleneksel pazar yerleri her faturadan sessizce kesinti yapar. Biz tek kuruş almıyoruz — matematik çok basit.",
+      "typical": "Tipik pazar yeri",
+      "toYou": "size kalan",
+      "themValue": "8.685 $",
+      "fee1": "− 1.000 $ platform ücreti (her faturanın %10'u)",
+      "fee2": "− 250 $ başvuru kredisi — her kazanç için ~100 ücretli teklif; işi alsanız da almasanız da harcanır",
+      "fee3": "− 40 $ üyelik ve kayıt ücreti",
+      "fee4": "− 25 $ para çekme ücreti — kendi paranızı almak için bile",
+      "footnote": "Yani %13'ten fazlası gitti — üstelik krediler işi kazanamasanız da gidiyor.",
+      "usValue": "10.000 $",
+      "zeroFeeNote": "0 $ ücret — her kuruşu siz alırsınız"
+    },
+    "vsUpwork": {
+      "eyebrow": "Freelancezero ve Upwork",
+      "title": "Yan yana koyduğunuzda görmemeniz imkânsız",
+      "subtitle": "Aynı iş. Aynı müşteriler. Tümüyle farklı ekonomi ve kontrol.",
+      "colWhat": "Sizin için önemli olan",
+      "platformFee": {
+        "feature": "Kazancınızdan alınan platform ücreti",
+        "us": "%0",
+        "them": "%10"
+      },
+      "payToApply": {
+        "feature": "Teklif vermek için ödeme (“connect”)",
+        "us": "Asla",
+        "them": "Evet"
+      },
+      "processingMarkup": {
+        "feature": "İşveren tarafında ödeme işleme ek ücreti",
+        "us": "Yok",
+        "them": "%5'e kadar"
+      },
+      "ownProcessor": {
+        "feature": "Kendi ödeme sağlayıcınızı seçin",
+        "us": "Evet",
+        "them": "Hayır"
+      },
+      "instantPayouts": {
+        "feature": "Anında ödemeler",
+        "us": "Destekleniyor",
+        "them": "Sınırlı"
+      },
+      "aiMatching": {
+        "feature": "Yapay zekâ destekli eşleştirme ve teklifler",
+        "us": "Yerleşik",
+        "them": "Kısmi"
+      },
+      "dataOwnership": {
+        "feature": "Verilerinizin sahibi olun, dışa aktarın",
+        "us": "Her zaman",
+        "them": "Hayır"
+      },
+      "disputes": {
+        "feature": "Şeffaf, topluluk öncülüğünde uyuşmazlık çözümü",
+        "us": "Evet",
+        "them": "Opak"
+      },
+      "disclaimer": "Karşılaştırma, 2026 itibarıyla Upwork'ün kamuya açık koşullarına dayanır. “Upwork”, sahibinin tescilli markasıdır; Freelancezero, Upwork ile bağlantılı değildir ve onun tarafından onaylanmamıştır."
+    },
+    "benefits": {
+      "eyebrow": "Neden geçmelisiniz?",
+      "title": "İş kazanıp ödeme almak için ihtiyacınız olan her şey",
+      "keepEveryDollar": {
+        "title": "Her kuruşu siz alın",
+        "body": "Komisyon yok, başvuru ücreti yok, para çekme ücreti yok. Tarifeniz elinize geçen — nokta."
+      },
+      "smarterMatching": {
+        "title": "Daha akıllı eşleştirme",
+        "body": "Kalite puanlı teklifler ve ilgide göre sıralanan yetenekler: daha az gürültü, daha hızlı ve daha isabetli işe alım."
+      },
+      "workflow": {
+        "title": "Keyifli bir çalışma akışı",
+        "body": "Sözleşmeler, kilometre taşları, sohbet ve zaman takibi — hızlı ve modern tek bir çalışma alanında."
+      },
+      "directPayments": {
+        "title": "Doğrudan ve güvenli ödemeler",
+        "body": "Stripe, PayPal, Wise veya kripto ile ödeme alın ve yapın — seçim sizin. Paranızı asla tutmuyoruz."
+      },
+      "trustSignals": {
+        "title": "Gerçek güven sinyalleri",
+        "body": "Doğrulanmış işverenler, şeffaf yorumlar ve referanslar sayesinde iki taraf da kiminle çalıştığını bilir."
+      },
+      "ownYourData": {
+        "title": "Veriler size ait",
+        "body": "Verinizi dilediğiniz an dışa aktarın, kendi müşterilerinizi getirin, asla sisteme kilitlenmeyin. İtibarınız sizinle gelir."
+      }
+    },
+    "features": {
+      "discovery": {
+        "eyebrow": "Keşif",
+        "title": "Gerçekten size uyan işleri bulun",
+        "body": "Gördüğünüz her ilan, becerilerinize ve tarifenize ne kadar uyduğuna göre puanlanır. Doğru işi bulmak için yüzlerce alakasız ilanı kaydırmak tarihe karışıyor.",
+        "points": [
+          "İlgiye göre sıralanan iş akışı",
+          "Kayıtlı aramalar ve anlık uyarılar",
+          "Tek tıkla, yüksek kaliteli teklifler"
+        ]
+      },
+      "reputation": {
+        "eyebrow": "İtibar",
+        "title": "Teklifi kazandıran bir profil",
+        "body": "Zengin bir portföy, onaylanmış beceriler ve doğrulanmış yorumlar sergileyin. İşverenler, siz daha tek kelime etmeden neden doğru tercih olduğunuzu görsün.",
+        "points": [
+          "Portföy, örnek projeler ve GitHub",
+          "Referanslar ve doğrulanmış yorumlar",
+          "Canlı “işe açığım” durumu"
+        ]
+      },
+      "payments": {
+        "eyebrow": "Ödemeler",
+        "title": "Kilometre taşları teslim edilir, ödemesi tam yapılır — sıfır kesinti",
+        "body": "Kilometre taşlarını fonlayın, teslimatları onaylayın ve ödemeyi kendi ödeme sağlayıcınız üzerinden doğrudan freelancerınıza iletin. Şeffaf, güvenli ve %100 ücretsiz.",
+        "points": [
+          "Kilometre taşına dayalı sözleşmeler",
+          "Teslimat onay akışı",
+          "Doğrudan ödemeler, 0 $ platform ücreti"
+        ]
+      }
+    },
+    "how": {
+      "title": "“Merhaba”dan “ödeme alındı”ya üç adım",
+      "step": "Adım {n}",
+      "step1": {
+        "title": "İlan verin ya da iş bulun",
+        "body": "İşverenler dakikalar içinde ilan açar; freelancerlar kendine uyan işlerle eşleşir."
+      },
+      "step2": {
+        "title": "Kilometre taşlarında anlaşın",
+        "body": "Kapsamı, zaman çizelgesini ve ödeme koşullarını net ve ortak bir sözleşmede belirleyin."
+      },
+      "step3": {
+        "title": "Teslim edin, tam ödemenizi alın",
+        "body": "İşi onaylayın, ödemeyi doğrudan serbest bırakın — sıfır kesinti."
+      }
+    },
+    "testimonials": {
+      "eyebrow": "İki tarafın da favorisi",
+      "title": "İnsanlar işlerini — ve gelirlerini — buraya taşıyor",
+      "maya": {
+        "quote": "Tüm müşteri portföyümü Upwork'ten taşıdım. 6.000 $'lık son projemde tek kuruş bile kaybetmedim — eskiden ücret olarak buharlaşan tam 1.200 $.",
+        "name": "Maya Chen",
+        "role": "Freelance Ürün Tasarımcısı",
+        "initials": "MC",
+        "metric": "2025'te +14 bin $ birikti"
+      },
+      "david": {
+        "quote": "Eşleştirme gerçekten daha iyi. Sabah 9'da ilan verdim, öğlene kadar üç güçlü ve ilgili başvuru geldi — kopyala-yapıştır elli tane değil.",
+        "name": "David Okafor",
+        "role": "Kurucu, Northwind Labs",
+        "initials": "DO",
+        "metric": "6 saatte işe alım"
+      },
+      "sofia": {
+        "quote": "Geliştiricime kendi Stripe hesabımdan doğrudan ödeme yapmak ilk başta tuhaf geldi. Şimdi en doğalı gibi. Paramı rehin tutan aracı yok.",
+        "name": "Sofia Ramirez",
+        "role": "Pazarlama Ajansı Sahibi",
+        "initials": "SR",
+        "metric": "9 sözleşme, 0 $ ücret"
+      },
+      "tom": {
+        "quote": "Sade, hızlı ve zamanıma saygı duyuyor. Sanki Linear bir freelance platformu kurmuş. Müşterilerim bana burada daha ciddi davranıyor.",
+        "name": "Tom Bjørn",
+        "role": "Full-Stack Geliştirici",
+        "initials": "TB",
+        "metric": "50 işte 4,9★"
+      },
+      "previous": "Önceki yorum",
+      "next": "Sonraki yorum",
+      "goTo": "{n}. yoruma git"
+    },
+    "talent": {
+      "eyebrow": "Öne çıkan yetenekler",
+      "title": "En yüksek puanlı profesyoneller, başlamaya hazır",
+      "cta": "Yetenek işe al",
+      "role1": "Marka ve Web Tasarımcısı",
+      "role2": "Full-Stack Geliştirici",
+      "role3": "Büyüme Pazarlamacısı",
+      "role4": "Motion ve Video Uzmanı"
+    },
+    "pricing": {
+      "eyebrow": "Fiyatlandırma",
+      "title": "Tüm platform ücretsiz. Gerçekten.",
+      "subtitle": "Paranızı alarak para kazanmıyoruz. Freelancerlara da işverenlere de ücret yok — şimdi de sonrasında da.",
+      "per": "ayda · projede · her şeyde",
+      "features": [
+        "Sınırsız ilan, teklif ve sözleşme",
+        "Kilometre taşları, sohbet ve zaman takibi",
+        "Kendi ödeme sağlayıcınızla doğrudan ödemeler",
+        "Doğrulanmış yorumlar ve itibar",
+        "Tam veri dışa aktarımı, kilitleme yok"
+      ],
+      "cta": "Ücretsiz hesabınızı oluşturun"
+    },
+    "faq": {
+      "eyebrow": "Sorularınız, cevaplar",
+      "title": "Sıfır ücretli bir pazar yeri hakkında merak ettiğiniz her şey",
+      "free": {
+        "q": "Freelancezero gerçekten ücretsiz mi — püf noktası ne?",
+        "a": "Evet. Freelancezero, freelancerlardan ve işverenlerden %0 alır — komisyon yok, connect yok, para çekme ücreti yok. Püf noktası yok: platform bir aracıdır, ödemelerden kesinti yapan bir aracı kurum değil. Projeyi, çekirdek pazar yerini asla kısıtlamayan isteğe bağlı premium araç ve hizmetlerle sürdürüyoruz."
+      },
+      "difference": {
+        "q": "Freelancezero, Upwork'ten nasıl farklı?",
+        "a": "En büyük fark ücretler: Upwork kazancınızın %10'una kadar keser, ayrıca başvurmak için ücretli “connect” ve ödeme işleme ek ücretleri alır. Freelancezero hiçbir şey almaz. Ayrıca kendi ödeme sağlayıcınızı (Stripe, PayPal, Wise veya kripto) seçer, verinizin her zaman sahibi olur ve dışa aktarabilir, yapay zekâ destekli daha hızlı eşleştirme alırsınız."
+      },
+      "payment": {
+        "q": "Platform ücret almadığında freelancerlar nasıl para kazanıyor?",
+        "a": "Ödemeler, seçtiğiniz sağlayıcı üzerinden doğrudan işverenden freelancer'a akar. Freelancezero kilometre taşlarını ve serbest bırakmayı koordine eder ama paranızı asla tutmaz; böylece platform kesintisi olmaz ve ödemelere genellikle daha hızlı erişirsiniz."
+      },
+      "import": {
+        "q": "Upwork profilimi ve yorumlarımı içe aktarabilir miyim?",
+        "a": "Evet. İçe aktarma aracımız; özgeçmiş, beceriler, portföy ve iş geçmişinizi dakikalar içinde yeniden kurmanıza yardım eder — böylece geçiş sıfırdan başlamak anlamına gelmez."
+      },
+      "safety": {
+        "q": "Güvenli mi? Uyuşmazlıklar nasıl çözülür?",
+        "a": "İşverenler ödeme ve kimlik doğrulamalı olabilir; yorumlar şeffaf ve misillemeyi önlemek için çift körü çalışır. Uyuşmazlıklar, isteğe bağlı hakemlik içeren hızlı ve şeffaf bir topluluk süreciyle çözülür."
+      },
+      "agencies": {
+        "q": "Ajansları ve ekipleri destekliyor musunuz?",
+        "a": "Evet. Ajanslar rollere göre ekip üyeleri ekleyebilir, ortak bir iş hattını yönetebilir ve ekip olarak teklif verebilir ya da iş teslim edebilir — aynı sıfır ücret modeliyle."
+      }
+    },
+    "finalCta": {
+      "title": "İşinizin bir kesintisini vermeyi bırakın.",
+      "subtitle": "Adil çalışma yoluna geçen binlerce freelancer ve işveren arasına katılın.",
+      "ctaPrimary": "Ücretsiz kazanmaya başlayın",
+      "ctaSecondary": "İlan ver"
+    },
+    "mockups": {
+      "nav": {
+        "dashboard": "Panel",
+        "contracts": "Sözleşmeler",
+        "messages": "Mesajlar",
+        "payments": "Ödemeler"
+      },
+      "greeting": "Günaydın, Jordan",
+      "earnings": "Kazancınız",
+      "search": "Ara…",
+      "availableBalance": "Kullanılabilir bakiye",
+      "hundredYours": "%100 sizin",
+      "thisMonth": "Bu ay",
+      "vsLast": "geçen aya göre +%18",
+      "feesPaid": "Ödenen ücret",
+      "always": "Her zaman",
+      "income": "Gelir",
+      "last6Months": "Son 6 ay",
+      "job1": {
+        "title": "Kıdemli React geliştirici",
+        "budget": "85–110 $/saat",
+        "match": "%96 uyum",
+        "tags": [
+          "React",
+          "Next.js"
+        ]
+      },
+      "job2": {
+        "title": "Marka ve açılış sayfası tasarımı",
+        "budget": "4.500 $ sabit",
+        "match": "%91 uyum",
+        "tags": [
+          "Figma",
+          "UI"
+        ]
+      },
+      "job3": {
+        "title": "Teknik SEO denetimi",
+        "budget": "2.000 $ sabit",
+        "match": "%88 uyum",
+        "tags": [
+          "SEO"
+        ]
+      },
+      "profile": {
+        "headline": "Kıdemli Full-Stack Geliştirici",
+        "rating": "4,9 · 47 yorum",
+        "openToWork": "İşe açık",
+        "stat1a": "85 $",
+        "stat1b": "/saat",
+        "stat2a": "%100",
+        "stat2b": "iş başarısı",
+        "stat3a": "24 sa",
+        "stat3b": "yanıt süresi"
+      },
+      "contract": {
+        "ms1": "Tasarım sistemi ve wireframe'ler",
+        "ms1a": "1.200 $",
+        "ms2": "Ana geliştirme ve entegrasyon",
+        "ms2a": "2.000 $",
+        "ms3": "QA, lansman ve devir",
+        "ms3a": "1.300 $",
+        "projectTitle": "Pazarlama sitesi projesi",
+        "active": "Aktif",
+        "releasedToYou": "Size ödendi",
+        "releasedTotal": "3.200 $ · %0 ücret"
+      }
+    }
+  },
+  "errors": {
+    "rateLimited": "Çok fazla istek gönderildi. Lütfen biraz yavaşlayın.",
+    "authRequired": "Bu işlem için giriş yapmanız gerekiyor.",
+    "forbidden": "Bu işlem için yetkiniz yok.",
+    "validationFailed": "Doğrulama hatası. Gönderdiğiniz bilgileri kontrol edin.",
+    "somethingWentWrong": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
+    "conversationNotFound": "Sohbet bulunamadı.",
+    "postingNotFound": "İlan bulunamadı.",
+    "contactEmailRequired": "Yayınlamadan önce bir iletişim e-postası ekleyin — başvuranların size ulaşabilmesi gerekir.",
+    "applicantNotFound": "İlanlarınız arasında bu başvuru bulunamadı.",
+    "confirmEmailFirst": "Başvurmadan önce e-postanızı onaylayın — gelen kutunuzu kontrol edin.",
+    "accountPending": "Hesabınız yönetici onayı bekliyor. Onaylandıktan sonra bu işlemi yapabilirsiniz.",
+    "jobNotAccepting": "Bu ilan şu anda başvuru kabul etmiyor.",
+    "ownJob": "Kendi ilanınıza başvuramazsınız.",
+    "alreadyApplied": "Bu ilana zaten başvurdunuz.",
+    "userNotFound": "Kullanıcı bulunamadı.",
+    "enterCurrentPassword": "Mevcut şifrenizi girin.",
+    "currentPasswordIncorrect": "Mevcut şifreniz hatalı.",
+    "identityDisabled": "Kimlik doğrulama bu kurulumda etkin değil.",
+    "webhookNotConfigured": "Webhook yapılandırılmamış.",
+    "invalidSignature": "Geçersiz imza.",
+    "invalidPayload": "Geçersiz içerik.",
+    "alreadyVerified": "Zaten doğrulanmışsınız.",
+    "noFileUploaded": "Dosya yüklenmedi.",
+    "imageType": "Yalnızca PNG, JPG veya WebP görsel yükleyebilirsiniz.",
+    "imageSize": "Görsel 2 MB altında olmalı."
+  },
+  "val": {
+    "firstNameRequired": "Ad gereklidir",
+    "firstNameTooLong": "Ad çok uzun",
+    "firstNameInvalidChars": "Ad geçersiz karakterler içeriyor",
+    "lastNameRequired": "Soyad gereklidir",
+    "lastNameTooLong": "Soyad çok uzun",
+    "lastNameInvalidChars": "Soyad geçersiz karakterler içeriyor",
+    "emailInvalid": "Geçerli bir e-posta adresi girin",
+    "passwordMin": "Şifreniz en az 8 karakter olmalı",
+    "passwordMax": "Şifreniz en fazla 100 karakter olabilir",
+    "passwordLowercase": "Şifreniz bir küçük harf içermeli",
+    "passwordUppercase": "Şifreniz bir büyük harf içermeli",
+    "passwordDigit": "Şifreniz bir rakam içermeli",
+    "passwordMismatch": "Şifreler eşleşmiyor",
+    "companyNameTooLong": "Şirket adı çok uzun",
+    "jobTitleMin": "İlanınıza açıklayıcı bir başlık verin",
+    "jobDescriptionMin": "Çalışmayı biraz daha ayrıntılı anlatın",
+    "budgetMaxGte": "Üst bütçe, alt bütçeden küçük olamaz",
+    "coverLetterMin": "Daha güçlü bir ön yazı şansınızı artırır",
+    "milestoneTitleMin": "Kilometre taşı başlığı en az 2 karakter olmalı",
+    "milestoneTitleMax": "Kilometre taşı başlığı çok uzun",
+    "urlInvalid": "Geçerli bir URL girin",
+    "bioMin": "En az {min} karakterlik bir hakkımda yazısı yazın",
+    "bioMax": "Hakkımda yazısı {min} karakterin altında kalmalı",
+    "linkHostGithub": "GitHub profil bağlantısı girin (örn. github.com/kullaniciadi)",
+    "linkHostLinkedin": "LinkedIn profil bağlantısı girin (örn. linkedin.com/in/kullaniciadi)",
+    "linkHostDribbble": "Dribbble profil bağlantısı girin (örn. dribbble.com/kullaniciadi)",
+    "linkHostBehance": "Behance profil bağlantısı girin (örn. behance.net/kullaniciadi)",
+    "linkHostStackoverflow": "Stack Overflow profil bağlantısı girin (örn. stackoverflow.com/users/…)",
+    "linkHostX": "X (Twitter) profil bağlantısı girin (örn. x.com/kullaniciadi)"
+  },
+  "notify": {
+    "newApplicant": "İlanınıza yeni başvuru",
+    "accountApproved": "Hesabınız onaylandı"
+  },
+  "emails": {
+    "recruiter": {
+      "hi": "Merhaba{name},",
+      "applied": "<strong>{jobTitle}</strong> ilanınıza bir başvuru geldi.",
+      "appliedPlain": "“{jobTitle}” ilanınıza bir başvuru geldi.",
+      "applicantLabel": "Başvuran",
+      "signIn": "Başvurunun tamamını görmek ve yanıtlamak için bu e-posta ile giriş yapın:",
+      "viewButton": "Başvuruyu görüntüle",
+      "pasteLink": "Ya da bu bağlantıyı tarayıcınıza yapıştırın:",
+      "footerWhy": "{brand}, bir freelancer “{jobTitle}” ilanınıza başvurduğu için bu e-postayı gönderdi.",
+      "unsubscribe": "Bu e-postaları alma",
+      "subject": "“{jobTitle}” ilanınıza yeni bir başvuru var"
+    },
+    "dev": {
+      "hi": "Merhaba{name},",
+      "replied": "<strong>{company}</strong>, <strong>{jobTitle}</strong> başvurunuza yanıt verdi:",
+      "readButton": "Oku ve yanıtla",
+      "footerWhy": "{brand} üzerinden bir başvuru yaptığınız için bu e-postayı alıyorsunuz.",
+      "manageNotifications": "Bildirimleri yönet",
+      "subject": "{company} başvurunuza yanıt verdi"
+    },
+    "verify": {
+      "subject": "E-postanızı onaylayın — Freelancezero",
+      "hi": "Merhaba {name},",
+      "body": "Hesabınızın kurulumunu tamamlamak için e-posta adresinizi onaylayın:",
+      "button": "E-postayı onayla",
+      "expiry": "Bu bağlantı 24 saat geçerlidir. Böyle bir hesap oluşturmadıysanız bu e-postayı yok sayabilirsiniz."
+    },
+    "magicLink": {
+      "subject": "Freelancezero'ya giriş yapın",
+      "heading": "Freelancezero'ya giriş yapın:",
+      "button": "Giriş yap",
+      "paste": "Ya da bu bağlantıyı yapıştırın:",
+      "ignore": "Bu isteği siz yapmadıysanız bu e-postayı yok sayabilirsiniz."
+    }
+  },
+  "jobs": {
+    "list": {
+      "meta": {
+        "title": "Freelance İş Bul — Sıfır Ücret, %100 Kazanç",
+        "description": "Freelance iş ilanlarına göz atın, kazandığınızın %100'ünü alın. Komisyon yok, başvurmak için connect yok. Yazılım, tasarım, yazarlık ve pazarlamada uzaktan freelance işler bulun.",
+        "keywords": [
+          "freelance iş ilanları",
+          "uzaktan freelance iş",
+          "ücretsiz freelance iş bulma"
+        ]
+      },
+      "title": "İş bul",
+      "openCount": "{count} açık ilan",
+      "empty": "Henüz açık ilan yok. Kısa süre içinde tekrar kontrol edin.",
+      "experience": {
+        "ENTRY": "Giriş seviyesi",
+        "INTERMEDIATE": "Orta seviye",
+        "EXPERT": "Uzman"
+      },
+      "proposalCount": "{count, plural, one {# başvuru} other {# başvuru}}",
+      "budgetTbd": "Bütçe belirlenecek",
+      "budgetFixed": "{amount} sabit",
+      "budgetHourlyRange": "{range}/saat"
+    },
+    "new": {
+      "metaTitle": "İlan ver",
+      "title": "İlan ver",
+      "subtitle": "Freelancerlara doğrudan ulaşın. Sıfır platform ücreti — her zaman.",
+      "freelancerNotice": "Freelancer olarak giriş yaptığınız için bu hesapla ilan veremezsiniz.",
+      "findWorkInstead": "Bunun yerine iş bul",
+      "form": {
+        "title": "Başlık",
+        "titlePlaceholder": "örn. Analitik paneli için kıdemli React geliştiricisi",
+        "description": "Açıklama",
+        "descriptionPlaceholder": "Yapılacak işi, teknoloji yığınını, zaman çizelgesini ve ideal başvuranı anlatın.",
+        "budgetType": "Bütçe türü",
+        "budgetFixed": "Sabit fiyat",
+        "budgetHourly": "Saatlik",
+        "experience": "Deneyim seviyesi",
+        "expEntry": "Giriş",
+        "expIntermediate": "Orta",
+        "expExpert": "Uzman",
+        "fixedPrice": "Sabit fiyat (USD)",
+        "minRate": "Alt ücret (USD/saat)",
+        "maxRate": "Üst ücret (USD/saat)",
+        "estimatedDays": "Tahmini gün (isteğe bağlı)",
+        "posting": "Yayınlanıyor…",
+        "postJob": "İlanı yayınla",
+        "couldNotPost": "İlan yayınlanamadı. Alanları kontrol edip tekrar deneyin."
+      }
+    },
+    "detail": {
+      "experience": {
+        "ENTRY": "Giriş seviyesi",
+        "INTERMEDIATE": "Orta seviye",
+        "EXPERT": "Uzman"
+      },
+      "proposalCount": "{count, plural, one {# başvuru} other {# başvuru}}",
+      "estimatedDays": "~{count} gün",
+      "fixedPrice": "{amount} sabit fiyat",
+      "hourlyPrice": "{min} – {max} / saat",
+      "jobDescription": "İş açıklaması",
+      "lockedTitle": "İlanın tamamını görmek için giriş yapın veya kaydolun",
+      "lockedBody": "Freelancezero freelancerlara ücretsizdir — başvurmak hiçbir zaman ücretlendirmez.",
+      "signUpFree": "Ücretsiz kaydolun",
+      "logIn": "Giriş yap",
+      "aboutClient": "İşveren hakkında",
+      "anonymousClient": "Bir işveren",
+      "noReviewsYet": "Henüz yorum yok",
+      "postingCount": "{count, plural, one {# ilan} other {# ilan}}",
+      "paymentVerified": "Ödemesi doğrulanmış",
+      "yourApplication": "Başvurunuz",
+      "applyTitle": "Bu işe başvur",
+      "appliedNote": "Başvurdunuz. Durumunu <dashboard>panelinizden</dashboard> takip edebilirsiniz.",
+      "onlyFreelancers": "İlanlara yalnızca freelancer hesapları başvurabilir.",
+      "closedJob": "Bu ilan artık başvuru kabul etmiyor.",
+      "signInToApply": "Başvurmak için giriş yap",
+      "backToDashboard": "Panele dön",
+      "backToJobs": "İlanlara dön",
+      "applicants": "Başvuranlar",
+      "viewAll": "Tümünü gör ({count})",
+      "noApplicationsYet": "Henüz başvuru yok.",
+      "freelancerFallback": "Freelancer",
+      "bidPerHour": "{amount}/saat"
+    },
+    "apply": {
+      "enterBid": "Teklif tutarınızı girin.",
+      "couldNotSubmit": "Başvurunuz gönderilemedi.",
+      "coverLetter": "Ön yazı",
+      "coverLetterPlaceholder": "Neden uygunsunuz — ilgili işler, yaklaşım ve müsaitlik.",
+      "bidType": "Teklif türü",
+      "bidFixed": "Sabit",
+      "bidHourly": "Saatlik",
+      "rateUsdHour": "Ücret (USD/saat)",
+      "bidUsd": "Teklif (USD)",
+      "daysOptional": "Gün (isteğe bağlı)",
+      "submitting": "Gönderiliyor…",
+      "submit": "Başvuruyu gönder"
+    },
+    "proposals": {
+      "yourCompany": "Şirketiniz",
+      "applicationCount": "{count, plural, one {# başvuru} other {# başvuru}}",
+      "empty": "Henüz başvuru yok.",
+      "bidPerHour": "{amount}/saat"
+    },
+    "reply": {
+      "placeholder": "Bu başvurana yanıt yazın…",
+      "sending": "Gönderiliyor…",
+      "send": "Yanıtı gönder",
+      "sent": "Gönderildi",
+      "error": "Gönderilemedi — tekrar deneyin"
+    }
+  },
+  "inbox": {
+    "meta": {
+      "title": "Mesajlar"
+    },
+    "title": "Mesajlar",
+    "empty": "Henüz sohbet yok. Bir işveren başvurunuza yanıt verdiğinde başlar.",
+    "conversationFallback": "Sohbet",
+    "clientFallback": "İşveren",
+    "thread": {
+      "unknown": "Bilinmeyen",
+      "you": "Siz",
+      "clientFallback": "İşveren",
+      "conversationFallback": "Sohbet",
+      "allMessages": "Tüm mesajlar",
+      "empty": "Henüz mesaj yok — selam verin."
+    },
+    "form": {
+      "couldNotSend": "Mesajınız gönderilemedi.",
+      "placeholder": "Bir mesaj yazın…",
+      "sending": "Gönderiliyor…",
+      "send": "Mesajı gönder"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Ayarlar"
+    },
+    "title": "Ayarlar",
+    "subtitle": "Hesabınızı, ödemelerinizi ve güvenliğinizi yönetin.",
+    "account": "Hesap",
+    "name": "Ad Soyad",
+    "email": "E-posta",
+    "accountType": "Hesap türü",
+    "memberSince": "Üyelik başlangıcı",
+    "roles": {
+      "CLIENT": "İşveren",
+      "FREELANCER": "Freelancer",
+      "AGENCY_OWNER": "Ajans sahibi",
+      "AGENCY_MEMBER": "Ajans üyesi",
+      "ADMIN": "Yönetici"
+    },
+    "profileTitle": "Herkese açık profil",
+    "profileDesc": "Başlığınız, hakkımda yazınız, ücretiniz, müsaitliğiniz ve bağlantılarınız — işverenlerin gördüğü şey.",
+    "identityTitle": "Kimliğiniz",
+    "identityDesc": "Şirket adı, web sitesi ve hakkımda — freelancerların sizi nasıl gördüğü.",
+    "getPaidTitle": "Ödeme al",
+    "getPaidDesc": "Ödeme alım yöntemi bağlayın ve kazandığınızın %100'ünü alın.",
+    "billingTitle": "Ödeme ve faturalama",
+    "billingDesc": "Yeteneklere nasıl ödeme yapacağınızı seçin — doğrudan, sıfır platform ücretiyle.",
+    "notificationsTitle": "Bildirimler ve gizlilik",
+    "notificationsDesc": "E-posta tercihleri · Herkese açık ad {name} olarak görünür.",
+    "nameDisplay": {
+      "full": "tam adınız",
+      "abbreviated": "ad + soyad baş harfi"
+    },
+    "securityTitle": "Güvenlik",
+    "securityDesc": "Şifre {password} · İki adımlı doğrulama {twofa}.",
+    "state": {
+      "set": "tanımlı",
+      "notSet": "tanımsız",
+      "enabled": "etkin",
+      "off": "kapalı"
+    },
+    "avatar": {
+      "uploadFailed": "Yükleme başarısız — başka bir görsel deneyin",
+      "uploading": "Yükleniyor…",
+      "changePhoto": "Fotoğrafı değiştir",
+      "addPhoto": "Fotoğraf ekle",
+      "formatHint": "PNG, JPG veya WebP, en fazla 2 MB."
+    },
+    "profile": {
+      "metaTitle": "Herkese açık profil",
+      "backToSettings": "Ayarlar",
+      "freelancerTitle": "Herkese açık profil",
+      "clientTitle": "Kimliğiniz",
+      "viewPublic": "Herkese açık profili gör",
+      "freelancerIntro": "İşverenler sizi bulduğunda budur.",
+      "clientIntro": "İlanlarınızda ve mesajlarda freelancerlara böyle görünürsünüz.",
+      "photo": "Fotoğraf",
+      "details": "Bilgiler",
+      "sectionBasics": "Temel bilgiler",
+      "fullName": "Ad Soyad",
+      "nameLockedHint": "Onaydan sonra kilitlendi — düzelttirmek için destekle iletişime geçin.",
+      "nameLockNotice": "Hesabınız onaylandığında bu alan kilitlenir; şimdi doğru yazdığınızdan emin olun.",
+      "headline": "Başlık",
+      "headlinePlaceholder": "Kıdemli Full-Stack Geliştirici · React ve Node",
+      "bio": "Hakkımda",
+      "bioPlaceholder": "Ne yaptığınızı, kime yaptığınızı ve elde ettiğiniz sonuçları anlatın. Somut çıktılar, sıfatlardan iyidir.",
+      "bioTooShort": "— en az {min} karakter",
+      "bioMin": "(en az {min})",
+      "sectionAvailability": "Müsaitlik ve ücret",
+      "location": "Konum",
+      "locationPlaceholder": "İstanbul, Türkiye",
+      "timezone": "Saat dilimi",
+      "timezonePlaceholder": "UTC+3 (İstanbul)",
+      "hourlyRate": "Saatlik ücret (USD)",
+      "hoursPerWeek": "Haftalık saat",
+      "yearsExperience": "Deneyim (yıl)",
+      "availability": "Müsaitlik",
+      "openToWork": "İşe açık",
+      "openToOffers": "Tekliflere açık",
+      "notAvailable": "Müsait değil",
+      "sectionLinks": "Profesyonel bağlantılar",
+      "linksHint": "Her alan yalnızca ilgili sitenin adreslerini kabul eder.",
+      "link": {
+        "website": "Web sitesi",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "stackoverflow": "Stack Overflow",
+        "dribbble": "Dribbble",
+        "behance": "Behance",
+        "x": "X / Twitter"
+      },
+      "fields": {
+        "headline": "Başlık",
+        "bio": "Hakkımda",
+        "location": "Konum",
+        "timezone": "Saat dilimi",
+        "availability": "Müsaitlik",
+        "yearsExperience": "Deneyim (yıl)",
+        "hourlyRate": "Saatlik ücret",
+        "hoursPerWeek": "Haftalık saat"
+      },
+      "couldNotSaveName": "Adınız kaydedilemedi.",
+      "couldNotSave": "Kaydedilemedi. Alanları kontrol edin.",
+      "saving": "Kaydediliyor…",
+      "saveProfile": "Profili kaydet",
+      "saved": "Kaydedildi"
+    },
+    "company": {
+      "couldNotSave": "Kaydedilemedi. Alanları kontrol edip tekrar deneyin.",
+      "yourName": "Adınız",
+      "companyName": "Şirket adı",
+      "companyNamePlaceholder": "Northwind Labs",
+      "companyNameHint": "İlanlarınızda ve mesajlarda freelancerlara gösterilir. Kendi adınızı kullanmak için boş bırakın.",
+      "companyUrl": "Şirket web sitesi",
+      "location": "Konum",
+      "locationPlaceholder": "İstanbul, Türkiye",
+      "about": "Hakkında",
+      "aboutPlaceholder": "Şirketinizin ne yaptığı ve genellikle ne için işe aldığınız.",
+      "saving": "Kaydediliyor…",
+      "save": "Kaydet",
+      "saved": "Kaydedildi"
+    },
+    "payments": {
+      "meta": {
+        "title": "Ödeme al"
+      },
+      "backToSettings": "Ayarlar",
+      "getPaidTitle": "Ödeme al",
+      "billingTitle": "Ödeme ve faturalama",
+      "freelancerIntro": "%100 sizde kalır. Ödemeler işverenlerden doğrudan size gider — Freelancezero paranıza asla dokunmaz.",
+      "clientIntro": "Yeteneklere doğrudan, sıfır platform ücretiyle ödeyin. Yöntemi siz seçersiniz; para doğrudan freelancer'a gider.",
+      "noMethodTitle": "Henüz bir ödeme alım yöntemi kurulmadı.",
+      "noPaymentTitle": "Henüz bir ödeme yöntemi kurulmadı.",
+      "noMethodBody": "İş kabul edildiğinde işverenlerin size ödeme yapabilmesi için bir tane ekleyin.",
+      "noPaymentBody": "İşe aldığınız freelancerlara ödeme yapabilmeniz için bir tane ekleyin.",
+      "lifetimeEarned": "Toplam kazanç",
+      "lifetimePaid": "Toplam ödeme",
+      "zeroFeeNote": "%0 platform ücreti — her zaman.",
+      "activeContracts": "Aktif sözleşme",
+      "noContractsYet": "Henüz aktif sözleşme yok.",
+      "inProgress": "Devam ediyor.",
+      "payoutMethod": "Ödeme alım yöntemi",
+      "paymentMethod": "Ödeme yöntemi"
+    },
+    "payoutMethods": {
+      "stripe": {
+        "label": "Stripe Connect",
+        "desc": "Banka kartınıza veya hesabınıza anında ödeme.",
+        "placeholder": "Hesap e-postası"
+      },
+      "paypal": {
+        "label": "PayPal",
+        "desc": "Dünyanın her yerinde PayPal bakiyenize ödeme.",
+        "placeholder": "PayPal e-postası"
+      },
+      "wise": {
+        "label": "Wise",
+        "desc": "Düşük maliyetli, çok para birimli transferler.",
+        "placeholder": "Wise e-postası"
+      },
+      "manual": {
+        "label": "Banka havalesi / fatura",
+        "desc": "Ödemeyi doğrudan işverenle ayarlayın.",
+        "placeholder": "IBAN veya not (isteğe bağlı)"
+      },
+      "connected": "Bağlı",
+      "remove": "Kaldır",
+      "cancel": "Vazgeç",
+      "connect": "Bağla",
+      "holderPlaceholder": "Hesap sahibi adı (zorunlu)",
+      "saving": "Kaydediliyor…",
+      "save": "Kaydet",
+      "couldNotSave": "Kaydedilemedi. Tekrar deneyin.",
+      "freelancerNote": "Müşterileriniz, seçtiğiniz yöntemle size doğrudan ödeme yapar. Freelancezero paranızı asla tutmaz ve kesinti yapmaz.",
+      "clientNote": "Yeteneklere, seçtiğiniz yöntemle doğrudan ödeme yaparsınız. Freelancezero fon tutmaz ve platform ücreti almaz."
+    },
+    "notifications": {
+      "meta": {
+        "title": "Bildirimler ve gizlilik"
+      },
+      "backToSettings": "Ayarlar",
+      "title": "Bildirimler ve gizlilik",
+      "subtitle": "Size hangi e-postaları göndereceğimizi ve adınızın başkalarına nasıl görüneceğini yönetin.",
+      "exampleName": "Ayşe Yılmaz",
+      "form": {
+        "privacySection": "Gizlilik",
+        "fullNameToggle": "Tam adımı herkese açık göster",
+        "fullNameOn": "Profiliniz “{name}” olarak görünüyor.",
+        "fullNameOff": "Profiliniz “{name}” olarak görünüyor. Tam adınızı göstermek için bunu açın.",
+        "indexToggle": "Profilimi arama motorlarında göster",
+        "indexOn": "Profiliniz Google sonuçlarında görünebilir — ücretsiz iş akışı. Yalnızca Freelancezero'daki işverenlerin görmesi için kapatın.",
+        "indexOff": "Profiliniz arama motorlarından gizli. Freelancezero'daki işverenler yine de bulup görüntüleyebilir.",
+        "emailSection": "E-posta bildirimleri",
+        "proposalsToggle": "Başvurular ve teklifler",
+        "proposalsDesc": "Birisi ilanınıza başvurduğunda veya başvurunuzun durumu değiştiğinde.",
+        "messagesToggle": "Mesajlar",
+        "messagesDesc": "Bir işveren veya freelancer size mesaj gönderdiğinde.",
+        "newsToggle": "Ürün haberleri",
+        "newsDesc": "Yeni özellikler hakkında ara sıra güncellemeler. Ayda birden sık değil.",
+        "securityToggle": "Güvenlik ve hesap e-postaları",
+        "securityDesc": "E-posta onayı, şifre ve ödeme değişiklikleri. Güvenliğiniz için her zaman açık.",
+        "couldNotSave": "Bu değişiklik kaydedilemedi.",
+        "saved": "Kaydedildi"
+      }
+    },
+    "security": {
+      "meta": {
+        "title": "Güvenlik"
+      },
+      "backToSettings": "Ayarlar",
+      "title": "Güvenlik",
+      "subtitle": "Hesabınızı güvende tutun. Buradaki değişiklikler bir onay e-postası tetikler.",
+      "overview": "Genel bakış",
+      "emailConfirmed": "E-posta onayı",
+      "stateConfirmed": "Onaylı",
+      "stateNotConfirmed": "Henüz onaylanmadı",
+      "passwordRow": "Şifre",
+      "stateSet": "Tanımlı",
+      "stateNoPassword": "Tanımsız — bağlantı veya sosyal giriş ile girersiniz",
+      "identityVerified": "Kimlik doğrulaması",
+      "stateVerified": "Doğrulanmış",
+      "stateNotVerified": "Doğrulanmamış",
+      "twoFactor": "İki adımlı doğrulama",
+      "stateEnabled": "Etkin",
+      "stateNotEnabled": "Etkin değil",
+      "connectedMethods": "Bağlı giriş yöntemleri",
+      "emailOnly": "Yalnızca e-posta",
+      "changePassword": "Şifreyi değiştir",
+      "setAPassword": "Şifre belirle",
+      "identityVerification": "Kimlik doğrulama",
+      "twofaOn": "Hesabınızda iki adımlı doğrulama etkin.",
+      "twofaOff": "Girişte doğrulayıcı uygulama ile ikinci bir adım ekleyin. Kurulum yakında geliyor — bu arada güçlü ve benzersiz bir şifre kullanın.",
+      "manage2fa": "2FA'yı yönet",
+      "setup2fa": "2FA'yı kur (yakında)",
+      "recentActivity": "Son hesap hareketleri",
+      "noActivity": "Henüz kayıtlı hareket yok.",
+      "audit": {
+        "user_password_change": "Şifre değiştirildi",
+        "user_login": "Giriş yapıldı",
+        "job_publish": "İlan yayınlandı",
+        "payment_release": "Ödeme serbest bırakıldı"
+      },
+      "passwordForm": {
+        "mismatch": "Yeni şifreler eşleşmiyor",
+        "couldNotUpdate": "Şifreniz güncellenemedi.",
+        "currentPassword": "Mevcut şifre",
+        "noPasswordNotice": "Hesabınıza sihirli bağlantı veya sosyal giriş ile erişilir. Şifre de belirlemek için bir tane oluşturun.",
+        "newPassword": "Yeni şifre",
+        "requirements": "En az 8 karakter; bir büyük harf, bir küçük harf ve bir rakam.",
+        "confirmNewPassword": "Yeni şifreyi onayla",
+        "updated": "Şifre güncellendi",
+        "saving": "Kaydediliyor…",
+        "changePassword": "Şifreyi değiştir",
+        "setPassword": "Şifre belirle"
+      },
+      "identity": {
+        "identityLabel": "Kimlik",
+        "status": {
+          "UNVERIFIED": "Doğrulanmamış",
+          "PENDING": "Devam ediyor",
+          "PROCESSING": "İncelemede",
+          "VERIFIED": "Doğrulanmış",
+          "FAILED": "Doğrulanamadı"
+        },
+        "desc": {
+          "UNVERIFIED": "Herkese açık profilinizde bir rozet kazanmak için kimliğinizi doğrulayın. İşverenler doğrulanmış freelancerları daha kolay işe alır.",
+          "PENDING": "Açılan pencerede doğrulama adımlarını tamamlayın. Telefonda devam etmek için QR kodunu tarayabilirsiniz.",
+          "PROCESSING": "Belgeleriniz inceleniyor. Bu genellikle birkaç dakika sürer — size e-posta göndereceğiz.",
+          "VERIFIED": "Kimliğiniz doğrulandı ve herkese açık profilinizde doğrulanmış rozeti gösterilecek.",
+          "FAILED": "Sağlanan belgelerle kimliğinizi doğrulayamadık. Tekrar deneyebilirsiniz."
+        },
+        "disabledNote": "Kimlik doğrulama bu kurulumda etkin değil. Açmak için <code>IDENTITY_DRIVER</code> ayarını yapın.",
+        "couldNotStart": "Doğrulama başlatılamadı.",
+        "starting": "Başlatılıyor…",
+        "tryAgain": "Tekrar dene",
+        "start": "Kimliğimi doğrula",
+        "privacyNote": "Doğrulamalar iş ortaklarımız tarafından yapılır. Freelancezero belge görsellerinizi veya kimlik numaralarınızı asla almaz ya da saklamaz — yalnızca sonucu."
+      }
+    }
+  },
+  "admin": {
+    "title": "Yönetim",
+    "tabApprovals": "Onaylar",
+    "tabUsers": "Kullanıcılar",
+    "tabJobs": "İlanlar",
+    "approvals": {
+      "title": "Hesap onayları",
+      "pendingCount": "{count} bekliyor",
+      "intro": "Onay, kullanıcının ilan vermesine veya başvuru yapmasına izin verir. Spam'e karşı son savunma hattıdır.",
+      "empty": "Bekleyen kimse yok — sıra boş.",
+      "joined": "Katılım: {date}",
+      "roles": {
+        "CLIENT": "İşveren",
+        "FREELANCER": "Freelancer",
+        "AGENCY_OWNER": "Ajans sahibi",
+        "AGENCY_MEMBER": "Ajans üyesi",
+        "ADMIN": "Yönetici"
+      },
+      "approve": "Onayla",
+      "approving": "Onaylanıyor…"
+    },
+    "jobs": {
+      "title": "İlanlar",
+      "awaitingCuration": "{count} kürasyon bekliyor",
+      "intro": "Kazınan ilanlar, iletişim adresi bulunamadığında taslak olarak gelir. Şirket adını ve bir e-posta ekleyin, sonra yayınlayın — başvurular yalnızca gerçek bir posta kutusuna iletilebilir.",
+      "filter": {
+        "drafts": "Kürasyon gerekli",
+        "open": "Yayında",
+        "all": "Tümü"
+      },
+      "empty": "Burada bir şey yok. Yeni ilanları çekmek için kazıma görevini çalıştırın.",
+      "couldNotSave": "Kaydedilemedi.",
+      "status": {
+        "OPEN": "Yayında",
+        "DRAFT": "Taslak",
+        "CLOSED": "Kapalı",
+        "PAUSED": "Duraklatıldı"
+      },
+      "scraped": "kazınmış",
+      "noContact": "iletişim yok",
+      "noCompanyName": "— şirket adı yok —",
+      "applicantsShort": "{count} başvuran",
+      "publish": "Yayınla",
+      "unpublish": "Yayından kaldır",
+      "titleLabel": "Başlık",
+      "companyLabel": "Şirket adı",
+      "contactEmailLabel": "İletişim e-postası",
+      "companyPlaceholder": "Acme A.Ş.",
+      "contactPlaceholder": "is@acme.com",
+      "sourceUrlLabel": "Kaynak URL",
+      "saving": "Kaydediliyor…",
+      "save": "Kaydet",
+      "saved": "Kaydedildi",
+      "viewPosting": "İlanı görüntüle"
+    },
+    "users": {
+      "title": "Kullanıcılar",
+      "intro": "Hesap verilerini inceleyin ve düzeltin. Kazınan şirketler, biri e-postasıyla giriş yapana kadar kabuk halindedir — başvuruların ulaşması için bir iletişim adresi doldurun.",
+      "filter": {
+        "clients": "İşverenler",
+        "freelancers": "Freelancerlar",
+        "companies": "Kazınan şirketler",
+        "all": "Tümü"
+      },
+      "empty": "Bu görünümde hesap yok.",
+      "couldNotSave": "Kaydedilemedi.",
+      "roles": {
+        "CLIENT": "İşveren",
+        "FREELANCER": "Freelancer",
+        "AGENCY_OWNER": "Ajans sahibi",
+        "AGENCY_MEMBER": "Ajans üyesi",
+        "ADMIN": "Yönetici",
+        "UNCLAIMED": "Sahipsiz"
+      },
+      "status": {
+        "ACTIVE": "Aktif",
+        "UNCLAIMED": "Sahipsiz",
+        "SUSPENDED": "Askıda",
+        "DELETED": "Silinmiş"
+      },
+      "unapproved": "onaysız",
+      "noName": "— ad yok —",
+      "contactPrefix": "iletişim:",
+      "postingsShort": "{count} ilan",
+      "proposalsShort": "{count} başvuru",
+      "approve": "Onayla",
+      "nameLabel": "Ad",
+      "contactNameLabel": "İletişim adı",
+      "headlineLabel": "Başlık",
+      "companyLabel": "Şirket adı",
+      "contactEmailLabel": "İletişim e-postası",
+      "viewProfile": "Profili gör",
+      "saving": "Kaydediliyor…",
+      "save": "Kaydet",
+      "saved": "Kaydedildi"
+    }
+  },
+  "status": {
+    "meta": {
+      "title": "Sistem Durumu",
+      "description": "Freelancezero'nun canlı çalışma durumu — API, veritabanı, e-posta iletimi ve arka plan görevleri, 90 günlük çalışma süresi geçmişiyle.",
+      "keywords": [
+        "freelancezero durum",
+        "freelancezero uptime"
+      ]
+    },
+    "title": "Sistem durumu",
+    "allOperational": "Tüm sistemler çalışıyor",
+    "partialDisruption": "Kısmi hizmet kesintisi",
+    "checkedAt": "Kontrol zamanı: {time}",
+    "checks": {
+      "web": {
+        "name": "Web uygulaması",
+        "desc": "Pazar yeri sayfaları ve panel"
+      },
+      "database": {
+        "name": "Veritabanı",
+        "desc": "İlanlar, başvurular ve hesaplar"
+      },
+      "email": {
+        "name": "E-posta iletimi",
+        "desc": "Giriş bağlantıları ve bildirimler"
+      },
+      "jobs": {
+        "name": "Arka plan görevleri",
+        "desc": "İlan kazıma ve e-posta dağıtımı"
+      }
+    },
+    "web.ok": "İstekler karşılanıyor",
+    "database.ok": "{ms} ms içinde yanıt verdi",
+    "database.down": "Erişilemiyor",
+    "email.ok": "Sağlayıcı yapılandırıldı",
+    "email.down": "Sağlayıcı yapılandırılmamış",
+    "jobs.idle": "Boşta",
+    "jobs.lastRun": "Son çalışma {hours} saat önce",
+    "jobs.noRuns": "Henüz kayıtlı çalışma yok",
+    "jobs.unknown": "Bilinmiyor",
+    "operational": "Çalışıyor",
+    "degraded": "Sorunlu",
+    "uptimeTitle": "90 günlük çalışma süresi",
+    "daysAgo": "90 gün önce",
+    "today": "Bugün",
+    "footerNote": "Kontroller bu sayfa yüklendiğinde çalışır. Olay geçmişi ve planlı bakım için status@freelancezero.com adresine yazın."
+  },
+  "careers": {
+    "meta": {
+      "title": "Kariyer — Adil Freelance Pazar Yerini Birlikte İnşa Edelim",
+      "description": "Freelancezero'ya katılın ve sıfır ücretli, açık kaynaklı freelance pazar yerini birlikte inşa edin. Mühendislik, tasarım ve büyüme alanlarında uzaktan roller.",
+      "keywords": [
+        "freelancezero kariyer",
+        "uzaktan startup işleri",
+        "açık kaynak işler"
+      ]
+    },
+    "hiringBadge": "İşe alıyoruz",
+    "title": "Adil freelance ekonomisini inşa edin",
+    "intro": "Freelancezero, freelancerların kazandıkları her şeyi almasını sağlayan %100 ücretsiz, açık kaynaklı bir pazar yeridir. Hissedarlar için değil, insanlar için geliştiren küçük ve uzak bir ekibiz.",
+    "perks": {
+      "remoteFirst": {
+        "title": "Uzaktan öncelikli",
+        "desc": "Nereden isterseniz oradan çalışın. Saatleri değil, çıktıları önemsiyoruz."
+      },
+      "fairByDesign": {
+        "title": "Tasarımı gereği adil",
+        "desc": "Freelancerlardan %0 alıyoruz — ekibimize de adil ödüyoruz."
+      },
+      "realOwnership": {
+        "title": "Gerçek sahiplik",
+        "desc": "Anlamlı hisse senedi ve ne inşa edeceğimize dair söz hakkı."
+      },
+      "openSource": {
+        "title": "Açık kaynak",
+        "desc": "Emeğiniz herkese açık, taşınabilir ve gurur duyulacak bir şey."
+      }
+    },
+    "openRoles": "Açık pozisyonlar",
+    "positionsNote": "{count} pozisyon · tümü uzaktan",
+    "apply": "Başvur",
+    "roles": {
+      "seniorSoftwareEngineer": {
+        "title": "Kıdemli Yazılım Geliştirici",
+        "team": "Mühendislik",
+        "location": "Uzaktan (küresel)",
+        "type": "Tam zamanlı",
+        "mailSubject": "Başvuru: Kıdemli Yazılım Geliştirici",
+        "blurb": "İş akışından ödeme adaptörlerine kadar Next.js + Prisma yığınımızda uçtan uca özelliklerin sahibi olun. Haftalık yayınlarsınız ve çekirdek ürünü şekillendirirsiniz."
+      },
+      "hrRecruiter": {
+        "title": "İK Uzmanı",
+        "team": "İnsan Kaynakları",
+        "location": "Uzaktan (küresel)",
+        "type": "Tam zamanlı",
+        "mailSubject": "Başvuru: İK Uzmanı",
+        "blurb": "Adil freelance ekonomisini inşa eden ekibi kurun. İşe alımı uçtan uca sahiplenin — kaynak tarama, eleme ve her adaya gerçekten iyi bir deneyim."
+      },
+      "marketing": {
+        "title": "Pazarlama",
+        "team": "Büyüme",
+        "location": "Uzaktan (küresel)",
+        "type": "Tam zamanlı",
+        "mailSubject": "Başvuru: Pazarlama",
+        "blurb": "İçerik ve SEO motorumuzu sahiplenin. İnsanların gerçekten okumak isteyeceği sayfalarla ve freelancerların güvendiği bir markayla “Upwork alternatifi” arama niyetini kayda dönüştürün."
+      }
+    },
+    "noRoleTitle": "Pozisyonunuzu göremediniz mi?",
+    "noRoleBody": "Daha adil bir freelance ekonomisine inanan insanlarla tanışmak için her zaman hazırız. Ne inşa edeceğinizi anlatın.",
+    "getInTouch": "Bize ulaşın"
+  },
+  "freelancerProfile": {
+    "notFoundTitle": "Freelancer bulunamadı",
+    "freelancerFallback": "Freelancer",
+    "metaDescription": "{name}{where} ile çalışın — {headline}{skills}. Freelancezero'da platform ücreti sıfır.",
+    "availability": {
+      "OPEN_TO_WORK": "İşe açık",
+      "OPEN_TO_OFFERS": "Tekliflere açık",
+      "NOT_AVAILABLE": "Müsait değil"
+    },
+    "noReviewsYet": "Henüz yorum yok",
+    "hoursPerWeekShort": "{hours} sa/hafta",
+    "yearsExperienceShort": "{years} yıl deneyim",
+    "perHour": "saatlik",
+    "linkWebsite": "Web sitesi",
+    "linkLinkedIn": "LinkedIn",
+    "linkGitHub": "GitHub",
+    "linkStackOverflow": "Stack Overflow",
+    "linkDribbble": "Dribbble",
+    "linkBehance": "Behance",
+    "linkX": "X",
+    "about": "Hakkında",
+    "portfolio": "Portföy",
+    "viewProject": "Projeyi görüntüle",
+    "experience": "Deneyim",
+    "present": "Halihazırda",
+    "languages": "Diller",
+    "identityVerified": "Kimlik doğrulanmış"
+  },
+  "blog": {
+    "meta": {
+      "title": "Freelance Rehberleri, Ücret Analizleri ve Platform Karşılaştırmaları",
+      "description": "Freelance ücretleri, platform ücretleri, sözleşmeler ve ödeme alma üzerine pratik rehberler — kazandıklarını saklamak isteyen freelancerlar için.",
+      "keywords": [
+        "freelance blog",
+        "freelance rehberleri",
+        "freelance tavsiyeleri",
+        "freelance ipuçları 2026"
+      ]
+    },
+    "title": "Kaynaklar",
+    "intro": "Ücretler, platform masrafları, sözleşmeler ve ödeme alma üzerine rehberler — kazandıklarının %100'ünü saklamak isteyen freelancerlar için yazıldı.",
+    "translationNote": "Makalelerimize şu anda İngilizce devam ediyoruz; Türkçe çevirileri aşama aşama ekliyoruz.",
+    "minRead": "{minutes} dakikalık okuma",
+    "minShort": "{minutes} dk",
+    "categories": {
+      "Guides": "Rehberler",
+      "Comparisons": "Karşılaştırmalar",
+      "Money": "Para",
+      "Growth": "Büyüme",
+      "Product": "Ürün"
+    },
+    "notFoundTitle": "Yazı bulunamadı",
+    "allResources": "Tüm kaynaklar",
+    "crumbHome": "Ana sayfa",
+    "ctaTitle": "Kazandığınızın %100'ünü saklayın",
+    "ctaBody": "Freelancezero %0 komisyon alır — başvuru ücreti yok, faturanızdan kesinti yok.",
+    "ctaButton": "Ücretsiz hesap oluştur",
+    "keepReading": "Okumaya devam edin"
+  },
+  "legal": {
+    "privacy": {
+      "meta": {
+        "title": "Gizlilik Politikası",
+        "description": "Freelancezero kişisel verilerinizi nasıl toplar, kullanır ve korur? Verinizi asla satmayız; dilediğiniz zaman dışa aktarabilir veya sildirebilirsiniz.",
+        "keywords": [
+          "freelancezero gizlilik politikası",
+          "freelance platform veri koruma"
+        ]
+      },
+      "title": "Gizlilik Politikası",
+      "intro": "Pazar yerini çalıştırmak için gereken asgari veriyi toplarız, verinizi asla satmayız ve dilediğiniz zaman yanınızda götürmenize ya da silinmesine izin veririz.",
+      "updated": "Son güncelleme: 2 Ağustos 2026",
+      "whoWeAre": {
+        "title": "Biz kimiz",
+        "body": "Freelancezero (“biz”), sıfır ücretli bir freelance pazar yerini işletir. Bu politika, freelancezero.com'daki barındırılan hizmeti kullandığınızda kişisel verilerinize ne yaptığımızı açıklar. Freelancezero aynı zamanda açık kaynaklı ve kendi sunucunuza kurulabilirdir — bir başkasının kurulumunu kullanıyorsanız veri sorumlusu biz değil, o işleticidir."
+      },
+      "whatWeCollect": {
+        "title": "Neleri toplarız",
+        "items": [
+          "Hesap verileri: ad, e-posta adresi, şifre özeti ve yüklerseniz profil fotoğrafı.",
+          "Profil verileri: yayımlamayı seçtiğiniz başlık, hakkımda, beceriler, ücretler, portföy çalışmaları ve iş geçmişi.",
+          "Pazar yeri hareketleri: ilanlar, başvurular, mesajlar, sözleşmeler ve yorumlar.",
+          "Ödeme tercihleri: seçtiğiniz ödeme yöntemi ve yalnızca gösterime yönelik bir tanımlayıcı (örneğin PayPal e-postası). Fonların velayetini asla almıyoruz ve tam banka bilgilerini saklamıyoruz.",
+          "Teknik veriler: giriş ve ödeme değişikliği gibi güvenliğe duyarlı işlemler için denetim kayıtları. Denetim kayıtları bilinçli olarak asgari tutulur — yanlarına IP adresi veya tarayıcı bilgisi saklamayız."
+        ]
+      },
+      "howWeUse": {
+        "title": "Nasıl kullanırız",
+        "items": [
+          "Pazar yerini işletmek için: freelancerları işlerle eşleştirmek, başvuruları iletmek ve mesajlaşmayı sağlamak.",
+          "İşlemsel e-posta göndermek için: e-posta onayı, giriş bağlantıları, başvuru bildirimleri ve güvenlik uyarıları.",
+          "Platformu güvenli tutmak için: spam, dolandırıcılık ve kötüye kullanımı önlemek ve onaydan önce hesapları incelemek.",
+          "Yasal yükümlülüklere uyum sağlamak ve uyuşmazlıkları çözmek."
+        ]
+      },
+      "howWeUseNote": "Kişisel verilerinizi satmayız ve reklam profili eğitmek için kullanmayız.",
+      "legalBases": {
+        "title": "Hukuki dayanaklar (KVKK/GDPR)",
+        "body": "KVKK veya GDPR'nin uygulandığı yerlerde kişisel verilerinizi şu dayanaklarla işleriz: sözleşmenin ifası (hesabınızın ve pazar yerinin işletilmesi), meşru menfaat (güvenlik, dolandırıcılık önleme, ürün iyileştirme), açık rıza (dilediğiniz zaman geri çekebileceğiniz isteğe bağlı iletişim) ve hukuki yükümlülük (vergi ve uyum kayıtları)."
+      },
+      "sharing": {
+        "title": "Paylaşım",
+        "body": "Verileri yalnızca hizmetin çalışmasını sağlayan işleyicilerle paylaşırız — barındırma sağlayıcımız, veritabanı sunucumuz ve işlemsel e-posta sağlayıcımız. Bunlar talimatlarımız doğrultusunda hareket eder ve sözleşmeyle bağlıdır. Bir işe başvurduğunuzda adınız, profiliniz ve başvurunuz o işverenle paylaşılır; platformun amacı zaten budur."
+      },
+      "retention": {
+        "title": "Saklama",
+        "body": "Hesap verilerini hesabınız açık olduğu sürece tutarız. Hesabınızı sildiğinizde bir bekleme süresi başlatırız; bu süreden sonra kişisel veriler silinir veya geri döndürülemez biçimde anonimleştirilir. Yasal olarak saklamamız gereken kayıtlar (örneğin işlem defterleri) yasal süre boyunca saklanır."
+      },
+      "yourRights": {
+        "title": "Haklarınız",
+        "items": [
+          "Erişim ve dışa aktarma: profil ve portföyünüz dahil verinizi indirin.",
+          "Düzeltme: yanlış olan her şeyi ayarlar sayfanızdan düzeltin.",
+          "Silme: hesabınızı ve ilişkili kişisel verilerinizi silin.",
+          "İtiraz ve kısıtlama: belirli işleme faaliyetlerini durdurmamızı isteyin.",
+          "Şikâyet: yerel veri koruma merciine başvurun."
+        ]
+      },
+      "yourRightsNote": "Bunlardan herhangi birini kullanmak için privacy@freelancezero.com adresine yazın.",
+      "cookies": {
+        "title": "Çerezler",
+        "body": "Kimlik doğrulama ve güvenlik için yalnızca zorunlu çerezleri kullanırız. Reklam veya siteler arası izleme çerezi kullanmayız."
+      },
+      "changes": {
+        "title": "Değişiklikler",
+        "body": "Önemli değişiklikler yaptığımızda yukarıdaki tarihi günceller ve değişiklik ciddi ise sizi e-postayla bilgilendiririz. Sorularınız için <termsLink>Kullanım Koşulları</termsLink> ve <securityLink>Güvenlik</securityLink> sayfalarımıza bakın."
+      }
+    },
+    "terms": {
+      "meta": {
+        "title": "Kullanım Koşulları",
+        "description": "Freelancezero — sıfır ücretli freelance pazar yeri — kullanımınızı düzenleyen koşullar. Anlaşılır dil, gizli komisyon yok.",
+        "keywords": [
+          "freelancezero kullanım koşulları",
+          "freelance pazar yeri koşulları"
+        ]
+      },
+      "title": "Kullanım Koşulları",
+      "intro": "Freelancezero kullanım kuralları. Kimsenin okumadığı koşullar kimseyi korumadığı için bunları kısa ve okunabilir tutmaya çalıştık.",
+      "updated": "Son güncelleme: 2 Ağustos 2026",
+      "agreement": {
+        "title": "1. Sözleşme",
+        "body": "Freelancezero'da hesap oluşturarak veya platformu kullanarak bu Koşulları kabul etmiş olursunuz. Platformu bir şirket adına kullanıyorsanız o şirketi bağlamaya yetkili olduğunuzu teyit edersiniz. Kabul etmiyorsanız hizmeti kullanmayın."
+      },
+      "whatIs": {
+        "title": "2. Freelancezero nedir — ve değildir",
+        "body": "Freelancezero, işverenlerle freelancerları buluşturan bir buluşma yeridir. Çalışmanızdan <strong>komisyon almıyoruz</strong>. Başka bir kullanıcıyla kurduğunuz sözleşmenin tarafı <strong>değiliz</strong>; işveren veya istihdam bürosu değiliz ve yapılan hiçbir işi denetlemez ya da garanti etmeyiz.",
+        "nonCustodial": "Freelancezero vesayetsizdir: paranızı asla tutmayız. Ödemeler, işveren ve freelancerın seçtiği yöntemle doğrudan aralarında düzenlenir."
+      },
+      "eligibility": {
+        "title": "3. Uygunluk ve hesaplar",
+        "items": [
+          "En az 18 yaşında ve sözleşme yapabilecek yasal ehliyette olmalısınız.",
+          "Doğru bilgi vermeli ve profilinizi güncel tutmalısınız.",
+          "Hesap bilgilerinizin ve hesabınız altında yapılan her şeyin sorumlusu sizsiniz.",
+          "Yeni hesaplar onaylanmadan önce incelenir; takdirimize bağlı olarak onayı reddedebilir veya geri alabiliriz.",
+          "Aksi yazılı olarak kararlaştırılmadıkça bir kişi veya kuruluş, bir hesap."
+        ]
+      },
+      "acceptableUse": {
+        "title": "4. Kabul edilebilir kullanım",
+        "intro": "Aşağıdakileri yapmamayı kabul edersiniz:",
+        "items": [
+          "Sahte, yanıltıcı, ayrımcı veya hukuka aykırı içerik paylaşmak; sahte ilan veya sahte yorum dahil.",
+          "Kimseyi rahatsız etmek, tehdit etmek, dolandırmak veya başka biri gibi davranmak.",
+          "Platformu kazımak, aşırı yüklemek, güvenlik kontrollerini aşmaya çalışmak.",
+          "Platformu istenmeyen toplu mesaj veya spam göndermek için kullanmak.",
+          "Herhangi birinin fikri mülkiyetini veya gizlilik yükümlülüklerini ihlal etmek."
+        ],
+        "outro": "Bu kuralları ihlal eden hesapları askıya alabilir veya sonlandırabiliriz."
+      },
+      "contracts": {
+        "title": "5. Kullanıcılar arası sözleşmeler",
+        "body": "Bir işveren bir başvuruyu kabul ettiğinde sözleşme o iki kullanıcı arasında kurulur. Kapsam, teslimatlar, zaman çizelgesi, ödeme koşulları ve fikri mülkiyet onlara aittir. İş başlamadan önce bunları yazılı olarak kararlaştırmanızı öneririz. Uyuşmazlıklar öncelikle taraflar arasındadır; isteğe bağlı uyuşmazlık sürecimiz iyi niyetli bir kolaylaştırmadır, taraflar ayrıca kabul etmedikçe bağlayıcı hakemlik değildir."
+      },
+      "payments": {
+        "title": "6. Ödemeler, vergiler ve ücretler",
+        "body": "Freelancezero kazancınızın %0'ını alır. Seçtiğiniz üçüncü taraf ödeme sağlayıcıları (örneğin Stripe, PayPal veya Wise) kendi işlem ücretlerini alabilir; bunlar kontrolümüz dışındadır. Vergilerinizi tespit etmek, bildirmek ve ödemek tek başına sizin sorumluluğunuzdadır."
+      },
+      "content": {
+        "title": "7. İçeriğiniz",
+        "body": "Paylaştığınız her şeyin sahibi siz kalırsınız. Hizmeti işletmek ve tanıtmak amacıyla bu içeriği barındırmak, görüntülemek ve dağıtmak için bize münhasır olmayan, dünya genelinde ve telifsiz bir lisans verirsiniz. Yayımladığınız şeyin haklarına sahip olmak sizin sorumluluğunuzdadır."
+      },
+      "disclaimers": {
+        "title": "8. Beyanlar ve feragatler",
+        "body": "Hizmet, kanunun izin verdiği azami ölçüde her türlü garanti olmaksızın “olduğu gibi” ve “erişilebilir olduğu şekilde” sunulur. Platformun kesintisiz veya hatasız olacağını ya da herhangi bir kullanıcının nitelikli, güvenilir veya vaat edildiği gibi performans göstereceğini garanti etmeyiz. Karşı tarafınızı mutlaka araştırın."
+      },
+      "liability": {
+        "title": "9. Sorumluluğun sınırlandırılması",
+        "body": "Kanunun izin verdiği azami ölçüde, Freelancezero dolaylı, arızi, özel, sonuçsal veya cezai zararlardan; kaybedilen kâr, gelir, veri veya itibardan sorumlu değildir. Sizden hiçbir ücret almadığımız için toplam sorumluluğumuz, son on iki ayda bize ödediğiniz tutarların (genellikle sıfır) veya 100 USD'nin büyük olanı ile sınırlıdır."
+      },
+      "termination": {
+        "title": "10. Fesih",
+        "body": "Hesabınızı dilediğiniz zaman kapatabilirsiniz. Bu Koşulların ihlali, yasal zorunluluklar veya platforma ya da kullanıcılarına yönelik risk nedeniyle erişimi askıya alabilir veya sonlandırabiliriz. Doğası gereği fesihten sonra da sürmesi gereken hükümler yürürlükte kalır."
+      },
+      "openSource": {
+        "title": "11. Açık kaynak",
+        "body": "Freelancezero yazılımı MIT lisansıyla yayımlanır. Bu Koşullar freelancezero.com'daki barındırılan hizmeti düzenler; yazılım lisansı kodu düzenler. Kendi sunucusuna kurulan örnekleri işleten kişi sorumludur; biz bunlardan sorumlu değiliz."
+      },
+      "changes": {
+        "title": "12. Değişiklikler ve iletişim",
+        "body": "Bu Koşulları güncelleyebiliriz; önemli değişiklikler duyurulur ve yukarıdaki tarih güncellenir. Değişikliklerden sonra platformu kullanmaya devam etmeniz kabul anlamına gelir. Sorular: <mailto>legal@freelancezero.com</mailto>. Ayrıca <privacyLink>Gizlilik Politikamıza</privacyLink> göz atın."
+      }
+    },
+    "security": {
+      "meta": {
+        "title": "Güvenlik",
+        "description": "Freelancezero hesabınızı ve verinizi nasıl korur? Aktarımda şifreleme, özetlenmiş şifreler, vesayetsiz ödemeler ve kamuya açık güvenlik açığı bildirim süreci.",
+        "keywords": [
+          "freelancezero güvenlik",
+          "freelance platform güvenliği",
+          "sorumlu açıklama"
+        ]
+      },
+      "title": "Güvenlik",
+      "intro": "Freelancezero açık kaynaklıdır; bu da güvenlik duruşumuzu herkesin denetleyebileceği anlamına gelir. Hesapları ve verileri nasıl koruyoruz — ve bir sorun bulursanız nasıl bildirirsiniz?",
+      "updated": "Son güncelleme: 2 Ağustos 2026",
+      "account": {
+        "title": "Hesap güvenliği",
+        "items": [
+          "Şifreler bcrypt ile özetlenir (maliyet katsayısı 12). Bunları asla düz metin saklamayız ve okuyamayız.",
+          "Şifreyle, tek kullanımlık e-posta sihirli bağlantısıyla veya Google/GitHub ile — dilediğiniz gibi — giriş yapın.",
+          "İki adımlı doğrulama (TOTP) yol haritamizde. Bugün hesaplar; zorunlu e-posta onayı, sınırlı kimlik doğrulama uç noktaları ve yalnızca özet olarak saklanan kısa ömürlü tek tık işveren bağlantılarıyla korunur.",
+          "Şifreli hesaplar, e-posta adresi onaylanana kadar etkin değildir — onaysız hesaplar giriş yapamaz.",
+          "Ödeme yönteminizi güncellemek gibi güvenliğe duyarlı değişiklikler bir bildirim e-postası tetikler; sizin yapmadığınız bir işlemi fark edebilirsiniz."
+        ]
+      },
+      "data": {
+        "title": "Veri koruma",
+        "items": [
+          "Tüm trafik HTTPS/TLS üzerinden sunulur.",
+          "Üretim verilerine erişim kısıtlıdır ve denetlenir; hassas işlemler sonradan eklemeye kapalı bir denetim kaydına yazılır.",
+          "Yüklenen dosyalar tür ve boyut açısından doğrulanır ve yol geçişi güvenli bir rota üzerinden sunulur.",
+          "Pazar yerini çalıştırmak için gereken asgari kişisel veriyi toplarız — bkz. Gizlilik Politikamız."
+        ]
+      },
+      "payments": {
+        "title": "Ödemeler vesayetsizdir",
+        "body": "Freelancezero paranızı asla tutmaz ve komisyon almaz. Fonlar, işveren ve freelancerın seçtiği sağlayıcı üzerinden doğrudan aralarında hareket eder. Seçtiğiniz ödeme yöntemi için yalnızca gösterime yönelik bir tanımlayıcı saklarız (örneğin PayPal e-postası) — tam banka bilgilerini veya kart numaralarını asla. Yani bizim tarafımızda çalınabilecek bir kullanıcı fonu havuzu yoktur."
+      },
+      "safety": {
+        "title": "Pazar yeri güvenliği",
+        "items": [
+          "Yeni hesaplar, ilan verebilmek veya başvurabilmekten önce elle incelenir.",
+          "Başvurular, düşük emekli spam'in işveren gelen kutularına girmesini önlemek için şeffaf bir kalite puanı taşır.",
+          "Giden e-posta tek tıkla iptal ve bastırmayı destekler; böylece bir spam kaynağı olmayız.",
+          "Yorumlar, misilleme yanlılığını önlemek için çift kör olarak yayına açılır."
+        ]
+      },
+      "disclosure": {
+        "title": "Sorumlu açıklama",
+        "body": "Bir güvenlik açığı bulduğunuzu düşünüyorsanız, yeniden üretim adımlarıyla birlikte <code>security@freelancezero.com</code> adresine yazın. Yayımlamadan önce sorunu düzeltmemiz için makul bir süre tanıyın; test sırasında başkalarının verisine erişmekten, hizmeti yavaşlatmaktan veya üretime karşı otomatik tarama çalıştırmaktan kaçının.",
+        "outro": "Bildirimleri üç iş günü içinde yanıtlamayı hedefleriz ve düzeltme sürecinde sizi güncel tutarız. Sorumlu biçimde bildirimde bulunan araştırmacılara memnuniyetle kredi veririz."
+      },
+      "selfHosting": {
+        "title": "Kendi sunucunuzda barındırma",
+        "body": "Kendi kurulumunuzu mu çalıştırıyorsunuz? Güvenliği size aittir. En azından: güçlü bir <code>AUTH_SECRET</code> belirleyin, TLS'i sonlandırın, veritabanını herkese açık internetten uzak tutun, güncellemeleri gecikmeden uygulayın ve e-postayı etkinleştirmeden önce SPF, DKIM ve DMARC ile doğrulanmış bir gönderme alan adı yapılandırın."
+      }
+    }
+  }
+}

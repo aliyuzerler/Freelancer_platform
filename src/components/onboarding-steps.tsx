@@ -1,13 +1,17 @@
-import Link from 'next/link';
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { Card, CardContent } from '@/components/ui/card';
 import { Stepper } from '@/components/stepper';
 import { ResendVerificationButton } from './resend-verification-button';
+import { Link } from '@/i18n/navigation';
 import type { OnboardingStep } from '@/lib/onboarding';
 
 /**
  * Dashboard checklist mirroring the /onboarding wizard's progress. Stays
  * visible until the final step (admin approval) is done; steps are defined in
- * lib/onboarding.ts.
+ * lib/onboarding.ts. Step `label`s are message keys, resolved here so the
+ * checklist renders in the active locale.
  */
 export function OnboardingSteps({
   steps,
@@ -16,6 +20,8 @@ export function OnboardingSteps({
   steps: OnboardingStep[];
   currentIndex: number;
 }) {
+  const t = useTranslations('onboarding');
+
   if (currentIndex === -1) return null;
 
   const current = steps[currentIndex];
@@ -25,26 +31,29 @@ export function OnboardingSteps({
     <Card className="mb-8">
       <CardContent className="py-5">
         <div className="mb-4 flex items-center justify-between gap-4">
-          <p className="font-medium">Finish setting up your account</p>
+          <p className="font-medium">{t('checklistTitle')}</p>
           <p className="text-sm text-muted-foreground">
-            {doneCount} of {steps.length} complete
+            {t('checklistProgress', { done: doneCount, total: steps.length })}
           </p>
         </div>
 
-        <Stepper steps={steps} currentIndex={currentIndex} />
+        <Stepper
+          steps={steps.map((s) => ({ label: t(`steps.${s.id}`), done: s.done }))}
+          currentIndex={currentIndex}
+        />
 
         <p className="mt-4 text-center text-sm text-muted-foreground">
           {current?.id === 'email' ? (
             <>
-              Check your inbox for the confirmation link. <ResendVerificationButton />
+              {t('emailHint')} <ResendVerificationButton />
             </>
           ) : current?.id === 'approval' ? (
-            'All your steps are done — an admin reviews your account next. Approval usually takes under a day.'
+            t('approvalHint')
           ) : (
             <>
-              Next up:{' '}
+              {t('nextUp')}{' '}
               <Link href="/onboarding" className="font-medium text-primary hover:underline">
-                continue setup
+                {t('continueSetup')}
               </Link>
             </>
           )}

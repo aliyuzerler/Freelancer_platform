@@ -12,7 +12,8 @@ export type OnboardingStepId = 'account' | 'email' | 'photo' | 'profile' | 'payo
 
 export type OnboardingStep = {
   id: OnboardingStepId;
-  label: string;
+  /** Message key under the `onboarding.steps` namespace, resolved in the UI. */
+  labelKey: string;
   done: boolean;
 };
 
@@ -50,19 +51,23 @@ export async function getOnboarding(userId: string, role: string) {
 
   const isFreelancer = FREELANCER_ROLES.includes(role);
   const steps: OnboardingStep[] = [
-    { id: 'account', label: 'Create account', done: true },
-    { id: 'email', label: 'Confirm email', done: !!user?.emailVerified },
-    { id: 'photo', label: 'Add profile photo', done: !!user?.image },
+    { id: 'account', labelKey: 'onboarding.steps.account', done: true },
+    { id: 'email', labelKey: 'onboarding.steps.email', done: !!user?.emailVerified },
+    { id: 'photo', labelKey: 'onboarding.steps.photo', done: !!user?.image },
     isFreelancer
       ? {
           id: 'profile',
-          label: 'Your basics',
+          labelKey: 'onboarding.steps.basics',
           // Location is required: clients filter on it, so an incomplete profile
           // is invisible to exactly the people meant to find it.
           done: !!user?.freelancerProfile?.headline && !!user?.freelancerProfile?.location,
         }
-      : { id: 'payout', label: 'Add payment method', done: !!user?.payoutProvider },
-    { id: 'approval', label: 'Approval', done: !!user?.approvedAt },
+      : {
+          id: 'payout',
+          labelKey: 'onboarding.steps.payout',
+          done: !!user?.payoutProvider,
+        },
+    { id: 'approval', labelKey: 'onboarding.steps.approval', done: !!user?.approvedAt },
   ];
 
   // Approval is the terminal gate, not just another checkbox: a human has

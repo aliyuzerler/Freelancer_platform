@@ -42,7 +42,7 @@ async function buildRecruiterEmail(
   // this job's applicants; the footer link unsubscribes.
   const token = await mintRecruiterToken(n.userId, job.id);
   const unsub = unsubscribeUrl(token);
-  const content = recruiterApplicantEmail({
+  const content = await recruiterApplicantEmail({
     companyName: company?.companyName ?? 'your company',
     jobTitle: job.title,
     devName: n.body || 'A freelancer',
@@ -56,7 +56,7 @@ async function buildDevEmail(
   n: { userId: string; title: string; body: string | null; href: string | null },
   user: { email: string; name: string | null },
 ): Promise<{ to: string; content: EmailContent } | null> {
-  const content = devMessageEmail({
+  const content = await devMessageEmail({
     devFirstName: user.name?.split(' ')[0],
     // The reply handler encodes "<Company> · <Job Title>" in the title.
     companyName: n.title.split(' · ')[0] ?? 'The company',

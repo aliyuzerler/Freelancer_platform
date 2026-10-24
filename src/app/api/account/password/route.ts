@@ -33,9 +33,9 @@ export function POST(req: Request) {
 
     // Accounts that already have a password must prove they know it.
     if (user.passwordHash) {
-      if (!currentPassword) return fail('Enter your current password', 422);
+      if (!currentPassword) return fail('errors.enterCurrentPassword', 422);
       const okCurrent = await bcrypt.compare(currentPassword, user.passwordHash);
-      if (!okCurrent) return fail('Current password is incorrect', 422);
+      if (!okCurrent) return fail('errors.currentPasswordIncorrect', 422);
     }
 
     await db.user.update({

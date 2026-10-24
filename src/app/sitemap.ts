@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { SITE } from '@/lib/seo';
+import { SITE, localeUrl } from '@/lib/seo';
+import { routing } from '@/i18n/routing';
 import { POSTS } from '@/lib/blog';
 import { db } from '@/lib/db';
 
@@ -39,12 +40,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       take: 5000,
       orderBy: { publishedAt: 'desc' },
     });
-    jobRoutes = jobs.map((j) => ({
-      url: `${SITE.url}/jobs/${j.slug}`,
-      lastModified: j.updatedAt,
-      changeFrequency: 'daily',
-      priority: 0.6,
-    }));
+    jobRoutes = jobs.flatMap((j) =>
+      routing.locales.map((locale) => ({
+        url: localeUrl(locale, `/jobs/${j.slug}`),
+        lastModified: j.updatedAt,
+        changeFrequency: 'daily' as const,
+        priority: 0.6,
+      })),
+    );
   } catch {
     // No DB at build time — ship the static sitemap.
   }
@@ -61,12 +64,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       take: 5000,
       orderBy: { ratingAvg: 'desc' },
     });
-    profileRoutes = profiles.map((p) => ({
-      url: `${SITE.url}/freelancers/${p.id}`,
-      lastModified: p.updatedAt,
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    }));
+    profileRoutes = profiles.flatMap((prof) =>
+      routing.locales.map((locale) => ({
+        url: localeUrl(locale, `/freelancers/${prof.id}`),
+        lastModified: prof.updatedAt,
+        changeFrequency: 'weekly' as const,
+        priority: 0.6,
+      })),
+    );
   } catch {
     // No DB at build time — ship without profiles.
   }

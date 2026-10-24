@@ -22,10 +22,10 @@ export function getRelated(slug: string, limit = 3): Post[] {
   return [...sameCategory, ...others.filter((p) => p.category !== post.category)].slice(0, limit);
 }
 
-/** "January 5, 2026" — stable across locales/timezones (dates are date-only). */
-export function formatPostDate(iso: string): string {
+/** "5 Ocak 2026" / "January 5, 2026" — stable across timezones (date-only). */
+export function formatPostDate(iso: string, locale = 'tr'): string {
   const [y, m, d] = iso.split('-').map(Number);
-  return new Date(Date.UTC(y!, m! - 1, d!)).toLocaleDateString('en-US', {
+  return new Date(Date.UTC(y!, m! - 1, d!)).toLocaleDateString(locale === 'tr' ? 'tr-TR' : 'en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',

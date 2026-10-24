@@ -1,10 +1,12 @@
 'use client';
 
-import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import { intlTag } from '@/i18n/routing';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Bell } from 'lucide-react';
 import { POLL } from '@/lib/adapters/realtime';
 import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -27,6 +29,16 @@ type NotificationsResponse = { items: NotificationItem[]; unread: number };
 
 /** Navbar bell with a dropdown of the user's recent activity. */
 export function NotificationsBell() {
+  const t = useTranslations('notifications');
+  const resolveNotify = (title: string) => {
+    try {
+      return t(title.replace('notify.', '') as never);
+    } catch {
+      return title;
+    }
+  };
+  const locale = useLocale();
+  const localeTag = intlTag(locale);
   const queryClient = useQueryClient();
   const { data } = useQuery({
     queryKey: ['notifications'],
@@ -56,7 +68,7 @@ export function NotificationsBell() {
   return (
     <DropdownMenu onOpenChange={handleOpen}>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Notifications" className="relative">
+        <Button variant="ghost" size="icon" aria-label={t('ariaLabel')} className="relative">
           <Bell />
           {unread > 0 ? (
             <span className="absolute right-1 top-1 grid min-w-4 place-items-center rounded-full bg-primary px-1 text-[10px] font-bold leading-4 text-primary-foreground">
@@ -66,11 +78,11 @@ export function NotificationsBell() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-80">
-        <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+        <DropdownMenuLabel>{t('title')}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {!data || data.items.length === 0 ? (
           <p className="px-2 py-4 text-center text-sm text-muted-foreground">
-            Nothing yet — activity shows up here.
+            {t('empty')}
           </p>
         ) : (
           data.items.map((n) => {
@@ -80,12 +92,14 @@ export function NotificationsBell() {
                   className={`mt-1.5 size-2 shrink-0 rounded-full ${n.readAt ? 'bg-muted-foreground/30' : 'bg-primary'}`}
                 />
                 <div className="min-w-0">
-                  <p className="whitespace-normal text-sm font-medium leading-snug">{n.title}</p>
+                  <p className="whitespace-normal text-sm font-medium leading-snug">
+                    {n.title.startsWith("notify.") ? resolveNotify(n.title) : n.title}
+                  </p>
                   {n.body ? (
                     <p className="truncate text-xs text-muted-foreground">{n.body}</p>
                   ) : null}
                   <p className="text-xs text-muted-foreground">
-                    {new Date(n.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                    {new Date(n.createdAt).toLocaleDateString(localeTag, { month: 'short', day: 'numeric' })}
                   </p>
                 </div>
               </div>

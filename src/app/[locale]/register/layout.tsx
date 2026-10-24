@@ -1,0 +1,26 @@
+import { redirect } from '@/i18n/navigation';
+import { auth } from '@/lib/auth';
+import { getSignedInDestination } from '@/lib/onboarding';
+
+/**
+ * The sign-up page is for guests only: an already-authenticated visitor is
+ * sent to their app home (or back to onboarding if the flow is unfinished)
+ * instead of seeing the form.
+ */
+export default async function RegisterLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const session = await auth();
+  if (session?.user) {
+    redirect({
+      href: await getSignedInDestination(session.user.id, session.user.role),
+      locale,
+    });
+  }
+  return children;
+}

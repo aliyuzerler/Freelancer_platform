@@ -1,83 +1,84 @@
-import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import { Logo } from '@/components/logo';
+import { Link } from '@/i18n/navigation';
+
 // Re-enable alongside the social links block below when the accounts are live.
 // import { Github, Twitter, Linkedin } from 'lucide-react';
-import { Logo } from '@/components/logo';
 
-const COLUMNS = [
+interface FooterLink {
+  key: string;
+  href: string;
+  external?: boolean;
+}
+
+const COLUMNS: { titleKey: string; links: FooterLink[] }[] = [
   {
-    title: 'For freelancers',
+    titleKey: 'freelancers.title',
     links: [
-      { label: 'Find work', href: '/jobs' },
-      { label: 'Create a profile', href: '/register?role=freelancer' },
-      { label: 'How you get paid', href: '/#how' },
-      { label: 'Freelancer stories', href: '/blog' },
+      { key: 'freelancers.findWork', href: '/jobs' },
+      { key: 'freelancers.createProfile', href: '/register?role=freelancer' },
+      { key: 'freelancers.howPaid', href: '/#how' },
+      { key: 'freelancers.stories', href: '/blog' },
     ],
   },
   {
-    title: 'For clients',
+    titleKey: 'clients.title',
     links: [
-      { label: 'Post a job', href: '/register?role=client' },
-      { label: 'Enterprise', href: '/#pricing' },
-      { label: 'Trust & safety', href: '/#trust' },
+      { key: 'clients.postJob', href: '/register?role=client' },
+      { key: 'clients.enterprise', href: '/#pricing' },
+      { key: 'clients.trust', href: '/#trust' },
     ],
   },
   {
-    title: 'Company',
+    titleKey: 'company.title',
     links: [
-      { label: 'About', href: '/blog' },
-      { label: 'Pricing', href: '/#pricing' },
-      { label: 'Blog & resources', href: '/blog' },
-      { label: 'Careers', href: '/careers' },
+      { key: 'company.about', href: '/blog' },
+      { key: 'company.pricing', href: '/#pricing' },
+      { key: 'company.blog', href: '/blog' },
+      { key: 'company.careers', href: '/careers' },
     ],
   },
   {
-    title: 'Resources',
+    titleKey: 'resources.title',
     links: [
-      { label: 'Help center', href: '/blog' },
-      { label: 'Community', href: '/blog' },
-      { label: 'Open source', href: 'https://github.com/freelancezero/freelancezero' },
-      { label: 'Status', href: '/status' },
+      { key: 'resources.help', href: '/blog' },
+      { key: 'resources.community', href: '/blog' },
+      { key: 'resources.openSource', href: 'https://github.com/freelancezero/freelancezero', external: true },
+      { key: 'resources.status', href: '/status' },
     ],
   },
 ];
 
 /** Full, professional footer — the kind serious marketplaces ship. */
-export function SiteFooter() {
+export async function SiteFooter() {
+  const t = await getTranslations('footer');
+
   return (
     <footer className="border-t border-navy-700/40 bg-navy-950 text-navy-300">
       <div className="container grid gap-12 py-16 lg:grid-cols-[1.4fr_repeat(4,1fr)]">
         <div className="max-w-xs">
-          <Link href="/" aria-label="Freelancezero home">
+          <Link href="/" aria-label="Freelancezero">
             <Logo className="text-white" />
           </Link>
-          <p className="mt-4 text-sm leading-relaxed">
-            The fair freelance marketplace. Keep 100% of what you earn — no commissions, ever.
-          </p>
-          {/* Social links hidden until the accounts are live.
-          <div className="mt-6 flex gap-3">
-            {[Twitter, Github, Linkedin].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="grid size-9 place-items-center rounded-lg border border-navy-700 text-navy-300 transition-colors hover:border-primary hover:text-white"
-                aria-label="Social link"
-              >
-                <Icon className="size-4" />
-              </a>
-            ))}
-          </div>
-          */}
+          <p className="mt-4 text-sm leading-relaxed">{t('description')}</p>
+          {/* Social links hidden until the accounts are live. */}
         </div>
 
         {COLUMNS.map((col) => (
-          <div key={col.title}>
-            <h3 className="text-sm font-semibold text-white">{col.title}</h3>
+          <div key={col.titleKey}>
+            <h3 className="text-sm font-semibold text-white">{t(col.titleKey as never)}</h3>
             <ul className="mt-4 space-y-3 text-sm">
               {col.links.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="transition-colors hover:text-white">
-                    {link.label}
-                  </Link>
+                <li key={link.key}>
+                  {link.external ? (
+                    <a href={link.href} className="transition-colors hover:text-white">
+                      {t(link.key as never)}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className="transition-colors hover:text-white">
+                      {t(link.key as never)}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -87,11 +88,11 @@ export function SiteFooter() {
 
       <div className="border-t border-navy-800">
         <div className="container flex flex-col items-center justify-between gap-4 py-6 text-xs text-navy-400 sm:flex-row">
-          <p>© {new Date().getFullYear()} Freelancezero. Built for freelancers, not shareholders.</p>
+          <p>{t('copyright', { year: new Date().getFullYear() })}</p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-white">Privacy</Link>
-            <Link href="/terms" className="hover:text-white">Terms</Link>
-            <Link href="/security" className="hover:text-white">Security</Link>
+            <Link href="/privacy" className="hover:text-white">{t('privacy')}</Link>
+            <Link href="/terms" className="hover:text-white">{t('terms')}</Link>
+            <Link href="/security" className="hover:text-white">{t('security')}</Link>
           </div>
         </div>
       </div>

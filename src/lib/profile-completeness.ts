@@ -41,23 +41,25 @@ export function computeCompleteness(input: CompletenessInput): number {
   return Math.max(0, Math.min(100, score));
 }
 
-/** What is still missing, most valuable first — used to nudge the user. */
+/** What is still missing, most valuable first — used to nudge the user.
+ *  Returns stable message keys (`dashboard.missing.*`), resolved in the UI so
+ *  the hints render in the visitor's language. */
 export function missingItems(input: CompletenessInput): string[] {
-  const labels: Record<string, string> = {
-    headline: 'Add a headline',
-    image: 'Add a profile photo',
-    bio: 'Write a bio (80+ characters)',
-    location: 'Add your location',
-    hourlyRate: 'Set your hourly rate',
-    skillCount: 'Add at least 3 skills',
-    portfolioCount: 'Add a portfolio item',
-    links: 'Add a professional link',
-    yearsExperience: 'Add years of experience',
-    timezone: 'Add your timezone',
+  const keys: Record<string, string> = {
+    headline: 'dashboard.missing.headline',
+    image: 'dashboard.missing.image',
+    bio: 'dashboard.missing.bio',
+    location: 'dashboard.missing.location',
+    hourlyRate: 'dashboard.missing.hourlyRate',
+    skillCount: 'dashboard.missing.skillCount',
+    portfolioCount: 'dashboard.missing.portfolioCount',
+    links: 'dashboard.missing.links',
+    yearsExperience: 'dashboard.missing.yearsExperience',
+    timezone: 'dashboard.missing.timezone',
   };
   return WEIGHTS.filter((w) => !w.met(input))
     .sort((a, b) => b.points - a.points)
-    .map((w) => labels[w.key as string] ?? String(w.key));
+    .map((w) => keys[w.key as string] ?? String(w.key));
 }
 
 /**

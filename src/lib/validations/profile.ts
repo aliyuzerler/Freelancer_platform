@@ -36,19 +36,28 @@ function hostOf(value: string): string | null {
  * A URL that must live on one of `hosts` (or a subdomain of one).
  * Empty string is allowed and means "clear this field".
  */
+const HOST_KEY: Record<string, string> = {
+  github: 'val.linkHostGithub',
+  linkedin: 'val.linkHostLinkedin',
+  dribbble: 'val.linkHostDribbble',
+  behance: 'val.linkHostBehance',
+  stackoverflow: 'val.linkHostStackoverflow',
+  x: 'val.linkHostX',
+};
+
 function hostedUrl(hosts: string[], label: string) {
   return z
     .string()
     .trim()
     .max(300)
-    .refine((v) => v === '' || normalizeUrl(v) !== null, { message: 'Enter a valid URL' })
+    .refine((v) => v === '' || normalizeUrl(v) !== null, { message: 'val.urlInvalid' })
     .refine(
       (v) => {
         if (v === '') return true;
         const host = hostOf(v);
         return !!host && hosts.some((h) => host === h || host.endsWith(`.${h}`));
       },
-      { message: `Enter a ${label} URL (e.g. ${hosts[0]}/yourname)` },
+      { message: HOST_KEY[label] ?? 'val.urlInvalid' },
     )
     .transform((v) => (v === '' ? '' : (normalizeUrl(v) ?? '')));
 }
@@ -58,7 +67,7 @@ const anyUrl = z
   .string()
   .trim()
   .max(300)
-  .refine((v) => v === '' || normalizeUrl(v) !== null, { message: 'Enter a valid URL' })
+  .refine((v) => v === '' || normalizeUrl(v) !== null, { message: 'val.urlInvalid' })
   .transform((v) => (v === '' ? '' : (normalizeUrl(v) ?? '')));
 
 export const BIO_MIN = 80;
@@ -73,9 +82,9 @@ export const profileSchema = z.object({
   bio: z
     .string()
     .trim()
-    .max(BIO_MAX, `Keep your bio under ${BIO_MAX} characters`)
+    .max(BIO_MAX, 'val.bioMax')
     .refine((v) => v === '' || v.length >= BIO_MIN, {
-      message: `Write at least ${BIO_MIN} characters so clients get a real sense of you`,
+      message: 'val.bioMin',
     }),
   // Required: clients filter on location and ask about timezone overlap first.
   location: z.string().trim().min(2, 'Location is required').max(120),

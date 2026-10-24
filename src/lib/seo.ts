@@ -1,59 +1,70 @@
 import type { Metadata } from 'next';
+import { routing, intlTag } from '@/i18n/routing';
 
 /**
  * Centralized SEO. One place controls titles, descriptions, canonical URLs,
  * Open Graph, Twitter cards, and structured data (JSON-LD). Every page should
  * build its metadata from here so we stay consistent and keyword-disciplined.
  *
- * Primary target keywords (see docs/GO-TO-MARKET.md for the full map):
- *   "Upwork alternative", "zero fee freelance platform",
- *   "freelance marketplace no commission", "no fee freelance website".
+ * Localized copy (tagline, description, keywords) lives in the message
+ * catalogs under the `site` namespace so each language gets tuned metadata.
+ *
+ * Primary target keywords (tr): "Upwork alternatifi", "komisyonsuz freelance",
+ * "sıfır komisyon freelance platformu", "freelance iş ilanları".
  */
+
 export const SITE = {
   name: 'Freelancezero',
   // FZ-24: the fallback is intentionally localhost, not the hosted site. A
   // self-host operator who forgets NEXT_PUBLIC_APP_URL would otherwise emit
   // canonical/sitemap URLs pointing at someone else's production domain.
   url: process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000',
-  // Title-tag positioning line — keyword-first, benefit-second.
-  tagline: 'The Zero-Fee Upwork Alternative',
-  description:
-    'Freelancezero is the zero-fee alternative to Upwork. Freelancers keep 100% of what they earn — no commissions, no connects. Clients hire top talent faster and pay directly. Free forever.',
   twitter: '@freelancezero',
-  keywords: [
-    'Upwork alternative',
-    'zero fee freelance platform',
-    'freelance marketplace no commission',
-    'no fee freelance website',
-    'freelance platform no fees',
-    'hire freelancers no commission',
-    'freelance jobs',
-    'freelance marketplace 2026',
-  ],
 } as const;
 
 interface PageMetaInput {
+  /** Page title — already localized by the caller. */
   title: string;
   description?: string;
+  /** Locale-unprefixed path, e.g. '/jobs'. */
   path?: string;
   keywords?: string[];
   noIndex?: boolean;
+  /** Active locale; drives the canonical prefix and hreflang alternates. */
+  locale?: string;
+}
+
+/** Canonical URL for a locale-prefixed path. */
+export function localeUrl(locale: string, path = '/'): string {
+  const suffix = path === '/' ? '' : path;
+  return new URL(`/${locale}${suffix}`, SITE.url).toString();
+}
+
+/** hreflang map (tr-TR/en-US → locale-prefixed URL) for a locale-free path. */
+export function languagesAlternates(path = '/'): Record<string, string> {
+  const map: Record<string, string> = {};
+  for (const locale of routing.locales) {
+    map[intlTag(locale)] = localeUrl(locale, path);
+  }
+  return map;
 }
 
 /** Build a full Metadata object for a page with canonical + social tags. */
 export function pageMetadata({
   title,
-  description = SITE.description,
+  description,
   path = '/',
   keywords = [],
   noIndex = false,
+  locale,
 }: PageMetaInput): Metadata {
-  const url = new URL(path, SITE.url).toString();
+  const active = locale ?? routing.defaultLocale;
+  const url = localeUrl(active, path);
   return {
     title,
     description,
-    keywords: [...SITE.keywords, ...keywords],
-    alternates: { canonical: url },
+    keywords,
+    alternates: { canonical: url, languages: languagesAlternates(path) },
     robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
     openGraph: {
       type: 'website',
@@ -76,31 +87,35 @@ export function pageMetadata({
  * Rich results (FAQ, org sitelinks, breadcrumbs) are a major organic-CTR lever.
  * -------------------------------------------------------------------------- */
 
-export const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: SITE.name,
-  url: SITE.url,
-  description: SITE.description,
-  sameAs: [
-    'https://twitter.com/freelancezero',
-    'https://github.com/freelancezero/freelancezero',
-    'https://www.linkedin.com/company/freelancezero',
-  ],
-};
+export function organizationJsonLd(description: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+    description,
+    sameAs: [
+      'https://twitter.com/freelancezero',
+      'https://github.com/freelancezero/freelancezero',
+      'https://www.linkedin.com/company/freelancezero',
+    ],
+  };
+}
 
 /** WebSite + Sitelinks Search Box, so Google can surface an in-site search box. */
-export const websiteJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: SITE.name,
-  url: SITE.url,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${SITE.url}/jobs?q={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
-};
+export function websiteJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.url,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${SITE.url}/tr/jobs?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  };
+}
 
 export function faqJsonLd(items: { q: string; a: string }[]) {
   return {

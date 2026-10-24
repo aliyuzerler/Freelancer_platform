@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Plus } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 
@@ -18,6 +19,7 @@ export function CompanyCombobox({
   value: string;
   onChange: (value: string) => void;
 }) {
+  const t = useTranslations('auth.register');
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<string[]>([]);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -59,7 +61,7 @@ export function CompanyCombobox({
         }}
         onFocus={() => setOpen(true)}
         autoComplete="organization"
-        placeholder="Start typing your company name"
+        placeholder={t('companyPlaceholder')}
       />
       {open && (options.length > 0 || showAdd) ? (
         <ul className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-md border bg-card p-1 shadow-md">
@@ -84,7 +86,7 @@ export function CompanyCombobox({
                 className="flex w-full items-center gap-1.5 rounded-sm px-2 py-1.5 text-left text-sm text-primary hover:bg-accent"
                 onClick={() => setOpen(false)}
               >
-                <Plus className="size-3.5" /> Add “{trimmed}” as a new company
+                <Plus className="size-3.5" /> {t('addAsNewCompany', { name: trimmed })}
               </button>
             </li>
           ) : null}

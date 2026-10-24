@@ -1,3 +1,9 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+// Wires next-intl to src/i18n/request.ts so every server render receives the
+// active locale and its message catalog.
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 
 // FZ-13: baseline security headers for every response. The CSP is pragmatic
@@ -47,4 +53,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

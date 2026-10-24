@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 /** Inline "resend confirmation email" action for the onboarding checklist. */
 export function ResendVerificationButton() {
+  const t = useTranslations('onboarding');
   const [state, setState] = useState<'idle' | 'sending' | 'sent'>('idle');
 
   return (
@@ -17,7 +19,7 @@ export function ResendVerificationButton() {
         setState('sent');
       }}
     >
-      {state === 'sent' ? 'Sent — check your inbox.' : state === 'sending' ? 'Sending…' : 'Resend it.'}
+      {state === 'sent' ? t('resendSent') : state === 'sending' ? t('resendSending') : t('resendIt')}
     </button>
   );
 }

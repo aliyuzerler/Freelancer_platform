@@ -27,8 +27,8 @@ export function POST(req: Request) {
       data: {
         userId,
         type: 'SYSTEM',
-        title: 'Your account is approved',
-        body: `You can now ${appliesTo}. Welcome aboard!`,
+        title: 'notify.accountApproved',
+        body: null,
         href: '/dashboard',
       },
     });

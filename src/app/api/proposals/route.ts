@@ -22,8 +22,8 @@ export function POST(req: Request) {
       where: { id: session.user.id },
       select: { emailVerified: true, approvedAt: true },
     });
-    if (!me?.emailVerified) return forbidden('Confirm your email before applying — check your inbox.');
-    if (!me.approvedAt) return forbidden('Your account is pending admin review. You can apply once approved.');
+    if (!me?.emailVerified) return forbidden('errors.confirmEmailFirst');
+    if (!me.approvedAt) return forbidden('errors.accountPending');
 
     const body = createProposalSchema.parse(await req.json());
 
@@ -31,13 +31,13 @@ export function POST(req: Request) {
       where: { id: body.jobId },
       select: { id: true, slug: true, status: true, clientId: true, title: true },
     });
-    if (!job || job.status !== 'OPEN') return fail('This job is not accepting proposals', 409);
-    if (job.clientId === session.user.id) return fail('You cannot bid on your own job', 400);
+    if (!job || job.status !== 'OPEN') return fail('errors.jobNotAccepting', 409);
+    if (job.clientId === session.user.id) return fail('errors.ownJob', 400);
 
     const duplicate = await db.proposal.findUnique({
       where: { jobId_freelancerId: { jobId: job.id, freelancerId: session.user.id } },
     });
-    if (duplicate) return fail('You already submitted a proposal for this job', 409);
+    if (duplicate) return fail('errors.alreadyApplied', 409);
 
     const qualityScore = await computeQualityScore(session.user.id, body.coverLetter);
 
@@ -72,8 +72,8 @@ export function POST(req: Request) {
     await notifyUser({
       userId: job.clientId,
       type: 'PROPOSAL_RECEIVED',
-      title: `New applicant for "${job.title}"`,
-      body: applicant?.name ?? 'A freelancer',
+      title: 'notify.newApplicant',
+      body: `${applicant?.name ?? ''} · ${job.title}`.trim(),
       href: `/jobs/${job.slug}/proposals`,
     });
 

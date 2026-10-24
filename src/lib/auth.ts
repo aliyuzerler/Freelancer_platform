@@ -1,5 +1,7 @@
 import NextAuth, { type DefaultSession } from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
+import { getTranslations } from 'next-intl/server';
+import { routing } from '@/i18n/routing';
 import Credentials from 'next-auth/providers/credentials';
 import Google from 'next-auth/providers/google';
 import GitHub from 'next-auth/providers/github';
@@ -175,14 +177,15 @@ if (process.env.EMAIL_SERVER_HOST || process.env.RESEND_API_KEY) {
       // no credentials are set (e.g. local Mailhog). The provider's built-in
       // transport otherwise attempts PLAIN auth and fails against auth-less MTAs.
       async sendVerificationRequest({ identifier, url }) {
+        const t = await getTranslations({ locale: routing.defaultLocale, namespace: 'emails' });
         const transport = getTransport();
         if (!transport) throw new Error('Email transport is not configured');
         await transport.sendMail({
           to: identifier,
           from: MAIL_FROM,
-          subject: 'Sign in to Freelancezero',
-          text: `Sign in to Freelancezero:\n${url}\n\nIf you didn't request this, you can ignore it.`,
-          html: `<p>Sign in to Freelancezero:</p><p><a href="${url}">Sign in</a></p><p style="color:#777;font-size:13px">Or paste this link:<br/>${url}</p>`,
+          subject: t('magicLink.subject'),
+          text: `${t('magicLink.heading')}\n${url}\n\n${t('magicLink.ignore')}`,
+          html: `<p>${t('magicLink.heading')}</p><p><a href="${url}">${t('magicLink.button')}</a></p><p style="color:#777;font-size:13px">${t('magicLink.paste')}<br/>${url}</p>`,
         });
       },
     }),

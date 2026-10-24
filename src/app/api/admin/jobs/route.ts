@@ -30,7 +30,7 @@ export function PATCH(req: Request) {
       where: { id: body.jobId },
       select: { id: true, clientId: true },
     });
-    if (!job) return fail('Posting not found', 404);
+    if (!job) return fail('errors.postingNotFound', 404);
 
     // An admin-entered address is a deliberate, verified act.
     if (body.contactEmail) {
@@ -80,7 +80,7 @@ export function PATCH(req: Request) {
       });
       const reachable = contact?.contactable || owner?.status !== 'UNCLAIMED';
       if (!reachable) {
-        return fail('Add a contact email before publishing — applicants must reach someone.', 422);
+        return fail('errors.contactEmailRequired', 422);
       }
     }
 

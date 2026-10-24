@@ -1,0 +1,1611 @@
+{
+  "site": {
+    "tagline": "The Zero-Fee Upwork Alternative",
+    "description": "Freelancezero is the zero-fee alternative to Upwork. Freelancers keep 100% of what they earn — no commissions, no connects. Clients hire top talent faster and pay directly. Free forever.",
+    "keywords": [
+      "Upwork alternative",
+      "zero fee freelance platform",
+      "freelance marketplace no commission",
+      "no fee freelance website",
+      "freelance platform no fees",
+      "hire freelancers no commission"
+    ]
+  },
+  "nav": {
+    "findWork": "Find work",
+    "howItWorks": "How it works",
+    "pricing": "Pricing",
+    "postJob": "Post a job",
+    "dashboard": "Dashboard",
+    "messages": "Messages",
+    "getPaid": "Get paid",
+    "billing": "Billing & payments",
+    "settings": "Settings",
+    "approvals": "Account approvals",
+    "logOut": "Log out",
+    "logIn": "Log in",
+    "startEarning": "Start earning free",
+    "yourAccount": "Your account"
+  },
+  "footer": {
+    "description": "The fair freelance marketplace. Keep 100% of what you earn — no commissions, ever.",
+    "freelancers": {
+      "title": "For freelancers",
+      "findWork": "Find work",
+      "createProfile": "Create a profile",
+      "howPaid": "How you get paid",
+      "stories": "Freelancer stories"
+    },
+    "clients": {
+      "title": "For clients",
+      "postJob": "Post a job",
+      "enterprise": "Enterprise",
+      "trust": "Trust & safety"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About",
+      "pricing": "Pricing",
+      "blog": "Blog & resources",
+      "careers": "Careers"
+    },
+    "resources": {
+      "title": "Resources",
+      "help": "Help center",
+      "community": "Community",
+      "openSource": "Open source",
+      "status": "Status"
+    },
+    "copyright": "© {year} Freelancezero. Built for freelancers, not shareholders.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "security": "Security"
+  },
+  "payoutBanner": {
+    "noMethod": "You haven't set up a payment method yet —",
+    "addMethod": "add one",
+    "getPaidNote": "so you can get paid.",
+    "dismiss": "Dismiss"
+  },
+  "notifications": {
+    "ariaLabel": "Notifications",
+    "title": "Notifications",
+    "empty": "Nothing yet — activity shows up here."
+  },
+  "onboarding": {
+    "metaTitle": "Finish setting up",
+    "metaDone": "You're all set",
+    "wizardTitle": "Finish setting up your account",
+    "allSet": "You're all set",
+    "completeBody": "Your account is fully set up and approved. Time to put it to work.",
+    "goToDashboard": "Go to dashboard",
+    "reviewQueueTitle": "You're in the review queue",
+    "reviewQueueBody": "That's everything on your side. An admin reviews your account next — approval usually takes under a day, and we'll email you the moment it lands.",
+    "checkStatus": "Check status",
+    "browseMeanwhile": "Browse the site meanwhile",
+    "checklistTitle": "Finish setting up your account",
+    "checklistProgress": "{done} of {total} complete",
+    "emailHint": "Check your inbox for the confirmation link.",
+    "approvalHint": "All your steps are done — an admin reviews your account next. Approval usually takes under a day.",
+    "nextUp": "Next up:",
+    "continueSetup": "continue setup",
+    "resendIt": "Resend it.",
+    "resendSending": "Sending…",
+    "resendSent": "Sent — check your inbox.",
+    "steps": {
+      "account": "Create account",
+      "email": "Confirm email",
+      "photo": "Add profile photo",
+      "basics": "Your basics",
+      "payout": "Add payment method",
+      "approval": "Approval"
+    },
+    "email": {
+      "title": "Confirm your email",
+      "body": "We sent a confirmation link to <strong>{email}</strong>. Click it, then continue here.",
+      "notReceived": "Nothing in your inbox?",
+      "continue": "I've confirmed — continue"
+    },
+    "photo": {
+      "title": "Add a profile photo",
+      "body": "Clients and freelancers see this. PNG or JPG, up to 2 MB.",
+      "previewAlt": "Preview",
+      "chooseFirst": "Choose a photo first",
+      "uploadFailed": "Upload failed — try another image",
+      "uploading": "Uploading…",
+      "uploadAndContinue": "Upload and continue"
+    },
+    "profile": {
+      "title": "Your basics",
+      "body": "A headline that sells you, and where you work from — clients filter on both.",
+      "headline": "Headline",
+      "headlinePlaceholder": "Senior Full-Stack Engineer",
+      "location": "Location",
+      "locationPlaceholder": "Amsterdam, Netherlands",
+      "rate": "Hourly rate (USD, optional)",
+      "couldNotSave": "Could not save. Try again.",
+      "saving": "Saving…",
+      "saveAndContinue": "Save and continue"
+    },
+    "payout": {
+      "title": "Add a payment method",
+      "body": "How you'll pay talent — directly, with zero platform fees.",
+      "continue": "Continue"
+    }
+  },
+  "dashboard": {
+    "metaTitle": "Dashboard",
+    "title": "Dashboard",
+    "welcome": "Welcome back, {name}.",
+    "findWork": "Find work",
+    "postJob": "Post a job",
+    "roles": {
+      "CLIENT": "Client",
+      "FREELANCER": "Freelancer",
+      "AGENCY_OWNER": "Agency owner",
+      "AGENCY_MEMBER": "Agency member",
+      "ADMIN": "Admin"
+    },
+    "stats": {
+      "proposalsSent": "Proposals sent",
+      "activeContracts": "Active contracts",
+      "lifetimeEarned": "Lifetime earned",
+      "reviews": "Reviews",
+      "jobsPosted": "Jobs posted",
+      "totalApplicants": "Total applicants",
+      "lifetimePaid": "Lifetime paid"
+    },
+    "yourPostings": "Your postings",
+    "newJob": "New",
+    "budgetFixed": "{amount} fixed",
+    "budgetHourly": "{min}–{max}/hr",
+    "jobStatus": {
+      "OPEN": "open",
+      "DRAFT": "draft",
+      "CLOSED": "closed",
+      "PAUSED": "paused"
+    },
+    "applicants": "{count, plural, one {# applicant} other {# applicants}}",
+    "yourProposals": "Your proposals",
+    "browse": "Browse",
+    "yourBid": "Your bid: {amount}{suffix}",
+    "perHour": "/hr",
+    "fixedSuffix": " fixed",
+    "proposalStatus": {
+      "SUBMITTED": "submitted",
+      "SHORTLISTED": "shortlisted",
+      "ACCEPTED": "accepted",
+      "REJECTED": "rejected",
+      "WITHDRAWN": "withdrawn"
+    },
+    "emptyPostings": "You haven't posted a job yet.",
+    "emptyPostingsCta": "Post your first job",
+    "emptyProposals": "You haven't applied to anything yet.",
+    "emptyProposalsCta": "Browse open work",
+    "profileStrength": "Profile strength",
+    "completeness": "Completeness",
+    "completeYourProfile": "Complete your profile",
+    "profileLooksGreat": "Your profile looks great.",
+    "missing": {
+      "headline": "Add a headline",
+      "image": "Add a profile photo",
+      "bio": "Write a bio (80+ characters)",
+      "location": "Add your location",
+      "hourlyRate": "Set your hourly rate",
+      "skillCount": "Add at least 3 skills",
+      "portfolioCount": "Add a portfolio item",
+      "links": "Add a professional link",
+      "yearsExperience": "Add years of experience",
+      "timezone": "Add your timezone"
+    },
+    "recommendedFreelancers": "Recommended freelancers",
+    "noFreelancerProfiles": "No freelancer profiles yet.",
+    "adminReview": "Admin review",
+    "noAccountsWaiting": "No accounts waiting for approval.",
+    "accountsWaiting": "{count, plural, one {# account} other {# accounts}} waiting for approval.",
+    "reviewAccounts": "Review accounts",
+    "accountSecurity": "Account & security",
+    "emailVerified": "Email verified",
+    "twoFactor": "Two-factor authentication",
+    "password": "Password",
+    "payoutMethod": "Payout method",
+    "paymentMethod": "Payment method",
+    "stateVerified": "Verified",
+    "stateNotVerified": "Not verified",
+    "stateOn": "On",
+    "stateOff": "Off",
+    "stateSet": "Set",
+    "stateNotSet": "Not set",
+    "stateSetUp": "Set up",
+    "stateNotSetUp": "Not set up",
+    "manageAccount": "Manage account",
+    "getPaid": "Get paid",
+    "payments": "Payments",
+    "earnedNote": "{amount} earned — 0% platform fee.",
+    "paidNote": "{amount} paid — 0% platform fee.",
+    "payoutHint": "Set up a payout method so clients can pay you directly.",
+    "paymentHint": "Choose how you pay talent — directly, zero fees.",
+    "setUpPayouts": "Set up payouts",
+    "paymentSettings": "Payment settings",
+    "recentActivity": "Recent activity",
+    "nothingYet": "Nothing yet — activity shows up here."
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "linkExpired": "That sign-in link has expired. Enter your email below and we'll send a fresh one.",
+      "email": "Email",
+      "password": "Password",
+      "signIn": "Sign in",
+      "signingIn": "Signing in…",
+      "or": "or",
+      "magicSent": "Check your email for a sign-in link.",
+      "magicPlaceholder": "you@company.com",
+      "magicButton": "Email me a magic link",
+      "google": "Continue with Google",
+      "github": "Continue with GitHub",
+      "noAccount": "No account?",
+      "signUpFree": "Sign up free",
+      "invalidCredentials": "Invalid email or password."
+    },
+    "register": {
+      "title": "Create your free account",
+      "imHiring": "I'm hiring",
+      "imWorking": "I'm working",
+      "companyOptional": "Company (optional)",
+      "companyPlaceholder": "Start typing your company name",
+      "addAsNewCompany": "Add “{name}” as a new company",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "passwordHint": "8+ chars with upper, lower, and a number.",
+      "confirmPassword": "Confirm password",
+      "nextStepHint": "Next you'll add a profile photo and confirm your email — it takes a minute.",
+      "createAccount": "Create account",
+      "creating": "Creating…",
+      "couldNotCreate": "Could not create your account.",
+      "checkInboxTitle": "Check your inbox",
+      "checkInboxText": "We sent a confirmation link to <strong>{email}</strong>. Confirm your email to activate the account, then sign in to finish setting up your profile. The link expires in 24 hours.",
+      "alreadyConfirmed": "Already confirmed?",
+      "logIn": "Log in",
+      "haveAccount": "Already have an account?"
+    },
+    "verify": {
+      "metaTitle": "Confirm your email",
+      "success": {
+        "title": "Email confirmed",
+        "body": "Your email is verified. You can finish the remaining setup steps from your dashboard.",
+        "cta": "Go to dashboard"
+      },
+      "expired": {
+        "title": "Link expired",
+        "body": "Confirmation links expire after 24 hours. Sign in and request a fresh one from your dashboard.",
+        "cta": "Sign in"
+      },
+      "invalid": {
+        "title": "Invalid link",
+        "body": "This confirmation link is invalid or was already used.",
+        "cta": "Sign in"
+      }
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist or has moved.",
+    "cta": "Back home"
+  },
+  "errors": {
+    "rateLimited": "Too many requests. Please slow down.",
+    "authRequired": "Authentication required.",
+    "forbidden": "You do not have permission to do that.",
+    "validationFailed": "Validation failed. Please check the fields.",
+    "somethingWentWrong": "Something went wrong. Please try again.",
+    "conversationNotFound": "Conversation not found.",
+    "postingNotFound": "Posting not found.",
+    "contactEmailRequired": "Add a contact email before publishing — applicants must reach someone.",
+    "applicantNotFound": "Applicant not found for your postings.",
+    "confirmEmailFirst": "Confirm your email first — check your inbox.",
+    "accountPending": "Your account is pending admin review. You can do this once approved.",
+    "jobNotAccepting": "This job is not accepting proposals.",
+    "ownJob": "You cannot bid on your own job.",
+    "alreadyApplied": "You already submitted a proposal for this job.",
+    "userNotFound": "User not found.",
+    "enterCurrentPassword": "Enter your current password.",
+    "currentPasswordIncorrect": "Current password is incorrect.",
+    "identityDisabled": "Identity verification is not enabled on this instance.",
+    "webhookNotConfigured": "Webhook is not configured.",
+    "invalidSignature": "Invalid signature.",
+    "invalidPayload": "Invalid payload.",
+    "alreadyVerified": "You are already verified.",
+    "noFileUploaded": "No file uploaded.",
+    "imageType": "PNG, JPG or WebP images only.",
+    "imageSize": "Image must be under 2 MB."
+  },
+  "val": {
+    "firstNameRequired": "First name is required",
+    "firstNameTooLong": "First name is too long",
+    "firstNameInvalidChars": "First name contains invalid characters",
+    "lastNameRequired": "Last name is required",
+    "lastNameTooLong": "Last name is too long",
+    "lastNameInvalidChars": "Last name contains invalid characters",
+    "emailInvalid": "Enter a valid email address",
+    "passwordMin": "Use at least 8 characters",
+    "passwordMax": "Use at most 100 characters",
+    "passwordLowercase": "Include a lowercase letter",
+    "passwordUppercase": "Include an uppercase letter",
+    "passwordDigit": "Include a number",
+    "passwordMismatch": "Passwords do not match",
+    "companyNameTooLong": "Company name is too long",
+    "jobTitleMin": "Give your job a descriptive title",
+    "jobDescriptionMin": "Describe the work in a bit more detail",
+    "budgetMaxGte": "Maximum budget must be greater than or equal to the minimum",
+    "coverLetterMin": "A stronger cover letter improves your odds",
+    "milestoneTitleMin": "Milestone title must be at least 2 characters",
+    "milestoneTitleMax": "Milestone title is too long",
+    "urlInvalid": "Enter a valid URL",
+    "bioMin": "Write at least {min} characters",
+    "bioMax": "Keep your bio under {min} characters",
+    "linkHostGithub": "Enter a GitHub profile URL (e.g. github.com/you)",
+    "linkHostLinkedin": "Enter a LinkedIn profile URL (e.g. linkedin.com/in/you)",
+    "linkHostDribbble": "Enter a Dribbble profile URL (e.g. dribbble.com/you)",
+    "linkHostBehance": "Enter a Behance profile URL (e.g. behance.net/you)",
+    "linkHostStackoverflow": "Enter a Stack Overflow profile URL (e.g. stackoverflow.com/users/…)",
+    "linkHostX": "Enter an X (Twitter) profile URL (e.g. x.com/you)"
+  },
+  "notify": {
+    "newApplicant": "New applicant for your job",
+    "accountApproved": "Your account is approved"
+  },
+  "emails": {
+    "recruiter": {
+      "hi": "Hi{name},",
+      "applied": "Someone applied to your <strong>{jobTitle}</strong> posting.",
+      "appliedPlain": "Someone applied to your \"{jobTitle}\" posting.",
+      "applicantLabel": "Applicant",
+      "signIn": "Sign in with this email to view the full application and reply:",
+      "viewButton": "View the application",
+      "pasteLink": "Or paste this link into your browser:",
+      "footerWhy": "Sent by {brand} because a freelancer applied to your public \"{jobTitle}\" posting.",
+      "unsubscribe": "Unsubscribe",
+      "subject": "New applicant for your {jobTitle} posting"
+    },
+    "dev": {
+      "hi": "Hi{name},",
+      "replied": "<strong>{company}</strong> replied to your application for <strong>{jobTitle}</strong>:",
+      "readButton": "Read and reply",
+      "footerWhy": "You're receiving this because you applied via {brand}.",
+      "manageNotifications": "Manage notifications",
+      "subject": "{company} replied to your application"
+    },
+    "verify": {
+      "subject": "Confirm your email — Freelancezero",
+      "hi": "Hi {name},",
+      "body": "Confirm your email address to finish setting up your account:",
+      "button": "Confirm email",
+      "expiry": "This link expires in 24 hours. If you didn't create an account, you can ignore this email."
+    },
+    "magicLink": {
+      "subject": "Sign in to Freelancezero",
+      "heading": "Sign in to Freelancezero:",
+      "button": "Sign in",
+      "paste": "Or paste this link:",
+      "ignore": "If you didn't request this, you can ignore it."
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Freelancezero — The Zero-Fee Upwork Alternative",
+      "description": "Looking for an Upwork alternative with no fees? Freelancezero lets freelancers keep 100% of their earnings — no commission, no connects. Clients hire faster and pay directly. Free forever."
+    },
+    "hero": {
+      "badge": "The fair freelance marketplace",
+      "title": "Keep",
+      "titleHighlight": "100%",
+      "titleTail": "of what you earn.",
+      "subtitle": "The freelance marketplace that finally works for you. Keep <strong>100%</strong> of your earnings, get paid faster, and find better matches — while Upwork quietly takes up to 10% of every invoice.",
+      "ctaPrimary": "Start earning — it's free",
+      "ctaSecondary": "Hire top talent",
+      "finePrint": "Join 12,450+ freelancers and clients · No card required · Set up in 2 minutes",
+      "trustTitle": "Pay and get paid through the processors you already trust"
+    },
+    "stats": {
+      "earned": {
+        "value": "$12M+",
+        "label": "Earned by freelancers"
+      },
+      "fees": {
+        "value": "$0",
+        "label": "Taken in platform fees"
+      },
+      "rating": {
+        "value": "4.9/5",
+        "label": "Average project rating"
+      },
+      "members": {
+        "value": "12,450",
+        "label": "Active members"
+      }
+    },
+    "feeComparison": {
+      "title": "On a $10,000 project, where does your money go?",
+      "subtitle": "Traditional marketplaces quietly skim every invoice. We don't take a cent — the math is simple.",
+      "typical": "Typical marketplace",
+      "toYou": "to you",
+      "themValue": "$8,685",
+      "fee1": "− $1,000 platform fee (10% of every invoice)",
+      "fee2": "− $250 application credits — ~100 paid bids per win, spent whether or not you get the job",
+      "fee3": "− $40 membership and signup fees",
+      "fee4": "− $25 withdrawal fee just to move your own money",
+      "footnote": "That's over 13% gone — and the credits are gone even when you don't win.",
+      "usValue": "$10,000",
+      "zeroFeeNote": "$0 in fees — you keep every dollar"
+    },
+    "vsUpwork": {
+      "eyebrow": "Freelancezero vs Upwork",
+      "title": "A side-by-side you can't unsee",
+      "subtitle": "Same work. Same clients. Radically different economics and control.",
+      "colWhat": "What matters to you",
+      "platformFee": {
+        "feature": "Platform fee on your earnings",
+        "us": "0%",
+        "them": "10%"
+      },
+      "payToApply": {
+        "feature": "Pay to submit proposals (“connects”)",
+        "us": "Never",
+        "them": "Yes"
+      },
+      "processingMarkup": {
+        "feature": "Client payment processing markup",
+        "us": "None",
+        "them": "Up to 5%"
+      },
+      "ownProcessor": {
+        "feature": "Choose your own payout processor",
+        "us": "Yes",
+        "them": "No"
+      },
+      "instantPayouts": {
+        "feature": "Instant payouts",
+        "us": "Supported",
+        "them": "Limited"
+      },
+      "aiMatching": {
+        "feature": "AI-assisted matching & proposals",
+        "us": "Built-in",
+        "them": "Partial"
+      },
+      "dataOwnership": {
+        "feature": "Own & export all your data",
+        "us": "Always",
+        "them": "No"
+      },
+      "disputes": {
+        "feature": "Transparent, community-led disputes",
+        "us": "Yes",
+        "them": "Opaque"
+      },
+      "disclaimer": "Comparison based on publicly listed Upwork terms as of 2026. “Upwork” is a trademark of its owner; Freelancezero is not affiliated with or endorsed by Upwork."
+    },
+    "benefits": {
+      "eyebrow": "Why switch",
+      "title": "Everything you need to win work and get paid",
+      "keepEveryDollar": {
+        "title": "Keep every dollar",
+        "body": "No commissions, no paying to apply, no withdrawal fees. Your rate is your take-home — full stop."
+      },
+      "smarterMatching": {
+        "title": "Smarter matching",
+        "body": "Quality-scored proposals and relevance-ranked talent mean less noise and faster, better hires."
+      },
+      "workflow": {
+        "title": "A delightful workflow",
+        "body": "Contracts, milestones, chat, and time tracking in one fast, modern workspace you'll enjoy using."
+      },
+      "directPayments": {
+        "title": "Direct, secure payments",
+        "body": "Pay and get paid through Stripe, PayPal, Wise, or crypto — you choose. We never hold your money."
+      },
+      "trustSignals": {
+        "title": "Real trust signals",
+        "body": "Verified clients, transparent reviews, and endorsements so both sides know who they're working with."
+      },
+      "ownYourData": {
+        "title": "Yours to own",
+        "body": "Export your data anytime, bring your own clients, and never get locked in. Your reputation travels with you."
+      }
+    },
+    "features": {
+      "discovery": {
+        "eyebrow": "Discovery",
+        "title": "Find work that actually fits",
+        "body": "Every job you see is scored for how well it matches your skills and rate. No more scrolling past a hundred irrelevant posts to find the one worth your time.",
+        "points": [
+          "Relevance-ranked job feed",
+          "Saved searches & instant alerts",
+          "One-click, high-quality proposals"
+        ]
+      },
+      "reputation": {
+        "eyebrow": "Reputation",
+        "title": "A profile that wins the pitch",
+        "body": "Showcase a rich portfolio, endorsed skills, and verified reviews. Clients see exactly why you're the right hire — before you say a word.",
+        "points": [
+          "Portfolio, case studies & GitHub",
+          "Endorsements & verified reviews",
+          "Live “open to work” status"
+        ]
+      },
+      "payments": {
+        "eyebrow": "Payments",
+        "title": "Milestones, delivered and paid — with zero cut",
+        "body": "Fund milestones, approve deliverables, and release payment directly to your freelancer through your own processor. Transparent, safe, and 100% fee-free.",
+        "points": [
+          "Milestone-based contracts",
+          "Deliverable approval workflow",
+          "Direct payouts, $0 platform fee"
+        ]
+      }
+    },
+    "how": {
+      "title": "From “hello” to “paid” in three steps",
+      "step": "Step {n}",
+      "step1": {
+        "title": "Post or find work",
+        "body": "Clients post a job in minutes; freelancers get matched to roles that fit."
+      },
+      "step2": {
+        "title": "Agree on milestones",
+        "body": "Set scope, timeline, and payment terms in a clear, shared contract."
+      },
+      "step3": {
+        "title": "Deliver & get paid in full",
+        "body": "Approve work and release payment directly — with zero fees taken out."
+      }
+    },
+    "testimonials": {
+      "eyebrow": "Loved by both sides",
+      "title": "People are moving their work — and their income — here",
+      "maya": {
+        "quote": "I moved my whole client base off Upwork. On my last $6k project I kept every cent — that's an extra $1,200 that used to just vanish into fees.",
+        "name": "Maya Chen",
+        "role": "Freelance Product Designer",
+        "initials": "MC",
+        "metric": "+$14k kept in 2025"
+      },
+      "david": {
+        "quote": "The matching is genuinely better. I posted a role at 9am and had three strong, relevant proposals by lunch — not fifty copy-paste ones.",
+        "name": "David Okafor",
+        "role": "Founder, Northwind Labs",
+        "initials": "DO",
+        "metric": "Hired in 6 hours"
+      },
+      "sofia": {
+        "quote": "Paying my developer directly through my own Stripe felt weird at first. Now it feels obvious. No middleman holding my money hostage.",
+        "name": "Sofia Ramirez",
+        "role": "Marketing Agency Owner",
+        "initials": "SR",
+        "metric": "9 contracts, $0 fees"
+      },
+      "tom": {
+        "quote": "Clean, fast, and it respects my time. It feels like Linear built a freelance platform. My clients take me more seriously here.",
+        "name": "Tom Bjørn",
+        "role": "Full-Stack Engineer",
+        "initials": "TB",
+        "metric": "4.9★ over 50 jobs"
+      },
+      "previous": "Previous testimonial",
+      "next": "Next testimonial",
+      "goTo": "Go to testimonial {n}"
+    },
+    "talent": {
+      "eyebrow": "Featured talent",
+      "title": "Top-rated professionals, ready to start",
+      "cta": "Hire talent",
+      "role1": "Brand & Web Designer",
+      "role2": "Full-Stack Developer",
+      "role3": "Growth Marketer",
+      "role4": "Motion & Video"
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "title": "The whole platform is free. Really.",
+      "subtitle": "We don't make money by taking yours. No fees for freelancers, no fees for clients — now or ever.",
+      "per": "per month · per project · per anything",
+      "features": [
+        "Unlimited jobs, proposals & contracts",
+        "Milestones, chat & time tracking",
+        "Direct payments via your own processor",
+        "Verified reviews & reputation",
+        "Full data export, no lock-in"
+      ],
+      "cta": "Create your free account"
+    },
+    "faq": {
+      "eyebrow": "Questions, answered",
+      "title": "Everything you're wondering about a zero-fee marketplace",
+      "free": {
+        "q": "Is Freelancezero really free — what's the catch?",
+        "a": "Yes. Freelancezero charges freelancers and clients 0% — no commissions, no connects, no withdrawal fees. There is no catch: the platform is a coordinator, not a middleman that skims payments. We sustain the project through optional premium tools and services that never gate the core marketplace."
+      },
+      "difference": {
+        "q": "How is Freelancezero different from Upwork?",
+        "a": "The biggest difference is fees: Upwork takes up to 10% of your earnings, plus paid “connects” to apply and payment-processing markups. Freelancezero takes nothing. You also choose your own payout processor (Stripe, PayPal, Wise, or crypto), own and export your data anytime, and get faster, AI-assisted matching."
+      },
+      "payment": {
+        "q": "How do freelancers get paid if the platform takes no fee?",
+        "a": "Payments flow directly from client to freelancer through a processor you choose. Freelancezero coordinates milestones and releases but never holds your money, so there's no platform cut and often faster access to funds."
+      },
+      "import": {
+        "q": "Can I import my Upwork profile and reviews?",
+        "a": "Yes. Our import tool helps you rebuild your profile — bio, skills, portfolio, and work history — in minutes so switching doesn't mean starting from zero."
+      },
+      "safety": {
+        "q": "Is it safe? How are disputes handled?",
+        "a": "Clients can be payment- and identity-verified, reviews are transparent and double-blind to prevent retaliation, and disputes use a fast, transparent, community-led resolution process with optional arbitration."
+      },
+      "agencies": {
+        "q": "Do you support agencies and teams?",
+        "a": "Yes. Agencies can add team members with roles, manage a shared pipeline, and bid or deliver as a team — with the same zero-fee model."
+      }
+    },
+    "finalCta": {
+      "title": "Stop giving away a cut of your work.",
+      "subtitle": "Join thousands of freelancers and clients who've switched to the fair way to work.",
+      "ctaPrimary": "Start earning free",
+      "ctaSecondary": "Post a job"
+    },
+    "mockups": {
+      "nav": {
+        "dashboard": "Dashboard",
+        "contracts": "Contracts",
+        "messages": "Messages",
+        "payments": "Payments"
+      },
+      "greeting": "Good morning, Jordan",
+      "earnings": "Your earnings",
+      "search": "Search…",
+      "availableBalance": "Available balance",
+      "hundredYours": "100% yours",
+      "thisMonth": "This month",
+      "vsLast": "+18% vs last",
+      "feesPaid": "Fees paid",
+      "always": "Always",
+      "income": "Income",
+      "last6Months": "Last 6 months",
+      "job1": {
+        "title": "Senior React engineer",
+        "budget": "$85–110/hr",
+        "match": "96% match",
+        "tags": [
+          "React",
+          "Next.js"
+        ]
+      },
+      "job2": {
+        "title": "Brand & landing page design",
+        "budget": "$4,500 fixed",
+        "match": "91% match",
+        "tags": [
+          "Figma",
+          "UI"
+        ]
+      },
+      "job3": {
+        "title": "Technical SEO audit",
+        "budget": "$2,000 fixed",
+        "match": "88% match",
+        "tags": [
+          "SEO"
+        ]
+      },
+      "profile": {
+        "headline": "Senior Full-Stack Engineer",
+        "rating": "4.9 · 47 reviews",
+        "openToWork": "Open to work",
+        "stat1a": "$85",
+        "stat1b": "/hour",
+        "stat2a": "100%",
+        "stat2b": "job success",
+        "stat3a": "24h",
+        "stat3b": "response"
+      },
+      "contract": {
+        "ms1": "Design system & wireframes",
+        "ms1a": "$1,200",
+        "ms2": "Core build & integration",
+        "ms2a": "$2,000",
+        "ms3": "QA, launch & handoff",
+        "ms3a": "$1,300",
+        "projectTitle": "Marketing site build",
+        "active": "Active",
+        "releasedToYou": "Released to you",
+        "releasedTotal": "$3,200 · 0% fee"
+      }
+    }
+  },
+  "jobs": {
+    "list": {
+      "meta": {
+        "title": "Find Freelance Work — Zero Fees, Keep 100%",
+        "description": "Browse freelance jobs and keep 100% of what you earn. No commissions, no connects to apply. Find remote freelance work across development, design, writing, and marketing.",
+        "keywords": [
+          "freelance jobs",
+          "remote freelance work",
+          "find freelance work no fees"
+        ]
+      },
+      "title": "Find work",
+      "openCount": "{count} open",
+      "empty": "No open jobs yet. Check back soon.",
+      "experience": {
+        "ENTRY": "entry",
+        "INTERMEDIATE": "intermediate",
+        "EXPERT": "expert"
+      },
+      "proposalCount": "{count, plural, one {# proposal} other {# proposals}}",
+      "budgetTbd": "Budget TBD",
+      "budgetFixed": "{amount} fixed",
+      "budgetHourlyRange": "{range}/hr"
+    },
+    "new": {
+      "metaTitle": "Post a job",
+      "title": "Post a job",
+      "subtitle": "Reach freelancers directly. Zero platform fees — always.",
+      "freelancerNotice": "You're signed in as a freelancer, so you can't post jobs from this account.",
+      "findWorkInstead": "Find work instead",
+      "form": {
+        "title": "Title",
+        "titlePlaceholder": "e.g. Senior React engineer for analytics dashboard",
+        "description": "Description",
+        "descriptionPlaceholder": "What needs doing, the stack, timeline, and what a great applicant looks like.",
+        "budgetType": "Budget type",
+        "budgetFixed": "Fixed price",
+        "budgetHourly": "Hourly",
+        "experience": "Experience level",
+        "expEntry": "Entry",
+        "expIntermediate": "Intermediate",
+        "expExpert": "Expert",
+        "fixedPrice": "Fixed price (USD)",
+        "minRate": "Min rate (USD/hr)",
+        "maxRate": "Max rate (USD/hr)",
+        "estimatedDays": "Estimated days (optional)",
+        "posting": "Posting…",
+        "postJob": "Post job",
+        "couldNotPost": "Could not post the job. Check the fields and try again."
+      }
+    },
+    "detail": {
+      "experience": {
+        "ENTRY": "entry",
+        "INTERMEDIATE": "intermediate",
+        "EXPERT": "expert"
+      },
+      "proposalCount": "{count, plural, one {# proposal} other {# proposals}}",
+      "estimatedDays": "~{count} days",
+      "fixedPrice": "{amount} fixed price",
+      "hourlyPrice": "{min} – {max} / hour",
+      "jobDescription": "Job description",
+      "lockedTitle": "Log in or sign up to view the full posting",
+      "lockedBody": "Freelancezero is free for freelancers — applying never costs a thing.",
+      "signUpFree": "Sign up free",
+      "logIn": "Log in",
+      "aboutClient": "About the client",
+      "anonymousClient": "A client",
+      "noReviewsYet": "No reviews yet",
+      "postingCount": "{count, plural, one {# posting} other {# postings}}",
+      "paymentVerified": "Payment verified",
+      "yourApplication": "Your application",
+      "applyTitle": "Apply to this job",
+      "appliedNote": "You've applied. Track it on your <dashboard>dashboard</dashboard>.",
+      "onlyFreelancers": "Only freelancer accounts can apply to jobs.",
+      "closedJob": "This job is no longer accepting proposals.",
+      "signInToApply": "Sign in to apply",
+      "backToDashboard": "Back to dashboard",
+      "backToJobs": "Back to jobs",
+      "applicants": "Applicants",
+      "viewAll": "View all {count}",
+      "noApplicationsYet": "No applications yet.",
+      "freelancerFallback": "Freelancer",
+      "bidPerHour": "{amount}/hr"
+    },
+    "apply": {
+      "enterBid": "Enter your bid amount.",
+      "couldNotSubmit": "Could not submit your proposal.",
+      "coverLetter": "Cover letter",
+      "coverLetterPlaceholder": "Why you're a fit — relevant work, approach, and availability.",
+      "bidType": "Bid type",
+      "bidFixed": "Fixed",
+      "bidHourly": "Hourly",
+      "rateUsdHour": "Rate (USD/hr)",
+      "bidUsd": "Bid (USD)",
+      "daysOptional": "Days (optional)",
+      "submitting": "Submitting…",
+      "submit": "Submit proposal"
+    },
+    "proposals": {
+      "yourCompany": "Your company",
+      "applicationCount": "{count, plural, one {# application} other {# applications}}",
+      "empty": "No applications yet.",
+      "bidPerHour": "{amount}/hr"
+    },
+    "reply": {
+      "placeholder": "Reply to this applicant…",
+      "sending": "Sending…",
+      "send": "Send reply",
+      "sent": "Sent",
+      "error": "Couldn't send — try again"
+    }
+  },
+  "inbox": {
+    "meta": {
+      "title": "Messages"
+    },
+    "title": "Messages",
+    "empty": "No conversations yet. They start when a client replies to a proposal.",
+    "conversationFallback": "Conversation",
+    "clientFallback": "Client",
+    "thread": {
+      "unknown": "Unknown",
+      "you": "You",
+      "clientFallback": "Client",
+      "conversationFallback": "Conversation",
+      "allMessages": "All messages",
+      "empty": "No messages yet — say hello."
+    },
+    "form": {
+      "couldNotSend": "Could not send your message.",
+      "placeholder": "Write a message…",
+      "sending": "Sending…",
+      "send": "Send message"
+    }
+  },
+  "settings": {
+    "meta": {
+      "title": "Settings"
+    },
+    "title": "Settings",
+    "subtitle": "Manage your account, payouts, and security.",
+    "account": "Account",
+    "name": "Name",
+    "email": "Email",
+    "accountType": "Account type",
+    "memberSince": "Member since",
+    "roles": {
+      "CLIENT": "client",
+      "FREELANCER": "freelancer",
+      "AGENCY_OWNER": "agency owner",
+      "AGENCY_MEMBER": "agency member",
+      "ADMIN": "admin"
+    },
+    "profileTitle": "Public profile",
+    "profileDesc": "Your headline, bio, rate, availability, and links — what clients see.",
+    "identityTitle": "Your identity",
+    "identityDesc": "Company name, website, and about — how freelancers see you.",
+    "getPaidTitle": "Get paid",
+    "getPaidDesc": "Connect a payout method and keep 100% of what you earn.",
+    "billingTitle": "Billing & payments",
+    "billingDesc": "Choose how you pay talent — directly, with zero platform fees.",
+    "notificationsTitle": "Notifications & privacy",
+    "notificationsDesc": "Email preferences · Public name shows as {name}.",
+    "nameDisplay": {
+      "full": "your full name",
+      "abbreviated": "first name + initial"
+    },
+    "securityTitle": "Security",
+    "securityDesc": "Password {password} · Two-factor {twofa}.",
+    "state": {
+      "set": "set",
+      "notSet": "not set",
+      "enabled": "enabled",
+      "off": "off"
+    },
+    "avatar": {
+      "uploadFailed": "Upload failed — try another image",
+      "uploading": "Uploading…",
+      "changePhoto": "Change photo",
+      "addPhoto": "Add photo",
+      "formatHint": "PNG, JPG or WebP, up to 2 MB."
+    },
+    "profile": {
+      "metaTitle": "Public profile",
+      "backToSettings": "Settings",
+      "freelancerTitle": "Public profile",
+      "clientTitle": "Your identity",
+      "viewPublic": "View public profile",
+      "freelancerIntro": "This is what clients see when they find you.",
+      "clientIntro": "This is how you appear to freelancers on your postings and in messages.",
+      "photo": "Photo",
+      "details": "Details",
+      "sectionBasics": "Basics",
+      "fullName": "Full name",
+      "nameLockedHint": "Locked after approval — contact support to correct it.",
+      "nameLockNotice": "This locks once your account is approved, so get it right now.",
+      "headline": "Headline",
+      "headlinePlaceholder": "Senior Full-Stack Engineer · React & Node",
+      "bio": "Bio",
+      "bioPlaceholder": "What you do, who you do it for, and the results you get. Concrete outcomes beat adjectives.",
+      "bioTooShort": " — at least {min} characters",
+      "bioMin": "(minimum {min})",
+      "sectionAvailability": "Availability & rate",
+      "location": "Location",
+      "locationPlaceholder": "Amsterdam, Netherlands",
+      "timezone": "Timezone",
+      "timezonePlaceholder": "CET (UTC+1)",
+      "hourlyRate": "Hourly rate (USD)",
+      "hoursPerWeek": "Hours / week",
+      "yearsExperience": "Years experience",
+      "availability": "Availability",
+      "openToWork": "Open to work",
+      "openToOffers": "Open to offers",
+      "notAvailable": "Not available",
+      "sectionLinks": "Professional links",
+      "linksHint": "Each field only accepts URLs from that site.",
+      "link": {
+        "website": "Website",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "stackoverflow": "Stack Overflow",
+        "dribbble": "Dribbble",
+        "behance": "Behance",
+        "x": "X / Twitter"
+      },
+      "fields": {
+        "headline": "Headline",
+        "bio": "Bio",
+        "location": "Location",
+        "timezone": "Timezone",
+        "availability": "Availability",
+        "yearsExperience": "Years experience",
+        "hourlyRate": "Hourly rate",
+        "hoursPerWeek": "Hours / week"
+      },
+      "couldNotSaveName": "Could not save your name.",
+      "couldNotSave": "Could not save. Check the fields.",
+      "saving": "Saving…",
+      "saveProfile": "Save profile",
+      "saved": "Saved"
+    },
+    "company": {
+      "couldNotSave": "Could not save. Check the fields and try again.",
+      "yourName": "Your name",
+      "companyName": "Company name",
+      "companyNamePlaceholder": "Northwind Labs",
+      "companyNameHint": "Shown to freelancers on your job postings and messages. Leave empty to use your own name.",
+      "companyUrl": "Company website",
+      "location": "Location",
+      "locationPlaceholder": "Amsterdam, Netherlands",
+      "about": "About",
+      "aboutPlaceholder": "What your company does, and what you typically hire for.",
+      "saving": "Saving…",
+      "save": "Save",
+      "saved": "Saved"
+    },
+    "payments": {
+      "meta": {
+        "title": "Get paid"
+      },
+      "backToSettings": "Settings",
+      "getPaidTitle": "Get paid",
+      "billingTitle": "Billing & payments",
+      "freelancerIntro": "You keep 100%. Payments route directly from clients to you — Freelancezero never touches your money.",
+      "clientIntro": "Pay talent directly with zero platform fees. You choose the method; funds go straight to the freelancer.",
+      "noMethodTitle": "No payout method set up.",
+      "noPaymentTitle": "No payment method set up.",
+      "noMethodBody": "Add one so clients can pay you when work is accepted.",
+      "noPaymentBody": "Add one so you can pay freelancers you hire.",
+      "lifetimeEarned": "Lifetime earned",
+      "lifetimePaid": "Lifetime paid",
+      "zeroFeeNote": "0% platform fee — always.",
+      "activeContracts": "Active contracts",
+      "noContractsYet": "No active contracts yet.",
+      "inProgress": "In progress.",
+      "payoutMethod": "Payout method",
+      "paymentMethod": "Payment method"
+    },
+    "payoutMethods": {
+      "stripe": {
+        "label": "Stripe Connect",
+        "desc": "Instant payouts to your bank or debit card.",
+        "placeholder": "Account email"
+      },
+      "paypal": {
+        "label": "PayPal",
+        "desc": "Get paid to your PayPal balance worldwide.",
+        "placeholder": "PayPal email"
+      },
+      "wise": {
+        "label": "Wise",
+        "desc": "Low-cost multi-currency transfers.",
+        "placeholder": "Wise email"
+      },
+      "manual": {
+        "label": "Bank transfer / invoice",
+        "desc": "Arrange payment directly with the client.",
+        "placeholder": "IBAN or note (optional)"
+      },
+      "connected": "Connected",
+      "remove": "Remove",
+      "cancel": "Cancel",
+      "connect": "Connect",
+      "holderPlaceholder": "Account holder name (required)",
+      "saving": "Saving…",
+      "save": "Save",
+      "couldNotSave": "Could not save. Try again.",
+      "freelancerNote": "Your clients pay you directly through the method you choose. Freelancezero never holds your money or takes a cut.",
+      "clientNote": "You pay talent directly through the method you choose. Freelancezero never holds funds or charges a platform fee."
+    },
+    "notifications": {
+      "meta": {
+        "title": "Notifications & privacy"
+      },
+      "backToSettings": "Settings",
+      "title": "Notifications & privacy",
+      "subtitle": "Control what we email you, and how your name appears to others.",
+      "exampleName": "Jordan Diaz",
+      "form": {
+        "privacySection": "Privacy",
+        "fullNameToggle": "Show my full name publicly",
+        "fullNameOn": "Your profile shows \"{name}\".",
+        "fullNameOff": "Your profile shows \"{name}\". Turn this on to show your full name.",
+        "indexToggle": "Show my profile in search engines",
+        "indexOn": "Your profile can appear in Google results — free inbound work. Turn off to keep it visible only to clients inside Freelancezero.",
+        "indexOff": "Your profile is hidden from search engines. Clients on Freelancezero can still find and view it.",
+        "emailSection": "Email notifications",
+        "proposalsToggle": "Proposals and applications",
+        "proposalsDesc": "When someone applies to your job, or your proposal status changes.",
+        "messagesToggle": "Messages",
+        "messagesDesc": "When a client or freelancer sends you a message.",
+        "newsToggle": "Product news",
+        "newsDesc": "Occasional updates about new features. No more than monthly.",
+        "securityToggle": "Security and account emails",
+        "securityDesc": "Email confirmation, password and payout changes. Always on for your safety.",
+        "couldNotSave": "Could not save that change.",
+        "saved": "Saved"
+      }
+    },
+    "security": {
+      "meta": {
+        "title": "Security"
+      },
+      "backToSettings": "Settings",
+      "title": "Security",
+      "subtitle": "Keep your account safe. Changes here trigger a confirmation email.",
+      "overview": "Overview",
+      "emailConfirmed": "Email confirmed",
+      "stateConfirmed": "Confirmed",
+      "stateNotConfirmed": "Not confirmed yet",
+      "passwordRow": "Password",
+      "stateSet": "Set",
+      "stateNoPassword": "Not set — you sign in with a link or social login",
+      "identityVerified": "Identity verified",
+      "stateVerified": "Verified",
+      "stateNotVerified": "Not verified",
+      "twoFactor": "Two-factor authentication",
+      "stateEnabled": "Enabled",
+      "stateNotEnabled": "Not enabled",
+      "connectedMethods": "Connected sign-in methods",
+      "emailOnly": "Email only",
+      "changePassword": "Change password",
+      "setAPassword": "Set a password",
+      "identityVerification": "Identity verification",
+      "twofaOn": "Two-factor authentication is enabled on your account.",
+      "twofaOff": "Add a second step at sign-in using an authenticator app. Setup is coming soon — in the meantime, use a strong unique password.",
+      "manage2fa": "Manage 2FA",
+      "setup2fa": "Set up 2FA (coming soon)",
+      "recentActivity": "Recent account activity",
+      "noActivity": "No recorded activity yet.",
+      "audit": {
+        "user_password_change": "Password changed",
+        "user_login": "Signed in",
+        "job_publish": "Published a job",
+        "payment_release": "Released a payment"
+      },
+      "passwordForm": {
+        "mismatch": "New passwords do not match",
+        "couldNotUpdate": "Could not update your password",
+        "currentPassword": "Current password",
+        "noPasswordNotice": "Your account signs in with a magic link or social login. Set a password to also sign in with one.",
+        "newPassword": "New password",
+        "requirements": "At least 8 characters, with an uppercase letter, a lowercase letter, and a number.",
+        "confirmNewPassword": "Confirm new password",
+        "updated": "Password updated",
+        "saving": "Saving…",
+        "changePassword": "Change password",
+        "setPassword": "Set password"
+      },
+      "identity": {
+        "identityLabel": "Identity",
+        "status": {
+          "UNVERIFIED": "Not verified",
+          "PENDING": "In progress",
+          "PROCESSING": "Under review",
+          "VERIFIED": "Verified",
+          "FAILED": "Could not verify"
+        },
+        "desc": {
+          "UNVERIFIED": "Verify your identity to earn a badge on your public profile. Clients hire verified freelancers more readily.",
+          "PENDING": "Finish the checks in the window that opened. You can scan the QR code to continue on your phone.",
+          "PROCESSING": "Your documents are being reviewed. This usually takes a few minutes — we will email you.",
+          "VERIFIED": "Your identity is confirmed and a verified badge shows on your public profile.",
+          "FAILED": "We could not verify your identity from the documents provided. You can try again."
+        },
+        "disabledNote": "Identity verification is not enabled on this instance. Set <code>IDENTITY_DRIVER</code> to switch it on.",
+        "couldNotStart": "Could not start verification",
+        "starting": "Starting…",
+        "tryAgain": "Try again",
+        "start": "Verify my identity",
+        "privacyNote": "Checks are handled by our verification partner. Freelancezero never receives or stores your document images or ID numbers — only the result."
+      }
+    }
+  },
+  "admin": {
+    "title": "Admin",
+    "tabApprovals": "Approvals",
+    "tabUsers": "Users",
+    "tabJobs": "Postings",
+    "approvals": {
+      "title": "Account approvals",
+      "pendingCount": "{count} pending",
+      "intro": "Approving lets the user post or apply to jobs. This is the last line of defense against spam.",
+      "empty": "Nobody waiting — the queue is clear.",
+      "joined": "Joined {date}",
+      "roles": {
+        "CLIENT": "client",
+        "FREELANCER": "freelancer",
+        "AGENCY_OWNER": "agency owner",
+        "AGENCY_MEMBER": "agency member",
+        "ADMIN": "admin"
+      },
+      "approve": "Approve",
+      "approving": "Approving…"
+    },
+    "jobs": {
+      "title": "Postings",
+      "awaitingCuration": "{count} awaiting curation",
+      "intro": "Scraped postings arrive as drafts when no contact address could be found. Add the company name and an email, then publish — applicants can only be delivered to a real inbox.",
+      "filter": {
+        "drafts": "Needs curation",
+        "open": "Published",
+        "all": "All"
+      },
+      "empty": "Nothing here. Run the ingest to pull in new postings.",
+      "couldNotSave": "Could not save",
+      "status": {
+        "OPEN": "open",
+        "DRAFT": "draft",
+        "CLOSED": "closed",
+        "PAUSED": "paused"
+      },
+      "scraped": "scraped",
+      "noContact": "no contact",
+      "noCompanyName": "— no company name —",
+      "applicantsShort": "{count} applicant(s)",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "titleLabel": "Title",
+      "companyLabel": "Company name",
+      "contactEmailLabel": "Contact email",
+      "companyPlaceholder": "Acme Inc.",
+      "contactPlaceholder": "jobs@acme.com",
+      "sourceUrlLabel": "Source URL",
+      "saving": "Saving…",
+      "save": "Save",
+      "saved": "Saved",
+      "viewPosting": "View posting"
+    },
+    "users": {
+      "title": "Users",
+      "intro": "Review and correct account data. Scraped companies are shells until someone signs in with their email — fill in a contact address so applications can reach them.",
+      "filter": {
+        "clients": "Clients",
+        "freelancers": "Freelancers",
+        "companies": "Scraped companies",
+        "all": "All"
+      },
+      "empty": "No accounts in this view.",
+      "couldNotSave": "Could not save",
+      "roles": {
+        "CLIENT": "client",
+        "FREELANCER": "freelancer",
+        "AGENCY_OWNER": "agency owner",
+        "AGENCY_MEMBER": "agency member",
+        "ADMIN": "admin",
+        "UNCLAIMED": "unclaimed"
+      },
+      "status": {
+        "ACTIVE": "active",
+        "UNCLAIMED": "unclaimed",
+        "SUSPENDED": "suspended",
+        "DELETED": "deleted"
+      },
+      "unapproved": "unapproved",
+      "noName": "— no name —",
+      "contactPrefix": "contact:",
+      "postingsShort": "{count} posting(s)",
+      "proposalsShort": "{count} proposal(s)",
+      "approve": "Approve",
+      "nameLabel": "Name",
+      "contactNameLabel": "Contact name",
+      "headlineLabel": "Headline",
+      "companyLabel": "Company name",
+      "contactEmailLabel": "Contact email",
+      "viewProfile": "View profile",
+      "saving": "Saving…",
+      "save": "Save",
+      "saved": "Saved"
+    }
+  },
+  "status": {
+    "meta": {
+      "title": "System Status",
+      "description": "Live operational status for Freelancezero — API, database, email delivery, and background jobs, with 90-day uptime history.",
+      "keywords": [
+        "freelancezero status",
+        "freelancezero uptime"
+      ]
+    },
+    "title": "System status",
+    "allOperational": "All systems operational",
+    "partialDisruption": "Partial service disruption",
+    "checkedAt": "Checked {time}",
+    "checks": {
+      "web": {
+        "name": "Web application",
+        "desc": "Marketplace pages and dashboard"
+      },
+      "database": {
+        "name": "Database",
+        "desc": "Jobs, proposals, and accounts"
+      },
+      "email": {
+        "name": "Email delivery",
+        "desc": "Sign-in links and notifications"
+      },
+      "jobs": {
+        "name": "Background jobs",
+        "desc": "Job ingestion and email fan-out"
+      }
+    },
+    "web.ok": "Serving requests",
+    "database.ok": "Responded in {ms}ms",
+    "database.down": "Not reachable",
+    "email.ok": "Provider configured",
+    "email.down": "No provider configured",
+    "jobs.idle": "Idle",
+    "jobs.lastRun": "Last run {hours}h ago",
+    "jobs.noRuns": "No runs recorded yet",
+    "jobs.unknown": "Unknown",
+    "operational": "Operational",
+    "degraded": "Degraded",
+    "uptimeTitle": "90-day uptime",
+    "daysAgo": "90 days ago",
+    "today": "Today",
+    "footerNote": "Checks run when this page loads. For incident history and planned maintenance, email status@freelancezero.com."
+  },
+  "careers": {
+    "meta": {
+      "title": "Careers — Build the Fair Freelance Marketplace",
+      "description": "Join Freelancezero and help build the zero-fee, open-source freelance marketplace. Remote-first roles in engineering, design, and growth.",
+      "keywords": [
+        "freelancezero careers",
+        "remote startup jobs",
+        "open source jobs"
+      ]
+    },
+    "hiringBadge": "We're hiring",
+    "title": "Build the fair freelance economy",
+    "intro": "Freelancezero is a 100% free, open-source marketplace where freelancers keep everything they earn. We're a small, remote team building for people — not shareholders.",
+    "perks": {
+      "remoteFirst": {
+        "title": "Remote-first",
+        "desc": "Work from anywhere. We optimize for outcomes, not hours."
+      },
+      "fairByDesign": {
+        "title": "Fair by design",
+        "desc": "We take 0% from freelancers — and pay our team fairly too."
+      },
+      "realOwnership": {
+        "title": "Real ownership",
+        "desc": "Meaningful equity and a say in what we build."
+      },
+      "openSource": {
+        "title": "Open source",
+        "desc": "Your work is public, portable, and something to be proud of."
+      }
+    },
+    "openRoles": "Open roles",
+    "positionsNote": "{count} positions · all remote",
+    "apply": "Apply",
+    "roles": {
+      "seniorSoftwareEngineer": {
+        "title": "Senior Software Engineer",
+        "team": "Engineering",
+        "location": "Remote (global)",
+        "type": "Full-time",
+        "mailSubject": "Application: Senior Software Engineer",
+        "blurb": "Own features end-to-end across our Next.js + Prisma stack — from the job feed to payments adapters. You'll ship weekly and shape the core product."
+      },
+      "hrRecruiter": {
+        "title": "HR Recruiter",
+        "team": "People",
+        "location": "Remote (global)",
+        "type": "Full-time",
+        "mailSubject": "Application: HR Recruiter",
+        "blurb": "Build the team that builds the fair freelance economy. Own hiring end-to-end — sourcing, screening, and giving every candidate a genuinely good experience."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "team": "Growth",
+        "location": "Remote (global)",
+        "type": "Full-time",
+        "mailSubject": "Application: Marketing",
+        "blurb": "Own our content and SEO engine. Turn “Upwork alternative” intent into signups with pages people actually want to read — and a brand freelancers trust."
+      }
+    },
+    "noRoleTitle": "Don't see your role?",
+    "noRoleBody": "We're always keen to meet people who believe in a fairer freelance economy. Tell us what you'd build.",
+    "getInTouch": "Get in touch"
+  },
+  "freelancerProfile": {
+    "notFoundTitle": "Freelancer not found",
+    "freelancerFallback": "freelancer",
+    "metaDescription": "Hire {name}{where} — {headline}{skills}. Zero platform fees on Freelancezero.",
+    "availability": {
+      "OPEN_TO_WORK": "Open to work",
+      "OPEN_TO_OFFERS": "Open to offers",
+      "NOT_AVAILABLE": "Not available"
+    },
+    "noReviewsYet": "No reviews yet",
+    "hoursPerWeekShort": "{hours}h/week",
+    "yearsExperienceShort": "{years} yrs experience",
+    "perHour": "per hour",
+    "linkWebsite": "Website",
+    "linkLinkedIn": "LinkedIn",
+    "linkGitHub": "GitHub",
+    "linkStackOverflow": "Stack Overflow",
+    "linkDribbble": "Dribbble",
+    "linkBehance": "Behance",
+    "linkX": "X",
+    "about": "About",
+    "portfolio": "Portfolio",
+    "viewProject": "View project",
+    "experience": "Experience",
+    "present": "Present",
+    "languages": "Languages",
+    "identityVerified": "Identity verified"
+  },
+  "blog": {
+    "meta": {
+      "title": "Freelancing Guides, Fee Breakdowns & Platform Comparisons",
+      "description": "Practical guides on freelance rates, platform fees, contracts, and getting paid — written for freelancers who want to keep what they earn.",
+      "keywords": [
+        "freelance blog",
+        "freelancing guides",
+        "freelance advice",
+        "freelance tips 2026"
+      ]
+    },
+    "title": "Resources",
+    "intro": "Guides on rates, fees, contracts, and getting paid — written for freelancers who want to keep 100% of what they earn.",
+    "translationNote": "Our articles are currently published in English; Turkish translations are being added progressively.",
+    "minRead": "{minutes} min read",
+    "minShort": "{minutes} min",
+    "categories": {
+      "Guides": "Guides",
+      "Comparisons": "Comparisons",
+      "Money": "Money",
+      "Growth": "Growth",
+      "Product": "Product"
+    },
+    "notFoundTitle": "Post not found",
+    "allResources": "All resources",
+    "crumbHome": "Home",
+    "ctaTitle": "Keep 100% of what you earn",
+    "ctaBody": "Freelancezero charges 0% commission — no fees to apply, no cut of your invoice.",
+    "ctaButton": "Create a free account",
+    "keepReading": "Keep reading"
+  },
+  "legal": {
+    "privacy": {
+      "meta": {
+        "title": "Privacy Policy",
+        "description": "How Freelancezero collects, uses, and protects your personal data. We never sell your data, and you can export or delete it at any time.",
+        "keywords": [
+          "freelancezero privacy policy",
+          "freelance platform data protection"
+        ]
+      },
+      "title": "Privacy Policy",
+      "intro": "We collect the minimum we need to run the marketplace, we never sell your data, and you can take it with you or delete it at any time.",
+      "updated": "Last updated: August 2, 2026",
+      "whoWeAre": {
+        "title": "Who we are",
+        "body": "Freelancezero (“we”, “us”) operates a zero-fee freelance marketplace. This policy explains what we do with personal data when you use the hosted service at freelancezero.com. Freelancezero is also open source and self-hostable — if you are using someone else's instance, that operator is the data controller, not us."
+      },
+      "whatWeCollect": {
+        "title": "What we collect",
+        "items": [
+          "Account data: name, email address, password hash, and profile photo if you upload one.",
+          "Profile data: headline, bio, skills, rates, portfolio items, and work history you choose to publish.",
+          "Marketplace activity: job postings, proposals, messages, contracts, and reviews.",
+          "Payout preferences: the payment method you select and a display-only identifier (for example a PayPal email). We never take custody of funds and we do not store full bank credentials.",
+          "Technical data: audit-log entries for security-sensitive actions such as sign-in and payout changes. Audit logs are deliberately minimal — we do not store IP addresses or browser user agents alongside them."
+        ]
+      },
+      "howWeUse": {
+        "title": "How we use it",
+        "items": [
+          "To operate the marketplace: matching freelancers with jobs, delivering proposals, and enabling messaging.",
+          "To send transactional email: email confirmation, sign-in links, application notifications, and security alerts.",
+          "To keep the platform safe: preventing spam, fraud, and abuse, and reviewing accounts before approval.",
+          "To meet legal obligations and resolve disputes."
+        ]
+      },
+      "howWeUseNote": "We do not sell your personal data, and we do not use it to train advertising profiles.",
+      "legalBases": {
+        "title": "Legal bases (GDPR)",
+        "body": "Where the GDPR applies, we process personal data under: performance of a contract (running your account and the marketplace), legitimate interests (security, fraud prevention, product improvement), consent (optional communications, which you can withdraw), and legal obligation (tax and compliance records)."
+      },
+      "sharing": {
+        "title": "Sharing",
+        "body": "We share data only with processors that make the service work — our hosting provider, our database host, and our transactional email provider. They act on our instructions and are bound by contract. When you apply to a job, your name, profile, and proposal are shared with that client; that is the point of the platform."
+      },
+      "retention": {
+        "title": "Retention",
+        "body": "We keep account data while your account is open. When you delete your account we begin a grace period, after which personal data is erased or irreversibly anonymised. Records we are legally required to keep (for example, transaction ledgers) are retained for the statutory period."
+      },
+      "yourRights": {
+        "title": "Your rights",
+        "items": [
+          "Access and export: download your data, including your profile and portfolio.",
+          "Rectification: correct anything inaccurate from your settings page.",
+          "Erasure: delete your account and associated personal data.",
+          "Objection and restriction: ask us to stop specific processing.",
+          "Complaint: raise a concern with your local data protection authority."
+        ]
+      },
+      "yourRightsNote": "To exercise any of these, email privacy@freelancezero.com.",
+      "cookies": {
+        "title": "Cookies",
+        "body": "We use strictly necessary cookies for authentication and security. We do not use advertising or cross-site tracking cookies."
+      },
+      "changes": {
+        "title": "Changes",
+        "body": "If we make material changes we will update the date above and, where the change is significant, notify you by email. Questions? See our <termsLink>Terms</termsLink> and <securityLink>Security</securityLink> pages."
+      }
+    },
+    "terms": {
+      "meta": {
+        "title": "Terms of Service",
+        "description": "The terms that govern your use of Freelancezero — the zero-fee freelance marketplace. Plain language, no hidden commissions.",
+        "keywords": [
+          "freelancezero terms of service",
+          "freelance marketplace terms"
+        ]
+      },
+      "title": "Terms of Service",
+      "intro": "The rules for using Freelancezero. We have tried to keep them short and readable, because terms nobody reads protect nobody.",
+      "updated": "Last updated: August 2, 2026",
+      "agreement": {
+        "title": "1. Agreement",
+        "body": "By creating an account or using Freelancezero you agree to these Terms. If you are using the platform on behalf of a company, you confirm you are authorised to bind that company. If you do not agree, do not use the service."
+      },
+      "whatIs": {
+        "title": "2. What Freelancezero is — and is not",
+        "body": "Freelancezero is a venue that connects clients and freelancers. We charge <strong>no commission on your work</strong>. We are <strong>not</strong> a party to any contract you form with another user, we are not an employer or employment agency, and we do not supervise or guarantee any work performed.",
+        "nonCustodial": "Freelancezero is non-custodial: we never hold your money. Payments are arranged directly between client and freelancer using the method they choose."
+      },
+      "eligibility": {
+        "title": "3. Eligibility and accounts",
+        "items": [
+          "You must be at least 18 years old and legally able to enter contracts.",
+          "You must provide accurate information and keep your profile current.",
+          "You are responsible for your account credentials and everything done under your account.",
+          "New accounts are reviewed before approval; we may decline or revoke approval at our discretion.",
+          "One person or organisation, one account, unless we agree otherwise in writing."
+        ]
+      },
+      "acceptableUse": {
+        "title": "4. Acceptable use",
+        "intro": "You agree not to:",
+        "items": [
+          "Post false, misleading, discriminatory, or unlawful content, including fake jobs or fake reviews.",
+          "Harass, threaten, defraud, or impersonate anyone.",
+          "Scrape, overload, probe, or attempt to circumvent security controls on the platform.",
+          "Use the platform to send unsolicited bulk messages or spam.",
+          "Infringe anyone's intellectual property or confidentiality obligations."
+        ],
+        "outro": "We may suspend or terminate accounts that break these rules."
+      },
+      "contracts": {
+        "title": "5. Contracts between users",
+        "body": "When a client accepts a proposal, the contract is between those two users. They decide scope, deliverables, timelines, payment terms, and IP ownership. We recommend agreeing these in writing before work starts. Any dispute is primarily between the parties; our optional dispute process is a good-faith facilitation, not binding arbitration, unless the parties separately agree to it."
+      },
+      "payments": {
+        "title": "6. Payments, taxes, and fees",
+        "body": "Freelancezero takes 0% of what you earn. Third-party payment providers you choose (for example Stripe, PayPal, or Wise) may charge their own processing fees, which are outside our control. You are solely responsible for determining, reporting, and paying your own taxes."
+      },
+      "content": {
+        "title": "7. Your content",
+        "body": "You keep ownership of everything you post. You grant us a non-exclusive, worldwide, royalty-free licence to host, display, and distribute that content solely to operate and promote the service. You are responsible for having the rights to what you publish."
+      },
+      "disclaimers": {
+        "title": "8. Disclaimers",
+        "body": "The service is provided “as is” and “as available”, without warranties of any kind to the fullest extent permitted by law. We do not warrant that the platform will be uninterrupted or error-free, or that any user is qualified, reliable, or will perform as promised. Vet your counterparties."
+      },
+      "liability": {
+        "title": "9. Limitation of liability",
+        "body": "To the maximum extent permitted by law, Freelancezero is not liable for indirect, incidental, special, consequential, or punitive damages, or for lost profits, revenue, data, or goodwill. Because we charge you nothing, our aggregate liability to you is limited to the greater of amounts you paid us in the prior twelve months (typically zero) or USD 100."
+      },
+      "termination": {
+        "title": "10. Termination",
+        "body": "You may close your account at any time. We may suspend or terminate access for breach of these Terms, legal requirements, or risk to the platform or its users. Provisions that by their nature should survive termination will survive."
+      },
+      "openSource": {
+        "title": "11. Open source",
+        "body": "The Freelancezero software is released under the MIT licence. These Terms govern the hosted service at freelancezero.com; the software licence governs the code. Self-hosted instances are operated by whoever runs them, and we are not responsible for them."
+      },
+      "changes": {
+        "title": "12. Changes and contact",
+        "body": "We may update these Terms; material changes will be announced and the date above updated. Continued use after changes means you accept them. Questions: <mailto>legal@freelancezero.com</mailto>. See also our <privacyLink>Privacy Policy</privacyLink>."
+      }
+    },
+    "security": {
+      "meta": {
+        "title": "Security",
+        "description": "How Freelancezero protects your account and data: encryption in transit, hashed passwords, non-custodial payments, and a public vulnerability disclosure process.",
+        "keywords": [
+          "freelancezero security",
+          "freelance platform security",
+          "responsible disclosure"
+        ]
+      },
+      "title": "Security",
+      "intro": "Freelancezero is open source, which means our security posture is auditable by anyone. Here is how we protect accounts and data — and how to report a problem.",
+      "updated": "Last updated: August 2, 2026",
+      "account": {
+        "title": "Account security",
+        "items": [
+          "Passwords are hashed with bcrypt (cost factor 12). We never store them in plain text and cannot read them.",
+          "Sign in with a password, a one-time email magic link, or Google/GitHub — whichever you prefer.",
+          "Two-factor authentication (TOTP) is on the roadmap. Today, accounts are protected by mandatory email confirmation, rate-limited authentication endpoints, and short-lived one-click recruiter links that are stored only as hashes.",
+          "Password accounts stay inert until the email address is confirmed — unverified accounts cannot sign in.",
+          "Security-sensitive changes, such as updating your payout method, trigger a notification email so you notice anything you did not do."
+        ]
+      },
+      "data": {
+        "title": "Data protection",
+        "items": [
+          "All traffic is served over HTTPS/TLS.",
+          "Access to production data is restricted and audited; sensitive actions are written to an append-only audit log.",
+          "Uploaded files are validated by type and size and served from a path-traversal-safe route.",
+          "We collect the minimum personal data needed to run the marketplace — see our Privacy Policy."
+        ]
+      },
+      "payments": {
+        "title": "Payments are non-custodial",
+        "body": "Freelancezero never holds your money and never takes a commission. Funds move directly between client and freelancer through the provider they choose. We store a display-only identifier for your chosen payout method (for example a PayPal email) — never full banking credentials or card numbers. That means there is no pot of user funds on our side to steal."
+      },
+      "safety": {
+        "title": "Marketplace safety",
+        "items": [
+          "New accounts are manually reviewed before they can post jobs or apply.",
+          "Proposals carry a transparent quality score to keep low-effort spam out of client inboxes.",
+          "Outbound email honours one-click unsubscribe and suppression, so we do not become a spam vector.",
+          "Reviews are released double-blind to prevent retaliation bias."
+        ]
+      },
+      "disclosure": {
+        "title": "Responsible disclosure",
+        "body": "If you believe you have found a vulnerability, email <code>security@freelancezero.com</code> with steps to reproduce. Please give us a reasonable window to fix the issue before publishing, and avoid accessing other people's data, degrading the service, or running automated scans against production while testing.",
+        "outro": "We aim to acknowledge reports within three business days and will keep you updated on the fix. We are happy to credit researchers who report responsibly."
+      },
+      "selfHosting": {
+        "title": "Self-hosting",
+        "body": "Running your own instance? You own its security. At minimum: set a strong <code>AUTH_SECRET</code>, terminate TLS, keep the database off the public internet, apply updates promptly, and configure a verified sending domain with SPF, DKIM, and DMARC before enabling email."
+      }
+    }
+  }
+}

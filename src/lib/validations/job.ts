@@ -19,8 +19,8 @@ export const AMOUNT_MAX = 1_000_000_000;
  */
 export const createJobSchema = z
   .object({
-    title: z.string().min(8, 'Give your job a descriptive title').max(120),
-    description: z.string().min(40, 'Describe the work in a bit more detail').max(20_000),
+    title: z.string().min(8, 'val.jobTitleMin').max(120),
+    description: z.string().min(40, 'val.jobDescriptionMin').max(20_000),
     budgetType: z.enum(['HOURLY', 'FIXED']),
     // Amounts are entered in major units in the UI and converted to minor units
     // (cents) before hitting the API. Here we validate the minor-unit integers.
@@ -33,7 +33,7 @@ export const createJobSchema = z
   })
   .refine(
     (v) => v.budgetMin == null || v.budgetMax == null || v.budgetMax >= v.budgetMin,
-    { message: 'Maximum budget must be greater than or equal to the minimum', path: ['budgetMax'] },
+    { message: 'val.budgetMaxGte', path: ['budgetMax'] },
   );
 
 export type CreateJobInput = z.infer<typeof createJobSchema>;

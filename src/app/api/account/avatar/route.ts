@@ -18,10 +18,10 @@ export function POST(req: Request) {
     if (!session?.user) return unauthorized();
 
     const file = (await req.formData()).get('file');
-    if (!(file instanceof File)) return fail('No file uploaded', 422);
+    if (!(file instanceof File)) return fail('errors.noFileUploaded', 422);
     const ext = TYPES[file.type];
-    if (!ext) return fail('PNG, JPG or WebP images only', 422);
-    if (file.size > 2 * 1024 * 1024) return fail('Image must be under 2 MB', 422);
+    if (!ext) return fail('errors.imageType', 422);
+    if (file.size > 2 * 1024 * 1024) return fail('errors.imageSize', 422);
 
     const dir = path.resolve(process.env.STORAGE_LOCAL_DIR ?? './uploads', 'avatars');
     await mkdir(dir, { recursive: true });

@@ -1,12 +1,21 @@
 import type { MetadataRoute } from 'next';
+import { cookies } from 'next/headers';
+import { getTranslations } from 'next-intl/server';
 import { SITE } from '@/lib/seo';
+import { routing } from '@/i18n/routing';
 
 /** PWA manifest — installable, mobile-first (many freelancers work from phones). */
-export default function manifest(): MetadataRoute.Manifest {
+export default async function manifest(): Promise<MetadataRoute.Manifest> {
+  const cookieLocale = (await cookies()).get('NEXT_LOCALE')?.value;
+  const locale =
+    cookieLocale && routing.locales.includes(cookieLocale as never)
+      ? cookieLocale
+      : routing.defaultLocale;
+  const t = await getTranslations({ locale, namespace: 'site' });
   return {
-    name: `${SITE.name} — ${SITE.tagline}`,
+    name: `${SITE.name} — ${t('tagline')}`,
     short_name: SITE.name,
-    description: SITE.description,
+    description: t('description'),
     start_url: '/',
     display: 'standalone',
     background_color: '#060A14',

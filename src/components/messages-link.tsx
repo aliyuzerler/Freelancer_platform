@@ -1,14 +1,16 @@
 'use client';
 
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { MessageSquare } from 'lucide-react';
 import { POLL } from '@/lib/adapters/realtime';
 import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 
 /** Navbar messages icon with an unread badge. Polls alongside the bell. */
 export function MessagesLink() {
+  const t = useTranslations('nav');
   const pathname = usePathname();
 
   const { data } = useQuery({
@@ -30,7 +32,7 @@ export function MessagesLink() {
   const unread = pathname?.startsWith('/messages/') ? 0 : (data?.unread ?? 0);
 
   return (
-    <Button asChild variant="ghost" size="icon" aria-label="Messages" className="relative">
+    <Button asChild variant="ghost" size="icon" aria-label={t('messages')} className="relative">
       <Link href="/messages">
         <MessageSquare />
         {unread > 0 ? (

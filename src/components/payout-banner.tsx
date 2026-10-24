@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { AlertTriangle, X } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 
 /**
  * Site-wide warning shown to signed-in users who haven't set up a payment /
@@ -12,6 +13,7 @@ import { AlertTriangle, X } from 'lucide-react';
  * static; renders nothing for guests or users who already have a method.
  */
 export function PayoutBanner() {
+  const t = useTranslations('payoutBanner');
   const { status } = useSession();
   const pathname = usePathname();
   const [needsMethod, setNeedsMethod] = useState<boolean | null>(null);
@@ -48,15 +50,15 @@ export function PayoutBanner() {
       <div className="container flex items-center gap-3 py-2 text-sm">
         <AlertTriangle className="size-4 shrink-0 text-amber-600" />
         <p className="flex-1">
-          You haven’t set up a payment method yet.{' '}
+          {t('noMethod')}{' '}
           <Link href="/settings/payments" className="font-medium underline underline-offset-2">
-            Add one
+            {t('addMethod')}
           </Link>{' '}
-          so you can get paid.
+          {t('getPaidNote')}
         </p>
         <button
           onClick={() => setDismissed(true)}
-          aria-label="Dismiss"
+          aria-label={t('dismiss')}
           className="rounded p-1 text-muted-foreground transition-colors hover:text-foreground"
         >
           <X className="size-4" />

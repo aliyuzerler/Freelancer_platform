@@ -12,14 +12,14 @@ export function POST() {
 
     const adapter = getIdentityAdapter();
     if (!adapter.configured) {
-      return fail('Identity verification is not enabled on this instance', 503);
+      return fail('errors.identityDisabled', 503);
     }
 
     const me = await db.user.findUnique({
       where: { id: session.user.id },
       select: { email: true, identityStatus: true },
     });
-    if (me?.identityStatus === 'VERIFIED') return fail('You are already verified', 409);
+    if (me?.identityStatus === 'VERIFIED') return fail('errors.alreadyVerified', 409);
 
     const { url, ref } = await adapter.startVerification({
       userId: session.user.id,

@@ -1,7 +1,9 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
+import { useMessageResolver } from '@/i18n/msg';
 import { useSession } from 'next-auth/react';
 import { Camera } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -21,6 +23,8 @@ export function AvatarUpload({
   name: string | null;
   email: string | null;
 }) {
+  const t = useTranslations('settings.avatar');
+  const m = useMessageResolver();
   const router = useRouter();
   const { update } = useSession();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -41,7 +45,7 @@ export function AvatarUpload({
 
     if (!res.ok) {
       const body = await res.json().catch(() => null);
-      setError(body?.error?.message ?? 'Upload failed — try another image');
+      setError(m(body?.error?.message, t('uploadFailed')));
       setPreview(null);
       return;
     }
@@ -72,9 +76,9 @@ export function AvatarUpload({
           disabled={busy}
           onClick={() => inputRef.current?.click()}
         >
-          <Camera /> {busy ? 'Uploading…' : image ? 'Change photo' : 'Add photo'}
+          <Camera /> {busy ? t('uploading') : image ? t('changePhoto') : t('addPhoto')}
         </Button>
-        <p className="mt-1 text-xs text-muted-foreground">PNG, JPG or WebP, up to 2 MB.</p>
+        <p className="mt-1 text-xs text-muted-foreground">{t('formatHint')}</p>
         {error ? <p className="mt-1 text-xs text-destructive">{error}</p> : null}
       </div>
     </div>

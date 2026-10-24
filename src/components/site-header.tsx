@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { useSession, signOut } from 'next-auth/react';
 import {
   Zap, LayoutDashboard, Wallet, Settings, LogOut, Plus, ShieldCheck, MessageSquare,
@@ -9,7 +9,9 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { NotificationsBell } from '@/components/notifications-bell';
 import { MessagesLink } from '@/components/messages-link';
+import { LocaleSwitcher } from '@/components/locale-switcher';
 import { Logo } from '@/components/logo';
+import { Link } from '@/i18n/navigation';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -21,22 +23,22 @@ import {
 
 // Marketing nav for signed-out visitors.
 const GUEST_NAV = [
-  { href: '/jobs', label: 'Find work' },
-  { href: '/#how', label: 'How it works' },
-  { href: '/#pricing', label: 'Pricing' },
-];
+  { href: '/jobs', key: 'findWork' },
+  { href: '/#how', key: 'howItWorks' },
+  { href: '/#pricing', key: 'pricing' },
+] as const;
 
 // Freelancer-side (also agency roles): they browse and apply to work.
 const FREELANCER_NAV = [
-  { href: '/jobs', label: 'Find work' },
-  { href: '/dashboard', label: 'Dashboard' },
-];
+  { href: '/jobs', key: 'findWork' },
+  { href: '/dashboard', key: 'dashboard' },
+] as const;
 
 // Client-side: they hire and manage their postings.
 const CLIENT_NAV = [
-  { href: '/jobs/new', label: 'Post a job' },
-  { href: '/dashboard', label: 'Dashboard' },
-];
+  { href: '/jobs/new', key: 'postJob' },
+  { href: '/dashboard', key: 'dashboard' },
+] as const;
 
 const FREELANCER_ROLES = ['FREELANCER', 'AGENCY_OWNER', 'AGENCY_MEMBER'];
 
@@ -51,6 +53,7 @@ function initials(name?: string | null, email?: string | null): string {
 
 /** Premium top nav — role-aware, with an avatar account menu when signed in. */
 export function SiteHeader() {
+  const t = useTranslations('nav');
   const { data: session, status } = useSession();
 
   const user = session?.user;
@@ -68,12 +71,13 @@ export function SiteHeader() {
         <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
           {nav.map((item) => (
             <Link key={item.href} href={item.href} className="transition-colors hover:text-foreground">
-              {item.label}
+              {t(item.key)}
             </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-1.5">
+          <LocaleSwitcher />
           {isAuthed ? <MessagesLink /> : null}
           {isAuthed ? <NotificationsBell /> : null}
 
@@ -90,7 +94,7 @@ export function SiteHeader() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel className="flex flex-col">
-                  <span className="truncate">{user!.name ?? 'Your account'}</span>
+                  <span className="truncate">{user!.name ?? t('yourAccount')}</span>
                   <span className="truncate text-xs font-normal text-muted-foreground">
                     {user!.email}
                   </span>
@@ -98,41 +102,41 @@ export function SiteHeader() {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link href="/dashboard">
-                    <LayoutDashboard /> Dashboard
+                    <LayoutDashboard /> {t('dashboard')}
                   </Link>
                 </DropdownMenuItem>
                 {isFreelancer ? (
                   <DropdownMenuItem asChild>
                     <Link href="/jobs">
-                      <Zap /> Find work
+                      <Zap /> {t('findWork')}
                     </Link>
                   </DropdownMenuItem>
                 ) : (
                   <DropdownMenuItem asChild>
                     <Link href="/jobs/new">
-                      <Plus /> Post a job
+                      <Plus /> {t('postJob')}
                     </Link>
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem asChild>
                   <Link href="/messages">
-                    <MessageSquare /> Messages
+                    <MessageSquare /> {t('messages')}
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/settings/payments">
-                    <Wallet /> {isFreelancer ? 'Get paid' : 'Billing & payments'}
+                    <Wallet /> {isFreelancer ? t('getPaid') : t('billing')}
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/settings">
-                    <Settings /> Settings
+                    <Settings /> {t('settings')}
                   </Link>
                 </DropdownMenuItem>
                 {user!.role === 'ADMIN' ? (
                   <DropdownMenuItem asChild>
                     <Link href="/admin/approvals">
-                      <ShieldCheck /> Account approvals
+                      <ShieldCheck /> {t('approvals')}
                     </Link>
                   </DropdownMenuItem>
                 ) : null}
@@ -141,17 +145,17 @@ export function SiteHeader() {
                   onSelect={() => signOut({ callbackUrl: '/' })}
                   className="text-destructive focus:text-destructive"
                 >
-                  <LogOut /> Log out
+                  <LogOut /> {t('logOut')}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
             <>
               <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
-                <Link href="/login">Log in</Link>
+                <Link href="/login">{t('logIn')}</Link>
               </Button>
               <Button asChild size="sm" className="shadow-sm">
-                <Link href="/register">Start earning free</Link>
+                <Link href="/register">{t('startEarning')}</Link>
               </Button>
             </>
           )}
