@@ -33,6 +33,9 @@ yarn-error.log*
 .vscode/*
 !.vscode/extensions.json
 
+# typescript build artefacts (FZ-22)
+*.tsbuildinfo
+
 # prisma
 /prisma/*.db
 

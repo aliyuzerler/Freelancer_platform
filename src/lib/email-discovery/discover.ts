@@ -63,20 +63,17 @@ function score(
 }
 
 /**
- * Promote a verified published address to the shell's login email, so the
- * recruiter can sign in to this exact account. Never overwrites an already-real
- * identity and never hijacks an address that belongs to another user.
+ * Promote a verified published address to the shell's login email.
+ *
+ * REMOVED (FZ-02): a scraped "published" address proves nothing about who
+ * controls the posting — an attacker can list a fake job under a real
+ * company's name with their own contact address, harvest the one-click
+ * sign-in, and read every applicant's proposal. Scraped emails therefore
+ * never become login identities. Recruiter access is limited to per-job,
+ * expiring token links delivered by email, and scraped jobs stay DRAFT until
+ * an admin publishes them (see ingest.ts), so nothing is readable before a
+ * human curates it.
  */
-async function linkLoginEmail(userId: string, email: string): Promise<void> {
-  const user = await db.user.findUnique({
-    where: { id: userId },
-    select: { email: true, status: true },
-  });
-  if (!user || user.status !== 'UNCLAIMED' || user.email === email) return;
-  const clash = await db.user.findUnique({ where: { email }, select: { id: true } });
-  if (clash) return;
-  await db.user.update({ where: { id: userId }, data: { email } });
-}
 
 /** Resolve the company domain from whatever hints we have. */
 async function resolveDomain(userId: string): Promise<string | undefined> {
@@ -124,10 +121,8 @@ export async function discoverForUser(userId: string): Promise<DiscoveryOutcome>
       where: { userId },
       data: { ...s, verifiedAt: new Date() },
     });
-    // A trusted, deliverable published address becomes the shell's *login*
-    // identity, so the recruiter can sign in (magic link / Google / GitHub) to
-    // the same account. Only for published origins — never a guess.
-    if (s.contactable) await linkLoginEmail(userId, existing.email);
+    // FZ-02: no login-email promotion. The scraped address is contact data
+    // only — it never becomes the shell's account identity.
     return { email: existing.email, status: s.status, contactable: s.contactable };
   }
 

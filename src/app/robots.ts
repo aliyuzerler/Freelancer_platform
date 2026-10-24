@@ -8,7 +8,18 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/dashboard', '/api/', '/login', '/register'],
+        // FZ-23: all private app surfaces, not just the obvious ones.
+        disallow: [
+          '/dashboard',
+          '/settings',
+          '/admin',
+          '/onboarding',
+          '/messages',
+          '/verify',
+          '/api/',
+          '/login',
+          '/register',
+        ],
       },
     ],
     sitemap: `${SITE.url}/sitemap.xml`,

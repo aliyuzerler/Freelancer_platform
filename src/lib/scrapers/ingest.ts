@@ -141,11 +141,13 @@ export async function runIngest(scraper: JobScraper): Promise<IngestResult> {
       slug = `${slug}-${job.source.toLowerCase()}`.slice(0, 120);
     }
 
-    // A posting nobody can be notified about is a dead end for the freelancer
-    // who applies. Publish only when we have a real contact address; otherwise
-    // hold it as a DRAFT for an admin to curate (add the company email, then
-    // publish). Nothing is discarded.
-    const status = job.publishedEmail ? 'OPEN' : 'DRAFT';
+    // FZ-02: scraped postings are never published automatically. A board page
+    // is attacker-controllable data — auto-publishing would let a fake job
+    // harvest applicant PII under a real company's name. Everything lands as a
+    // DRAFT for admin curation (approve/attach a real contact, then publish);
+    // proposals cannot be submitted to a job that is not visible. Nothing is
+    // discarded.
+    const status = 'DRAFT';
 
     await db.job.create({
       data: {

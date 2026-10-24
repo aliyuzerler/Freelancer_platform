@@ -2,8 +2,7 @@
 
 import { Suspense, useState } from 'react';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { signIn } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
@@ -17,11 +16,11 @@ import { CompanyCombobox } from '@/components/company-combobox';
 type Role = 'CLIENT' | 'FREELANCER';
 
 function RegisterForm() {
-  const router = useRouter();
   const params = useSearchParams();
   const initialRole: Role = params.get('role') === 'freelancer' ? 'FREELANCER' : 'CLIENT';
   const [role, setRole] = useState<Role>(initialRole);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [submittedEmail, setSubmittedEmail] = useState<string | null>(null);
   const [company, setCompany] = useState('');
 
   const {
@@ -48,15 +47,32 @@ function RegisterForm() {
       return;
     }
 
-    // Auto sign-in, then straight into the required onboarding wizard
-    // (profile photo, email confirmation, …).
-    await signIn('credentials', {
-      email: values.email,
-      password: values.password,
-      redirect: false,
-    });
-    router.push('/onboarding');
-    router.refresh();
+    // Email verification is the activation gate: the account stays inert until
+    // the address is confirmed, so there is no auto sign-in here (FZ-01).
+    setSubmittedEmail(values.email);
+  }
+
+  if (submittedEmail) {
+    return (
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle className="text-2xl">Check your inbox</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground">
+            We sent a confirmation link to <strong>{submittedEmail}</strong>.
+            Confirm your email to activate the account, then sign in to finish
+            setting up your profile. The link expires in 24 hours.
+          </p>
+          <p className="mt-4 text-center text-sm text-muted-foreground">
+            Already confirmed?{' '}
+            <Link href="/login" className="text-primary hover:underline">
+              Log in
+            </Link>
+          </p>
+        </CardContent>
+      </Card>
+    );
   }
 
   return (

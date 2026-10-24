@@ -1,6 +1,6 @@
 import type { Post } from './types';
 
-/** Posts published April–August 2026. */
+/** Posts published April–August 2026 (the 2026 H2 cohort — see posts-h1.ts naming note). */
 export const POSTS_H2: Post[] = [
   {
     slug: 'how-to-get-paid-freelancer',

@@ -31,6 +31,15 @@ export const localStorageAdapter: StorageAdapter = {
 export function getStorageAdapter(): StorageAdapter {
   switch (process.env.STORAGE_DRIVER) {
     // case 's3': return s3StorageAdapter;
+    case 's3':
+      // FZ-15: a silent fall-through to the local driver used to write S3-bound
+      // uploads onto the container filesystem — data quietly stored somewhere
+      // the operator believes it isn't, lost on the next redeploy. Fail loudly
+      // instead: an unimplemented driver is a configuration error.
+      throw new Error(
+        "STORAGE_DRIVER='s3' is not implemented yet. Implement an s3StorageAdapter " +
+          "in src/lib/adapters/storage.ts or set STORAGE_DRIVER='local'.",
+      );
     case 'local':
     default:
       return localStorageAdapter;

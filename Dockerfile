@@ -10,6 +10,10 @@ WORKDIR /app
 FROM base AS deps
 COPY package.json package-lock.json* ./
 RUN npm ci
+# Record the exact Prisma CLI version resolved by the lockfile so the runner
+# stage installs the SAME version (FZ-28: no hardcoded drift like prisma@6.19.3
+# silently diverging from package.json).
+RUN node -p "require('prisma/package.json').version" > /app/.prisma-version
 
 # --- Build ---
 FROM base AS builder
@@ -29,10 +33,11 @@ RUN addgroup --system --gid 1001 nodejs \
   && adduser --system --uid 1001 nextjs
 
 # The standalone server doesn't bundle the Prisma CLI, but we run
-# `prisma migrate deploy` on boot (see docker-compose command). Install it here,
-# pinned to the same major as @prisma/client, so startup needs no network and
-# never version-mismatches the generated client.
-RUN npm install -g prisma@6.19.3
+# `prisma migrate deploy` on boot (see docker-compose command). Install the
+# exact version resolved in the deps stage so startup needs no network and
+# never version-mismatches the generated client (FZ-28).
+COPY --from=deps /app/.prisma-version /tmp/.prisma-version
+RUN npm install -g "prisma@$(cat /tmp/.prisma-version)"
 
 # Standalone output + static assets + prisma schema (for migrate deploy).
 COPY --from=builder /app/public ./public

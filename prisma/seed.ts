@@ -37,6 +37,17 @@ const COMPANY_SUFFIXES = [
 ];
 
 async function main() {
+  // FZ-16: the seed creates accounts with a well-known password, including an
+  // ADMIN. That must never happen against a real deployment.
+  if (process.env.NODE_ENV === 'production') {
+    console.error(
+      'Refusing to seed demo data (known-password accounts, including an ADMIN) ' +
+        'into a production environment. Set NODE_ENV=development or clear NODE_ENV ' +
+        'and seed a staging database explicitly if you really intend this.',
+    );
+    process.exit(1);
+  }
+
   const password = await bcrypt.hash('Password123', 12);
 
   // Skills taxonomy

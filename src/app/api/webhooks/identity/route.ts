@@ -1,20 +1,34 @@
 import { db } from '@/lib/db';
 import { ok, fail, handle } from '@/lib/api';
 import { getIdentityAdapter } from '@/lib/adapters/identity';
+import { verifyStripeSignature } from '@/lib/webhook-signature';
 import { sendMail } from '@/lib/mail/send';
 
 /**
  * POST /api/webhooks/identity — provider callback with the verification result.
  *
- * The outcome is only ever taken from this server-to-server call, never from the
- * browser return URL, which a user could forge.
+ * FZ-03: the `stripe-signature` header is verified against
+ * STRIPE_WEBHOOK_SECRET before anything is acted on. Previously any JSON body
+ * reached the handler, so a forged "verified" event could grant the KYC badge
+ * without a KYC flow. Fail closed: a misconfigured deployment refuses the
+ * webhook rather than trusting unsigned payloads.
  */
 export function POST(req: Request) {
   return handle(async () => {
     const adapter = getIdentityAdapter();
     if (!adapter.configured) return fail('Identity verification is not enabled', 503);
 
+    const secret = process.env.STRIPE_WEBHOOK_SECRET;
+    if (!secret) {
+      console.error('[webhook:identity] STRIPE_WEBHOOK_SECRET is not set — refusing payload');
+      return fail('Webhook is not configured', 503);
+    }
+
     const raw = await req.text();
+    if (!verifyStripeSignature(raw, req.headers.get('stripe-signature'), secret)) {
+      return fail('Invalid signature', 400);
+    }
+
     let payload: unknown;
     try {
       payload = JSON.parse(raw);

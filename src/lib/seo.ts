@@ -11,7 +11,10 @@ import type { Metadata } from 'next';
  */
 export const SITE = {
   name: 'Freelancezero',
-  url: process.env.NEXT_PUBLIC_APP_URL ?? 'https://freelancezero.com',
+  // FZ-24: the fallback is intentionally localhost, not the hosted site. A
+  // self-host operator who forgets NEXT_PUBLIC_APP_URL would otherwise emit
+  // canonical/sitemap URLs pointing at someone else's production domain.
+  url: process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000',
   // Title-tag positioning line — keyword-first, benefit-second.
   tagline: 'The Zero-Fee Upwork Alternative',
   description:

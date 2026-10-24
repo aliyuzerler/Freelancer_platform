@@ -21,8 +21,8 @@ export default function SecurityPage() {
           items={[
             'Passwords are hashed with bcrypt (cost factor 12). We never store them in plain text and cannot read them.',
             'Sign in with a password, a one-time email magic link, or Google/GitHub — whichever you prefer.',
-            'Optional two-factor authentication (TOTP) is supported; secrets are encrypted at rest.',
-            'Email addresses must be confirmed before an account can post jobs or submit proposals.',
+            'Two-factor authentication (TOTP) is on the roadmap. Today, accounts are protected by mandatory email confirmation, rate-limited authentication endpoints, and short-lived one-click recruiter links that are stored only as hashes.',
+            'Password accounts stay inert until the email address is confirmed — unverified accounts cannot sign in.',
             'Security-sensitive changes, such as updating your payout method, trigger a notification email so you notice anything you did not do.',
           ]}
         />

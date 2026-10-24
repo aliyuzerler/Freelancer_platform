@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { CheckCircle2, XCircle, Clock } from 'lucide-react';
 import { db } from '@/lib/db';
+import { hashToken } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -17,7 +18,8 @@ export default async function VerifyPage({
 
   let state: 'success' | 'expired' | 'invalid' = 'invalid';
   if (token && email) {
-    const record = await db.verificationToken.findUnique({ where: { token } });
+    // Tokens are stored as SHA-256 digests (FZ-17) — hash before lookup.
+    const record = await db.verificationToken.findUnique({ where: { token: hashToken(token) } });
     if (record && record.identifier === email) {
       if (record.expires > new Date()) {
         await db.user.updateMany({ where: { email }, data: { emailVerified: new Date() } });

@@ -33,7 +33,7 @@ export default function PrivacyPage() {
             'Profile data: headline, bio, skills, rates, portfolio items, and work history you choose to publish.',
             'Marketplace activity: job postings, proposals, messages, contracts, and reviews.',
             'Payout preferences: the payment method you select and a display-only identifier (for example a PayPal email). We never take custody of funds and we do not store full bank credentials.',
-            'Technical data: IP address, browser user agent, and audit-log entries for security-sensitive actions such as sign-in and payout changes.',
+            'Technical data: audit-log entries for security-sensitive actions such as sign-in and payout changes. Audit logs are deliberately minimal — we do not store IP addresses or browser user agents alongside them.',
           ]}
         />
       </Section>

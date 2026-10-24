@@ -3,9 +3,25 @@ import { db } from '@/lib/db';
 import { auth } from '@/lib/auth';
 import { ok, forbidden, unauthorized, handle } from '@/lib/api';
 
+// FZ-14: z.string().url() happily accepts "javascript:alert(1)" — a stored
+// value that later renders as an href. Require an http(s) URL explicitly.
+const httpUrl = z
+  .string()
+  .trim()
+  .max(300)
+  .refine((v) => {
+    if (v === '') return true;
+    try {
+      const u = new URL(v);
+      return u.protocol === 'http:' || u.protocol === 'https:';
+    } catch {
+      return false;
+    }
+  }, 'Enter a valid https:// URL');
+
 const schema = z.object({
   companyName: z.string().trim().max(120).optional(),
-  companyUrl: z.string().trim().url('Enter a valid URL').max(300).or(z.literal('')).optional(),
+  companyUrl: httpUrl.or(z.literal('')).optional(),
   about: z.string().trim().max(5000).optional(),
   location: z.string().trim().max(120).optional(),
 });

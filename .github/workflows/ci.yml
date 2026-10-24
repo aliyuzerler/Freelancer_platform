@@ -1,0 +1,63 @@
+# FZ-08 / FZ-28: the repo previously shipped with NO CI. This workflow makes
+# every push and PR run typecheck, lint, unit tests, and a full production
+# build, so regressions (including the security regression suite) cannot land
+# silently.
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: freelancezero
+          POSTGRES_PASSWORD: ci
+          POSTGRES_DB: freelancezero
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U freelancezero"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgresql://freelancezero:ci@localhost:5432/freelancezero?schema=public
+      AUTH_SECRET: ci-not-a-secret
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prisma generate
+        run: npx prisma generate
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests (security regressions)
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Apply migrations (schema sanity)
+        run: npx prisma migrate deploy

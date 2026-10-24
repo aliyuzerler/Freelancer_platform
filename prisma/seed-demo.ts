@@ -18,9 +18,11 @@ import { fanOutNotifications } from '@/lib/mail/worker';
 
 const RECRUITER_EMAIL = process.env.DEMO_RECRUITER_EMAIL ?? 'demo-recruiter@example.com';
 const COMPANY = 'Northwind Labs';
-// The shell's *login* identity is the recruiter's real email, so they can sign
-// in (magic link / Google / GitHub) and claim this account.
-const SHELL_EMAIL = RECRUITER_EMAIL;
+// The demo mirrors the ingestion pipeline: the shell's account identity is a
+// synthetic, unroutable address; the recruiter's real inbox is only the
+// *contact* that receives the notification (see ingest.ts for the production
+// rules). Login promotion of scraped emails was removed for FZ-02.
+const SHELL_EMAIL = `company.northwind-labs@unclaimed.freelancezero.invalid`;
 const JOB_SLUG = 'senior-react-engineer-remote-demo-nw1';
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000';
 
@@ -41,6 +43,16 @@ What we're looking for
 Fully remote (EU/US overlap). To apply, reach us with a short note and links to work.`;
 
 async function main() {
+  // FZ-16: the demo seeds a known-shape dataset and sends real email. Never
+  // against a production instance.
+  if (process.env.NODE_ENV === 'production') {
+    console.error(
+      'Refusing to run the demo seeder in production. Set NODE_ENV=development ' +
+        'on a staging database instead.',
+    );
+    process.exit(1);
+  }
+
   // 1. Company shell — an UNCLAIMED client, exactly like the scraper creates.
   const shell = await db.user.upsert({
     where: { email: SHELL_EMAIL },

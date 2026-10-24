@@ -25,12 +25,12 @@ const schema = z.object({
   RESEND_API_KEY: z.string().optional(),
 
   // --- External-job recruiter outreach ---
-  // Whether to contact *guessed* recruiter addresses (role boxes / patterns) or
-  // only ones the posting actually published. 'published_first' still discovers
-  // and verifies guesses but uses them only as a fallback.
+  // FZ-07: guessing is an OPT-IN. The safe default contacts only addresses the
+  // posting actually published; operators who accept the legal/reputational
+  // trade-offs may enable 'published_first' explicitly.
   RECRUITER_OUTREACH_POLICY: z
     .enum(['published_only', 'published_first'])
-    .default('published_first'),
+    .default('published_only'),
   // Live SMTP RCPT probing during verification. OFF by default: probing from the
   // app's IP harms sending reputation. When off we rely on MX + confidence.
   EMAIL_VERIFY_SMTP: z
@@ -44,6 +44,9 @@ const schema = z.object({
 
   // Identity verification provider (KYC). 'none' disables the feature.
   IDENTITY_DRIVER: z.enum(['none', 'stripe']).default('none'),
+  // FZ-03: required whenever IDENTITY_DRIVER=stripe — the webhook refuses
+  // unsigned payloads, so without a secret the endpoint fail-closes.
+  STRIPE_WEBHOOK_SECRET: z.string().optional(),
 
   STORAGE_DRIVER: z.enum(['local', 's3']).default('local'),
   REALTIME_DRIVER: z.enum(['socketio', 'pusher', 'none']).default('none'),

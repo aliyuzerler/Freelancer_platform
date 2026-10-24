@@ -1,6 +1,12 @@
 import type { Post } from './types';
 
 /**
+ * Naming note (FZ-27): H1/H2 here mean the 2026 half-year cohorts of blog
+ * posts (H1 = Jan–Apr 2026, H2 = Apr–Aug 2026) — NOT markdown heading levels.
+ * Renaming would churn git history for zero benefit; this comment is the
+ * documentation.
+ */
+/**
  * Posts published January–April 2026.
  *
  * Note on competitor figures: fee percentages are what the platforms publicly

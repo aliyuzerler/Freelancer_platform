@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { auth, signIn } from '@/lib/auth';
+import { auth, signIn, hashToken } from '@/lib/auth';
 import { env } from '@/lib/env';
 
 /**
@@ -19,8 +19,9 @@ export async function GET(
 ) {
   const { token } = await params;
 
+  // Tokens are stored hashed (FZ-17); hash the URL token before lookup.
   const row = await db.recruiterAccessToken.findUnique({
-    where: { token },
+    where: { token: hashToken(token) },
     select: { userId: true, jobId: true, expiresAt: true },
   });
 

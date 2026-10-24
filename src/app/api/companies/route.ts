@@ -8,6 +8,12 @@ import { ok, handle } from '@/lib/api';
  * which includes the shells created by job ingestion) rather than a fixture
  * table, so a real employer like "Zicasso" is suggested and seeded placeholders
  * never are.
+ *
+ * FZ-25: the endpoint stays public because the registration form needs it, so
+ * the company list cannot be fully locked behind auth. Bulk enumeration is
+ * mitigated instead: a 30 req/min per-IP limit in middleware, a 2-character
+ * minimum query, and hard result caps (8 returned). Names of seeded fixture
+ * companies are public marketing data anyway.
  */
 export function GET(req: Request) {
   return handle(async () => {

@@ -1,23 +1,37 @@
 import bcrypt from 'bcryptjs';
 import { db } from '@/lib/db';
-import { created, fail, handle } from '@/lib/api';
+import { ok, handle } from '@/lib/api';
 import { registerSchema } from '@/lib/validations/auth';
 import { sendVerificationEmail } from '@/lib/verification';
 
 /**
  * POST /api/register — create a credentials-based account.
- * Passwords are hashed with bcrypt (cost 12). Email verification is triggered
- * separately via Auth.js magic link / verification token flow.
+ * Passwords are hashed with bcrypt (cost 12). The account stays inert until
+ * the email is confirmed: password sign-in is refused until emailVerified is
+ * set, which is what neutralizes pre-account-takeover traps (FZ-01).
+ *
+ * FZ-10: every code path returns the exact same generic response, so response
+ * differences cannot reveal whether an address already has an account.
  */
 export function POST(req: Request) {
   return handle(async () => {
     const body = registerSchema.parse(await req.json());
 
+    const GENERIC = { ok: true, pending: 'email_verification' } as const;
+
     const existing = await db.user.findUnique({ where: { email: body.email } });
     if (existing) {
-      // Do not reveal whether the email exists to unauthenticated callers in
-      // production; here we return a generic conflict.
-      return fail('An account with that email already exists', 409);
+      // An inert, never-verified duplicate is most often the same person who
+      // lost the first mail — re-send the confirmation. Verified accounts and
+      // provider/shell identities are left alone (no unsolicited email), and
+      // the response stays identical either way. A per-address resend cap is
+      // enforced inside sendMail, so this cannot be used to flood an inbox.
+      if (existing.passwordHash && !existing.emailVerified) {
+        await sendVerificationEmail({ email: existing.email, name: existing.name }).catch(
+          (err) => console.error('[register] verification re-send failed', err),
+        );
+      }
+      return ok(GENERIC);
     }
 
     const passwordHash = await bcrypt.hash(body.password, 12);
@@ -54,12 +68,12 @@ export function POST(req: Request) {
       data: { userId: user.id, action: 'user.register', entity: 'User', entityId: user.id },
     });
 
-    // Email confirmation is the first onboarding gate — send it right away.
+    // Email confirmation is now the activation gate — send it right away.
     // Best-effort: a mail hiccup must never fail registration.
     await sendVerificationEmail({ email: user.email, name }).catch((err) =>
       console.error('[register] verification email failed', err),
     );
 
-    return created(user);
+    return ok(GENERIC);
   });
 }
