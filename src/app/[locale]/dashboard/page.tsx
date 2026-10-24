@@ -297,6 +297,9 @@ async function ProfileCompleteness({ userId, locale }: { userId: string; locale:
     },
   });
   const score = profile?.completenessScore ?? 0;
+  // `missingItems` kökten tam yol döndürür (dashboard.missing.*) — kök çevirmenle
+  // çözülür; ad alanlı t() iki kez önek ekleyip MISSING_MESSAGE üretir.
+  const tRoot = await getTranslations({ locale });
 
   // Show what is actually missing — a bare percentage tells nobody what to do.
   // `missingItems` returns stable keys (dashboard.missing.*) — resolved here.
@@ -340,7 +343,7 @@ async function ProfileCompleteness({ userId, locale }: { userId: string; locale:
                 {todo.map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-muted-foreground/40" />
-                    {t(item as never)}
+                    {tRoot(item as never)}
                   </li>
                 ))}
               </ul>

@@ -33,18 +33,25 @@ function LoginForm() {
     setError(null);
     setLoading(true);
     const form = new FormData(e.currentTarget);
-    const res = await signIn('credentials', {
-      email: String(form.get('email')),
-      password: String(form.get('password')),
-      redirect: false,
-    });
-    setLoading(false);
-    if (res?.error) {
+    try {
+      const res = await signIn('credentials', {
+        email: String(form.get('email')),
+        password: String(form.get('password')),
+        redirect: false,
+      });
+      if (res?.error) {
+        setError(t('invalidCredentials'));
+        return;
+      }
+      router.push(next);
+      router.refresh();
+    } catch {
+      // Network failure or a rate-limit (429) JSON body can make the SDK
+      // throw — never leave the button stuck in its loading state.
       setError(t('invalidCredentials'));
-      return;
+    } finally {
+      setLoading(false);
     }
-    router.push(next);
-    router.refresh();
   }
 
   async function onMagicLink(e: React.FormEvent) {

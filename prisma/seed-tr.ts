@@ -196,10 +196,10 @@ async function main() {
           ratingCount: 12,
           skills: {
             create: [
-              { skillId: skills['React'].id, endorsements: 14 },
-              { skillId: skills['Next.js'].id, endorsements: 11 },
-              { skillId: skills['TypeScript'].id, endorsements: 9 },
-              { skillId: skills['Node.js'].id, endorsements: 6 },
+              { skillId: skills['React']!.id, endorsements: 14 },
+              { skillId: skills['Next.js']!.id, endorsements: 11 },
+              { skillId: skills['TypeScript']!.id, endorsements: 9 },
+              { skillId: skills['Node.js']!.id, endorsements: 6 },
             ],
           },
           portfolioItems: {
@@ -315,7 +315,7 @@ async function main() {
             ratingAvg: f.rating,
             ratingCount: f.count,
             skills: {
-              create: f.skills.map((s) => ({ skillId: skills[s.name].id, endorsements: s.endorsements })),
+              create: f.skills.map((s) => ({ skillId: skills[s.name]!.id, endorsements: s.endorsements })),
             },
             languages: {
               create: [
@@ -424,7 +424,7 @@ async function main() {
         status: j.status,
         publishedAt: ago(j.publishedAgo),
         createdAt: ago(j.publishedAgo + 2 * HOUR),
-        skills: { create: j.skillNames.map((n) => ({ skillId: skills[n].id })) },
+        skills: { create: j.skillNames.map((n) => ({ skillId: skills[n]!.id })) },
       },
       select: { id: true, title: true },
     });
@@ -481,9 +481,9 @@ async function main() {
 
   let proposalCount = 0;
   for (const p of proposalSpecs) {
-    const freelancerId = p.email === 'serbest@ornek.dev' ? freelancer.id : extraFreelancers[p.email].userId;
+    const freelancerId = p.email === 'serbest@ornek.dev' ? freelancer.id : extraFreelancers[p.email]!.userId;
     const existing = await db.proposal.findUnique({
-      where: { jobId_freelancerId: { jobId: jobs[p.slug].id, freelancerId } },
+      where: { jobId_freelancerId: { jobId: jobs[p.slug]!.id, freelancerId } },
       select: { id: true },
     });
     if (existing) {
@@ -494,7 +494,7 @@ async function main() {
     } else {
       await db.proposal.create({
         data: {
-          jobId: jobs[p.slug].id,
+          jobId: jobs[p.slug]!.id,
           freelancerId,
           coverLetter: p.coverLetter,
           bidAmount: p.bidAmount,
@@ -543,8 +543,8 @@ async function main() {
           jobId,
           participants: {
             create: [
-              { userId: aId, lastReadAt: ago(spec[0].at) },
-              { userId: bId, lastReadAt: ago(spec[0].at) },
+              { userId: aId, lastReadAt: ago(spec[0]!.at) },
+              { userId: bId, lastReadAt: ago(spec[0]!.at) },
             ],
           },
         },
@@ -569,18 +569,18 @@ async function main() {
   const conv1Id = await ensureConversation(
     client.id,
     freelancer.id,
-    jobs['e-ticaret-frontend-yenileme'].id,
+    jobs['e-ticaret-frontend-yenileme']!.id,
     c1Spec,
     client.id,
     freelancer.id,
   );
   const conv2Id = await ensureConversation(
     client.id,
-    extraFreelancers['mehmet@ornek.dev'].userId,
-    jobs['mobil-uygulama-ui-ux-tasarimi'].id,
+    extraFreelancers['mehmet@ornek.dev']!.userId,
+    jobs['mobil-uygulama-ui-ux-tasarimi']!.id,
     c2Spec,
     client.id,
-    extraFreelancers['mehmet@ornek.dev'].userId,
+    extraFreelancers['mehmet@ornek.dev']!.userId,
   );
 
   // Okunmamış rozetleri: son mesajlar karşı tarafta okunmamış kalsın.
@@ -597,7 +597,7 @@ async function main() {
     data: { lastReadAt: ago(6 * HOUR) }, // Mehmet'in son mesajı okunmamış (Bora tarafında)
   });
   await db.participant.updateMany({
-    where: { conversationId: conv2Id, userId: extraFreelancers['mehmet@ornek.dev'].userId },
+    where: { conversationId: conv2Id, userId: extraFreelancers['mehmet@ornek.dev']!.userId },
     data: { lastReadAt: new Date() },
   });
 

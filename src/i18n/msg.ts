@@ -1,6 +1,6 @@
 'use client';
 
-import { useMessages } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 /**
  * Client-side resolver for machine-readable message keys that travel through
@@ -27,11 +27,19 @@ export function isMessageKey(value?: string | null): boolean {
  *   m(errors.firstName?.message)               // zod message key
  */
 export function useMessageResolver() {
-  const messages = useMessages();
+  // Root-scope translator: `errors.*` / `val.*` are top-level namespaces in
+  // the message catalogs. (useMessages() returns an OBJECT, not a callable —
+  // calling it as one crashed the whole React tree on the first field error.)
+  const t = useTranslations();
 
   return (value: string | null | undefined, fallback?: string): string => {
     if (isMessageKey(value)) {
-      return (messages as unknown as (key: string) => string)(value as string);
+      try {
+        return t(value as Parameters<typeof t>[0]);
+      } catch {
+        // Missing catalog entry must never crash a form — degrade to fallback.
+        return fallback ?? value ?? '';
+      }
     }
     return value ?? fallback ?? '';
   };

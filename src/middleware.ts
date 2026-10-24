@@ -65,7 +65,15 @@ export function middleware(req: NextRequest) {
       if (!pathname.startsWith(rule.prefix)) continue;
       if (rule.methods && !rule.methods.includes(req.method)) continue;
 
-      const result = rateLimit(`${clientIp(req)}:${rule.prefix}`, rule.max, rule.windowMs);
+      // FZ-05 düzeltmesi (E2E canlı testte bulundu): anahtar METOT İÇERMELİ.
+      // Aksi hâlde GET ve POST kuralları aynı kovayı paylaşır — oturum yoklaması
+      // (session/providers GET'leri) giriş POST'unun bütçesini yer ve meşru
+      // kullanıcılar 429 alır.
+      const result = rateLimit(
+        `${clientIp(req)}:${rule.prefix}${rule.methods ? `:${rule.methods.join('-')}` : ':any'}`,
+        rule.max,
+        rule.windowMs,
+      );
       if (!result.allowed) {
         return NextResponse.json(
           // Stable key; the client resolves it through the message catalogs.

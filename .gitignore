@@ -43,3 +43,10 @@ yarn-error.log*
 
 # sudonotes ideas
 IDEAS.md
+
+# yerel çalışma anı çıktıları (FZ Türkçe kurulum)
+app.log
+standalone.log
+/prisma/seed-tr-output.json
+/scripts/pgenv/
+/scripts/e2e_*.ts
